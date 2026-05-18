@@ -25,7 +25,7 @@
   --drop-tx:rgba(249,245,238,.72); --drop-h:rgba(24,35,56,.6); --drop-ic:rgba(184,147,74,.1);
   --drop-title:var(--cream);
   --mob-bg:var(--black2); --mob-tx:var(--cream); --mob-br:rgba(184,147,74,.12);
-  --stats-bg:var(--navy); --stats-n:var(--gold3); --stats-l:rgba(249,245,238,.5);
+  --stats-bg:var(--navy); --stats-n:var(--gold3); --stats-l:rgba(249,245,238,.72);
   --car-bg:var(--black2); --car-border:rgba(184,147,74,.1); --car-tx:var(--cream);
   --logo-op:0.4; --logo-f:brightness(0) invert(1);
   --about-bg:var(--black); --about-bg2:var(--black2);
@@ -42,7 +42,7 @@
   --cta-btn-bg:var(--black); --cta-btn-tx:var(--gold);
   --f-bg:var(--bg2); --f-b:rgba(184,147,74,.12); --f-tx:var(--mu);
   --fp-kpi-bg:var(--navy); --fp-kpi-b:rgba(184,147,74,.15);
-  --fp-kpi-l:rgba(249,245,238,.45); --fp-kpi-v:var(--gold3);
+  --fp-kpi-l:rgba(249,245,238,.68); --fp-kpi-v:var(--gold3);
   --fp-bg:var(--black); --fp-h:var(--cream); --fp-body:rgba(249,245,238,.7);
   --fp-mb:var(--black2); --fp-mt:rgba(249,245,238,.68);
   --fp-cb:var(--black2); --fp-ct:var(--gold3); --fp-cv:var(--cream); --fp-cbb:rgba(184,147,74,.12);
@@ -128,7 +128,7 @@ a,button{min-height:44px;display:inline-flex;align-items:center;}
   transition:background .15s,color .15s;
   border-left:3px solid transparent;
 }
-.drop-item:hover{background:var(--drop-h);color:var(--navy);border-left-color:var(--gold);}
+.drop-item:hover{background:var(--drop-h);color:var(--cream);border-left-color:var(--gold);}
 .drop-ic{
   width:36px;height:36px;background:var(--drop-ic);border-radius:3px;
   display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;
@@ -136,9 +136,9 @@ a,button{min-height:44px;display:inline-flex;align-items:center;}
 .drop-strong{
   display:block;font-family:var(--f-d);font-weight:700;
   letter-spacing:.05em;text-transform:uppercase;font-size:.875rem;
-  color:var(--drop-title,var(--navy));margin-bottom:2px;
+  color:var(--drop-title,var(--cream));margin-bottom:2px;
 }
-.drop-sub{font-size:.8125rem;color:var(--mu);line-height:1.4;}
+.drop-sub{font-size:.875rem;color:var(--mu);line-height:1.4;}
 .drop-footer{
   display:flex;align-items:center;gap:.5rem;
   margin-top:.375rem;padding:.875rem 1.25rem;min-height:44px;
@@ -146,7 +146,7 @@ a,button{min-height:44px;display:inline-flex;align-items:center;}
   font-size:.875rem;color:var(--gold);
   font-family:var(--f-d);font-weight:600;letter-spacing:.06em;text-transform:uppercase;
 }
-.drop-footer:hover{color:var(--navy);}
+.drop-footer:hover{color:var(--gold2);}
 .nav-cta{
   display:none;align-items:center;justify-content:center;
   background:var(--navy);color:var(--cream);
@@ -307,12 +307,13 @@ body.menu-open{overflow:hidden;}
   font-weight:800;line-height:.9;
   letter-spacing:.015em;text-transform:uppercase;
   color:#fff;margin-bottom:1.875rem;
+  overflow-wrap:break-word;word-break:break-word;max-width:100%;
 }
 .hero-title em{display:block;color:var(--gold3);font-style:normal;}
 .hero-lead{
   font-size:clamp(1.0625rem,2vw,1.25rem);
-  color:rgba(255,255,255,.8);line-height:1.85;
-  max-width:600px;margin-bottom:2.5rem;font-weight:300;
+  color:rgba(255,255,255,.85);line-height:1.85;
+  max-width:600px;margin-bottom:2.5rem;font-weight:400;
 }
 .hero-actions{display:flex;flex-wrap:wrap;gap:1rem;}
 .hero-scroll{
@@ -416,7 +417,7 @@ body.menu-open{overflow:hidden;}
   display:flex;flex-direction:column;justify-content:center;gap:1.875rem;
 }
 .about-teaser-kpis{
-  display:grid;grid-template-columns:repeat(3,1fr);
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(90px,1fr));
   gap:1rem;margin:1rem 0;
 }
 .about-kpi{
@@ -632,7 +633,7 @@ body.menu-open{overflow:hidden;}
   font-weight:800;letter-spacing:.03em;text-transform:uppercase;
   color:var(--cta-title);line-height:.9;position:relative;z-index:1;
 }
-.cta-band h2 em{color:var(--gold);font-style:normal;}
+.cta-band h2 em{color:var(--navy);font-style:normal;}
 .cta-band p{
   font-size:clamp(1.0625rem,2vw,1.25rem);
   color:var(--cta-body);line-height:1.875;max-width:540px;position:relative;z-index:1;
