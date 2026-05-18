@@ -1,0 +1,466 @@
+---
+// Layout.astro — Eurolook Construction
+// Navigation + Footer partagés sur toutes les pages
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description: string;
+  canonical?: string;
+  ogImage?: string;
+}
+const {
+  title,
+  description,
+  canonical = Astro.url.href,
+  ogImage = '/images/og-eurolook.jpg'
+} = Astro.props;
+---
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0C0B09" />
+
+  <!-- SEO -->
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <link rel="canonical" href={canonical} />
+  <meta name="robots" content="index, follow" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:url" content={canonical} />
+  <meta property="og:image" content={ogImage} />
+  <meta property="og:locale" content="fr_FR" />
+  <meta property="og:site_name" content="Eurolook Construction" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content={ogImage} />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="/favicon/favicon.ico" />
+  <link rel="icon" type="image/png" href="/favicon/favicon.png" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+
+
+  <!-- Schema.org JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Eurolook Construction",
+    "url": "https://eurolookgroup.com",
+    "logo": "https://eurolookgroup.com/logos/logo-eurolook-light.svg",
+    "description": "Renforcement structurel, réhabilitation technique et aménagement commercial. EGB certifié MASE depuis 2015.",
+    "address": {
+      "@type": "PostalAddress",
+      "addressCountry": "FR"
+    },
+    "sameAs": []
+  }
+  </script>
+</head>
+<body>
+
+  <!-- Lien d'évitement accessibilité -->
+  <a class="skip-link" href="#main">Aller au contenu principal</a>
+
+  <!-- ════ NAVIGATION ════ -->
+  <header>
+    <nav class="site-nav" role="navigation" aria-label="Navigation principale">
+      <div class="nav-inner">
+
+        <!-- Logo -->
+        <a class="nav-logo" href="/" aria-label="Eurolook Construction — Accueil">
+          <img
+            src="/logos/logo-eurolook-light.svg"
+            alt="Eurolook Construction"
+            width="160"
+            height="36"
+            loading="eager"
+          />
+        </a>
+
+        <!-- Liens desktop -->
+        <ul class="nav-links" role="list">
+          <li><a class="nav-link" href="/">Accueil</a></li>
+          <li><a class="nav-link" href="/entreprise">L'entreprise</a></li>
+          <li class="nav-item has-drop">
+            <a class="nav-link" href="/expertises" aria-haspopup="true" aria-expanded="false" id="exp-trigger">
+              Expertises<span class="nav-arrow" aria-hidden="true">▾</span>
+            </a>
+            <div class="dropdown" role="region" aria-labelledby="exp-trigger">
+              <a class="drop-item" href="/expertises#renforcement">
+                <span class="drop-ic" aria-hidden="true">🏗</span>
+                <span>
+                  <span class="drop-strong">Renforcement structurel</span>
+                  <span class="drop-sub">Reprise en sous-œuvre, micropieux</span>
+                </span>
+              </a>
+              <a class="drop-item" href="/expertises#rehabilitation">
+                <span class="drop-ic" aria-hidden="true">🔧</span>
+                <span>
+                  <span class="drop-strong">Réhabilitation technique</span>
+                  <span class="drop-sub">Site occupé, nuit et week-end</span>
+                </span>
+              </a>
+              <a class="drop-item" href="/expertises#commerces">
+                <span class="drop-ic" aria-hidden="true">🏪</span>
+                <span>
+                  <span class="drop-strong">Aménagement de commerces</span>
+                  <span class="drop-sub">Multi-sites, enseignes nationales</span>
+                </span>
+              </a>
+              <a class="drop-item" href="/expertises#aluminium">
+                <span class="drop-ic" aria-hidden="true">🪟</span>
+                <span>
+                  <span class="drop-strong">Menuiseries aluminium</span>
+                  <span class="drop-sub">Atelier La Fabrique intégré</span>
+                </span>
+              </a>
+              <a class="drop-item" href="/expertises#coordination">
+                <span class="drop-ic" aria-hidden="true">⚙</span>
+                <span>
+                  <span class="drop-strong">Coordination technique</span>
+                  <span class="drop-sub">Pilotage MOE/MOA, plans d'exécution</span>
+                </span>
+              </a>
+              <a class="drop-item" href="/expertises#interieur">
+                <span class="drop-ic" aria-hidden="true">🏢</span>
+                <span>
+                  <span class="drop-strong">Aménagement intérieur</span>
+                  <span class="drop-sub">Tertiaire et commercial haut de gamme</span>
+                </span>
+              </a>
+              <a class="drop-footer" href="/expertises">Toutes nos expertises →</a>
+            </div>
+          </li>
+          <li><a class="nav-link" href="/realisations">Réalisations</a></li>
+          <li><a class="nav-link" href="/#engagements">Engagements</a></li>
+          <li><a class="nav-link" href="/contact">Contact</a></li>
+        </ul>
+
+        <!-- CTA desktop -->
+        <a class="nav-cta btn btn-gold btn-sm" href="/contact" aria-label="Demander un devis gratuit">
+          Devis gratuit
+        </a>
+
+        <!-- Burger mobile -->
+        <button
+          class="burger"
+          id="burger"
+          aria-label="Ouvrir le menu"
+          aria-expanded="false"
+          aria-controls="mob"
+        >
+          <span class="b-bar" aria-hidden="true"></span>
+          <span class="b-bar" aria-hidden="true"></span>
+          <span class="b-bar" aria-hidden="true"></span>
+        </button>
+
+      </div>
+    </nav>
+
+    <!-- Menu mobile -->
+    <nav class="mobile-nav" id="mob" role="dialog" aria-modal="true" aria-label="Menu principal">
+      <ul class="mob-list" role="list">
+        <li><a class="mob-link" href="/">Accueil</a></li>
+        <li><a class="mob-link" href="/entreprise">L'entreprise</a></li>
+        <li>
+          <button
+            class="mob-exp-btn"
+            id="mob-exp-toggle"
+            aria-expanded="false"
+            aria-controls="mob-exp-list"
+          >
+            Expertises<span class="mob-exp-arrow" aria-hidden="true">▾</span>
+          </button>
+          <div id="mob-exp-list" class="mob-exp-list" role="list">
+            <a class="mob-exp-item" href="/expertises#renforcement">Renforcement structurel</a>
+            <a class="mob-exp-item" href="/expertises#rehabilitation">Réhabilitation technique</a>
+            <a class="mob-exp-item" href="/expertises#commerces">Aménagement de commerces</a>
+            <a class="mob-exp-item" href="/expertises#aluminium">Menuiseries aluminium</a>
+            <a class="mob-exp-item" href="/expertises#coordination">Coordination technique</a>
+            <a class="mob-exp-item" href="/expertises#interieur">Aménagement intérieur</a>
+          </div>
+        </li>
+        <li><a class="mob-link" href="/realisations">Réalisations</a></li>
+        <li><a class="mob-link" href="/#engagements">Engagements</a></li>
+        <li><a class="mob-link" href="/contact">Contact</a></li>
+      </ul>
+      <a class="mob-cta" href="/contact">Devis gratuit</a>
+    </nav>
+  </header>
+
+  <!-- ════ CONTENU DE LA PAGE ════ -->
+  <main id="main">
+    <slot />
+  </main>
+
+  <!-- ════ FOOTER ════ -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="footer-inner">
+      <a class="footer-logo" href="/" aria-label="Eurolook Construction">
+        <img
+          src="/logos/logo-eurolook-light.svg"
+          alt="Eurolook Construction"
+          width="120"
+          height="30"
+          loading="lazy"
+        />
+      </a>
+      <nav class="footer-links" aria-label="Liens légaux">
+        <a href="/mentions-legales">Mentions légales</a>
+        <a href="/confidentialite">Confidentialité</a>
+        <a href="/plan-du-site">Plan du site</a>
+        <a href="/contact" style="color:var(--gold);font-weight:600;">Demander un devis</a>
+      </nav>
+      <p class="footer-copy">© 2026 Eurolook Construction — SIRET&nbsp;820&nbsp;234&nbsp;567&nbsp;00012</p>
+    </div>
+  </footer>
+
+  <!-- ════ BANDEAU COOKIE ════ -->
+  <div id="cookie-banner" class="cookie-banner" hidden role="dialog" aria-label="Gestion des cookies">
+    <p class="cookie-txt">
+      Ce site utilise des cookies pour améliorer votre navigation.
+      <a href="/confidentialite">Politique de confidentialité</a>
+    </p>
+    <div class="cookie-actions">
+      <button id="ca" class="cookie-ok">Accepter</button>
+      <button id="cr" class="cookie-no">Refuser</button>
+    </div>
+  </div>
+
+  <!-- ════ STICKY CTA MOBILE ════ -->
+  <a id="sticky-cta" class="sticky-cta" href="/contact" aria-label="Demander un devis gratuit">
+    Devis gratuit →
+  </a>
+
+  <!-- ════ JAVASCRIPT ════ -->
+  <script>
+  (function(){
+    'use strict';
+
+    /* ── BURGER ── */
+    var burger = document.getElementById('burger');
+    var mob = document.getElementById('mob');
+    if(burger && mob){
+      burger.addEventListener('click', function(){
+        var o = mob.classList.contains('is-open');
+        mob.classList.toggle('is-open', !o);
+        burger.setAttribute('aria-expanded', String(!o));
+        document.body.classList.toggle('menu-open', !o);
+      });
+      mob.querySelectorAll('a').forEach(function(el){
+        el.addEventListener('click', function(){
+          mob.classList.remove('is-open');
+          burger.setAttribute('aria-expanded', 'false');
+          document.body.classList.remove('menu-open');
+        });
+      });
+      document.addEventListener('keydown', function(e){
+        if(e.key === 'Escape' && mob.classList.contains('is-open')){
+          mob.classList.remove('is-open');
+          burger.setAttribute('aria-expanded', 'false');
+          document.body.classList.remove('menu-open');
+          burger.focus();
+        }
+      });
+    }
+
+    /* ── DROPDOWN DESKTOP ── */
+    document.querySelectorAll('.has-drop').forEach(function(item){
+      var link = item.querySelector('.nav-link'), t;
+      function open(){
+        clearTimeout(t);
+        document.querySelectorAll('.has-drop').forEach(function(d){
+          if(d !== item) d.classList.remove('drop-open');
+        });
+        item.classList.add('drop-open');
+        if(link) link.setAttribute('aria-expanded', 'true');
+      }
+      function close(){
+        t = setTimeout(function(){
+          item.classList.remove('drop-open');
+          if(link) link.setAttribute('aria-expanded', 'false');
+        }, 130);
+      }
+      item.addEventListener('mouseenter', open);
+      item.addEventListener('mouseleave', close);
+      item.addEventListener('focusin', function(){ clearTimeout(t); open(); });
+      item.addEventListener('focusout', function(){
+        t = setTimeout(function(){
+          if(!item.contains(document.activeElement)) close();
+        }, 100);
+      });
+    });
+    document.addEventListener('click', function(e){
+      document.querySelectorAll('.has-drop').forEach(function(d){
+        if(!d.contains(e.target)) d.classList.remove('drop-open');
+      });
+    });
+
+    /* ── ACCORDION EXPERTISES MOBILE ── */
+    var mbt = document.getElementById('mob-exp-toggle');
+    var mbl = document.getElementById('mob-exp-list');
+    if(mbt && mbl){
+      mbt.addEventListener('click', function(){
+        var o = mbl.classList.contains('is-open');
+        mbl.classList.toggle('is-open', !o);
+        mbt.setAttribute('aria-expanded', String(!o));
+      });
+    }
+
+    /* ── STICKY CTA ── */
+    var sc = document.getElementById('sticky-cta');
+    if(sc) window.addEventListener('scroll', function(){
+      sc.classList.toggle('is-visible', window.scrollY > 500);
+    }, {passive: true});
+
+    /* ── COOKIE ── */
+    var banner = document.getElementById('cookie-banner');
+    if(banner){
+      if(localStorage.getItem('eu-cookie')){
+        banner.hidden = true;
+      } else {
+        banner.hidden = false;
+        var ca = document.getElementById('ca');
+        var cr = document.getElementById('cr');
+        if(ca) ca.addEventListener('click', function(){
+          localStorage.setItem('eu-cookie', '1');
+          banner.hidden = true;
+        });
+        if(cr) cr.addEventListener('click', function(){
+          localStorage.setItem('eu-cookie', '0');
+          banner.hidden = true;
+        });
+      }
+    }
+
+  })();
+
+  /* ── ONGLETS EXPERTISES ── */
+  (function(){
+    var btns = document.querySelectorAll('.exp-tab-btn');
+    var panels = document.querySelectorAll('.exp-panel');
+    if(!btns.length) return;
+    function activateTab(key){
+      btns.forEach(function(b){
+        var a = b.dataset.tab === key;
+        b.classList.toggle('is-active', a);
+        b.setAttribute('aria-selected', String(a));
+      });
+      panels.forEach(function(p){
+        var a = p.id === 'panel-' + key;
+        if(a){
+          p.style.display = 'grid';
+          requestAnimationFrame(function(){
+            requestAnimationFrame(function(){ p.classList.add('is-active'); });
+          });
+        } else {
+          p.classList.remove('is-active');
+          p.style.display = 'none';
+        }
+      });
+    }
+    btns.forEach(function(btn){
+      btn.addEventListener('click', function(){ activateTab(this.dataset.tab); });
+      btn.addEventListener('keydown', function(e){
+        var list = Array.from(btns), idx = list.indexOf(this);
+        if(e.key === 'ArrowDown' || e.key === 'ArrowRight'){
+          e.preventDefault(); list[(idx+1) % list.length].focus();
+        }
+        if(e.key === 'ArrowUp' || e.key === 'ArrowLeft'){
+          e.preventDefault(); list[(idx-1+list.length) % list.length].focus();
+        }
+      });
+    });
+  })();
+
+  /* ── COUNTUP STATS ── */
+  (function(){
+    var done = false;
+    var ss = document.querySelector('.stats-band');
+    if(ss && 'IntersectionObserver' in window){
+      new IntersectionObserver(function(entries){
+        if(entries[0].isIntersecting && !done){
+          done = true;
+          document.querySelectorAll('[data-count]').forEach(function(el){
+            var t = parseInt(el.dataset.count);
+            var s = el.dataset.suffix || '';
+            var st = null, d = 1500;
+            function f(ts){
+              if(!st) st = ts;
+              var p = Math.min((ts-st)/d, 1);
+              var e = 1 - Math.pow(1-p, 3);
+              el.textContent = Math.floor(e*t) + s;
+              if(p < 1) requestAnimationFrame(f);
+            }
+            requestAnimationFrame(f);
+          });
+        }
+      }, {threshold: 0.4}).observe(ss);
+    }
+  })();
+
+  /* ── CARROUSEL LOGOS ── */
+  (function(){
+    var track = document.querySelector('.carousel-track');
+    if(!track) return;
+    track.querySelectorAll('.c-item').forEach(function(item){
+      track.appendChild(item.cloneNode(true));
+    });
+    var pos = 0, speed = 0.55, paused = false;
+    (function loop(){
+      if(!paused){
+        pos -= speed;
+        var hw = track.scrollWidth / 2;
+        if(Math.abs(pos) >= hw) pos = 0;
+        track.style.transform = 'translateX(' + pos + 'px)';
+      }
+      requestAnimationFrame(loop);
+    })();
+    var wrap = document.querySelector('.carousel-inner');
+    if(wrap){
+      wrap.addEventListener('mouseenter', function(){ paused = true; });
+      wrap.addEventListener('mouseleave', function(){ paused = false; });
+      wrap.addEventListener('touchstart', function(){ paused = true; }, {passive: true});
+      wrap.addEventListener('touchend', function(){
+        setTimeout(function(){ paused = false; }, 1500);
+      }, {passive: true});
+    }
+  })();
+
+  /* ── FILTRES RÉALISATIONS ── */
+  (function(){
+    document.querySelectorAll('.filter-btn').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        document.querySelectorAll('.filter-btn').forEach(function(b){
+          b.classList.remove('is-active');
+          b.setAttribute('aria-pressed', 'false');
+        });
+        this.classList.add('is-active');
+        this.setAttribute('aria-pressed', 'true');
+        var cat = this.dataset.cat;
+        document.querySelectorAll('.proj-full-card, .proj-card').forEach(function(card){
+          card.hidden = !(!cat || card.dataset.cat === cat);
+        });
+      });
+    });
+  })();
+  </script>
+
+</body>
+</html>
