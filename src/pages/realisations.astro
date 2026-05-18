@@ -1,0 +1,97 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+  title="Nos Réalisations — Eurolook Construction | 200+ projets depuis 2015"
+  description="Découvrez les réalisations d'Eurolook Construction : renforcement structurel, réhabilitation technique, aménagement commercial. 200+ projets livrés depuis 2015."
+  canonical="https://eurolookgroup.com/realisations"
+>
+
+  <!-- ████ EN-TÊTE ████ -->
+  <div class="real-header">
+    <nav aria-label="Fil d'Ariane">
+      <p class="breadcrumb">
+        <a href="/" style="color:inherit;text-decoration:none;">Accueil</a>
+        &nbsp;→&nbsp; Réalisations
+      </p>
+    </nav>
+    <h1 id="real-h1" class="real-h1">NOS<br>RÉALISATIONS</h1>
+    <p class="real-intro">200+ projets depuis 2015 — renforcement structurel, réhabilitation technique et aménagement commercial.</p>
+  </div>
+
+  <!-- ████ FILTRES ████ -->
+  <div class="filters" role="group" aria-label="Filtrer par catégorie">
+    <button class="filter-btn is-active" data-cat="" aria-pressed="true">Tous</button>
+    <button class="filter-btn" data-cat="commercial" aria-pressed="false">Commercial</button>
+    <button class="filter-btn" data-cat="structure" aria-pressed="false">Structure</button>
+    <button class="filter-btn" data-cat="residentiel" aria-pressed="false">Résidentiel</button>
+    <button class="filter-btn" data-cat="industriel" aria-pressed="false">Industriel</button>
+    <button class="filter-btn" data-cat="aluminium" aria-pressed="false">Aluminium</button>
+  </div>
+
+  <!-- CTA rapide -->
+  <div style="padding:1.5rem var(--gap) 0;background:var(--pfull-bg);display:flex;justify-content:flex-end;">
+    <a class="btn btn-gold btn-sm" href="/contact">Demander un devis</a>
+  </div>
+
+  <!-- ████ GRILLE PROJETS ████ -->
+  <div class="proj-full-grid" role="list">
+
+    <article class="proj-full-card" data-cat="commercial" role="listitem">
+      <img
+        src="/images/projets/projet-placeholder-1.jpg"
+        alt="Projet commercial — Eurolook Construction"
+        loading="lazy"
+        width="700"
+        height="280"
+      />
+      <div class="proj-card-info">
+        <span class="proj-cat">Commercial</span>
+        <h3 class="proj-name">Projet à venir</h3>
+        <span class="proj-meta">En cours d'intégration</span>
+        <p class="proj-snippet">Les détails de ce projet seront ajoutés prochainement.</p>
+      </div>
+    </article>
+
+    <article class="proj-full-card" data-cat="structure" role="listitem">
+      <img
+        src="/images/projets/projet-placeholder-2.jpg"
+        alt="Projet structure — Eurolook Construction"
+        loading="lazy"
+        width="700"
+        height="280"
+      />
+      <div class="proj-card-info">
+        <span class="proj-cat">Structure</span>
+        <h3 class="proj-name">Projet à venir</h3>
+        <span class="proj-meta">En cours d'intégration</span>
+        <p class="proj-snippet">Les détails de ce projet seront ajoutés prochainement.</p>
+      </div>
+    </article>
+
+    <article class="proj-full-card" data-cat="industriel" role="listitem">
+      <img
+        src="/images/projets/projet-placeholder-3.jpg"
+        alt="Projet industriel — Eurolook Construction"
+        loading="lazy"
+        width="700"
+        height="280"
+      />
+      <div class="proj-card-info">
+        <span class="proj-cat">Industriel</span>
+        <h3 class="proj-name">Projet à venir</h3>
+        <span class="proj-meta">En cours d'intégration</span>
+        <p class="proj-snippet">Les détails de ce projet seront ajoutés prochainement.</p>
+      </div>
+    </article>
+
+  </div>
+
+  <!-- ████ CTA BAS DE PAGE ████ -->
+  <div class="real-cta">
+    <p>Votre chantier pourrait être le suivant</p>
+    <a class="btn btn-gold" href="/contact" aria-label="Demander un devis gratuit">Demander un devis</a>
+  </div>
+
+</Layout>
