@@ -1,0 +1,470 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+// ══════════════════════════════════════════════════════════
+// POUR CHANGER L'ADRESSE EMAIL DE RÉCEPTION :
+// 1. Va sur https://formspree.io
+// 2. Entre ta nouvelle adresse mail → clique "Create Access Key"
+// 3. Copie la clé générée
+// 4. Remplace la valeur de ACCESS_KEY ci-dessous par ta nouvelle clé
+// ══════════════════════════════════════════════════════════
+const FORMSPREE_URL = "https://formspree.io/f/xbdbljey";
+---
+
+<Layout
+  title="Contact & Devis — Eurolook Construction"
+  description="Demandez un devis gratuit à Eurolook Construction. Réponse sous 48h. Renforcement structurel, réhabilitation technique, aménagement commercial."
+  canonical="https://eurolookgroup.com/contact"
+>
+
+  <!-- ████ EN-TÊTE ████ -->
+  <div class="real-header">
+    <nav aria-label="Fil d'Ariane">
+      <p class="breadcrumb">
+        <a href="/" style="color:inherit;text-decoration:none;">Accueil</a>
+        &nbsp;→&nbsp; Contact
+      </p>
+    </nav>
+    <h1 class="real-h1">DEMANDER<br>UN <span style="color:var(--gold);">DEVIS</span></h1>
+    <p class="real-intro">Réponse sous 48h, sans engagement. Un interlocuteur unique du premier échange à la livraison.</p>
+  </div>
+
+  <!-- ████ CORPS DE LA PAGE ████ -->
+  <div class="contact-wrap">
+
+    <!-- Colonne gauche : infos -->
+    <aside class="contact-info" aria-label="Informations de contact">
+      <div class="contact-info-block">
+        <span class="contact-info-icon" aria-hidden="true">⏱</span>
+        <div>
+          <strong>Délai de réponse</strong>
+          <p>Sous 48h ouvrées</p>
+        </div>
+      </div>
+      <div class="contact-info-block">
+        <span class="contact-info-icon" aria-hidden="true">📍</span>
+        <div>
+          <strong>Zone d'intervention</strong>
+          <p>France entière</p>
+        </div>
+      </div>
+      <div class="contact-info-block">
+        <span class="contact-info-icon" aria-hidden="true">🏗</span>
+        <div>
+          <strong>Types de projets</strong>
+          <p>Renforcement structurel, réhabilitation, aménagement commercial, menuiseries aluminium</p>
+        </div>
+      </div>
+      <div class="contact-info-block">
+        <span class="contact-info-icon" aria-hidden="true">🦺</span>
+        <div>
+          <strong>Certifications</strong>
+          <p>EGB · MASE depuis 2015</p>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Colonne droite : formulaire -->
+    <div class="contact-form-wrap">
+
+      <!-- Message de succès (caché par défaut) -->
+      <div id="form-success" class="form-success" hidden role="alert" aria-live="polite">
+        <span class="form-success-icon" aria-hidden="true">✅</span>
+        <h2>Message envoyé !</h2>
+        <p>Nous vous répondrons sous 48h ouvrées.</p>
+        <a class="btn btn-navy" href="/" style="margin-top:1.5rem;">Retour à l'accueil</a>
+      </div>
+
+      <!-- Formulaire -->
+      <form id="contact-form" class="contact-form" novalidate aria-label="Formulaire de demande de devis">
+
+        <!-- Clé Web3Forms (cachée) -->
+        <!-- Honeypot anti-spam Formspree -->
+        <input type="text" name="_gotcha" style="display:none;" />
+
+        <!-- Message d'erreur global -->
+        <div id="form-error" class="form-error" hidden role="alert">
+          Une erreur est survenue. Veuillez réessayer ou nous contacter directement.
+        </div>
+
+        <div class="form-grid">
+
+          <!-- Nom -->
+          <div class="form-field">
+            <label class="form-label" for="nom">
+              Nom complet <span class="form-required" aria-hidden="true">*</span>
+            </label>
+            <input
+              class="form-input"
+              type="text"
+              id="nom"
+              name="nom"
+              placeholder="Jean Dupont"
+              autocomplete="name"
+              required
+              aria-required="true"
+              aria-describedby="nom-error"
+            />
+            <span id="nom-error" class="field-error" hidden>Ce champ est obligatoire.</span>
+          </div>
+
+          <!-- Société -->
+          <div class="form-field">
+            <label class="form-label" for="societe">Société</label>
+            <input
+              class="form-input"
+              type="text"
+              id="societe"
+              name="societe"
+              placeholder="Nom de votre entreprise"
+              autocomplete="organization"
+            />
+          </div>
+
+          <!-- Email -->
+          <div class="form-field">
+            <label class="form-label" for="email">
+              Email <span class="form-required" aria-hidden="true">*</span>
+            </label>
+            <input
+              class="form-input"
+              type="email"
+              id="email"
+              name="email"
+              placeholder="vous@exemple.fr"
+              autocomplete="email"
+              required
+              aria-required="true"
+              aria-describedby="email-error"
+            />
+            <span id="email-error" class="field-error" hidden>Veuillez entrer un email valide.</span>
+          </div>
+
+          <!-- Téléphone -->
+          <div class="form-field">
+            <label class="form-label" for="telephone">Téléphone</label>
+            <input
+              class="form-input"
+              type="tel"
+              id="telephone"
+              name="telephone"
+              placeholder="06 00 00 00 00"
+              autocomplete="tel"
+            />
+          </div>
+
+          <!-- Type de projet -->
+          <div class="form-field form-field--full">
+            <label class="form-label" for="type-projet">
+              Type de projet <span class="form-required" aria-hidden="true">*</span>
+            </label>
+            <select
+              class="form-input form-select"
+              id="type-projet"
+              name="type_projet"
+              required
+              aria-required="true"
+              aria-describedby="type-error"
+            >
+              <option value="" disabled selected>Sélectionnez un type de projet</option>
+              <option value="Renforcement structurel">Renforcement structurel</option>
+              <option value="Réhabilitation technique">Réhabilitation technique</option>
+              <option value="Aménagement de commerces">Aménagement de commerces</option>
+              <option value="Menuiseries aluminium">Menuiseries aluminium</option>
+              <option value="Coordination technique">Coordination technique</option>
+              <option value="Aménagement intérieur">Aménagement intérieur</option>
+              <option value="Autre">Autre / Je ne sais pas encore</option>
+            </select>
+            <span id="type-error" class="field-error" hidden>Veuillez sélectionner un type de projet.</span>
+          </div>
+
+          <!-- Budget estimé -->
+          <div class="form-field form-field--full">
+            <label class="form-label" for="budget">Budget estimé</label>
+            <select class="form-input form-select" id="budget" name="budget">
+              <option value="" disabled selected>Fourchette budgétaire (facultatif)</option>
+              <option value="Moins de 50 000 €">Moins de 50 000 €</option>
+              <option value="50 000 – 200 000 €">50 000 – 200 000 €</option>
+              <option value="200 000 – 500 000 €">200 000 – 500 000 €</option>
+              <option value="500 000 – 1 000 000 €">500 000 – 1 000 000 €</option>
+              <option value="Plus de 1 000 000 €">Plus de 1 000 000 €</option>
+              <option value="Non défini">Non défini pour l'instant</option>
+            </select>
+          </div>
+
+          <!-- Message -->
+          <div class="form-field form-field--full">
+            <label class="form-label" for="message">
+              Description du projet <span class="form-required" aria-hidden="true">*</span>
+            </label>
+            <textarea
+              class="form-input form-textarea"
+              id="message"
+              name="message"
+              placeholder="Décrivez votre projet : localisation, superficie, contraintes particulières, délais souhaités…"
+              rows="6"
+              required
+              aria-required="true"
+              aria-describedby="message-error"
+            ></textarea>
+            <span id="message-error" class="field-error" hidden>Veuillez décrire votre projet.</span>
+          </div>
+
+        </div>
+
+        <div class="form-footer">
+          <p class="form-legal">
+            En soumettant ce formulaire, vous acceptez que vos données soient utilisées pour traiter votre demande.
+            <a href="/confidentialite">Politique de confidentialité</a>
+          </p>
+          <button class="btn btn-gold form-submit" type="submit" id="submit-btn">
+            <span id="submit-label">Envoyer ma demande</span>
+            <span id="submit-loading" hidden aria-live="polite">Envoi en cours…</span>
+          </button>
+        </div>
+
+      </form>
+    </div>
+
+  </div>
+
+</Layout>
+
+<style>
+/* ════ CONTACT PAGE ════ */
+.contact-wrap{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:0;
+  background:var(--black2);
+  min-height:60vh;
+}
+@media(min-width:900px){
+  .contact-wrap{
+    grid-template-columns:320px 1fr;
+    align-items:start;
+  }
+}
+
+/* Info latérale */
+.contact-info{
+  background:var(--navy);
+  padding:clamp(3rem,6vw,5rem) clamp(1.5rem,4vw,3rem);
+  display:flex;flex-direction:column;gap:2.5rem;
+  border-bottom:1px solid rgba(184,147,74,.12);
+}
+@media(min-width:900px){
+  .contact-info{
+    border-bottom:none;
+    border-right:1px solid rgba(184,147,74,.12);
+    min-height:100%;
+    position:sticky;top:var(--nav-h);
+  }
+}
+.contact-info-block{
+  display:flex;align-items:flex-start;gap:1.125rem;
+}
+.contact-info-icon{
+  font-size:1.5rem;flex-shrink:0;
+  margin-top:.125rem;line-height:1;
+}
+.contact-info-block strong{
+  display:block;
+  font-family:var(--f-d);font-size:.9375rem;font-weight:700;
+  letter-spacing:.08em;text-transform:uppercase;
+  color:var(--cream);margin-bottom:.375rem;
+}
+.contact-info-block p{
+  font-size:.9375rem;color:rgba(249,245,238,.7);line-height:1.7;
+}
+
+/* Formulaire */
+.contact-form-wrap{
+  padding:clamp(3rem,6vw,5rem) clamp(1.5rem,4vw,3rem);
+}
+.contact-form{display:flex;flex-direction:column;gap:0;}
+.form-grid{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:1.375rem;
+  margin-bottom:2rem;
+}
+@media(min-width:600px){
+  .form-grid{grid-template-columns:1fr 1fr;}
+}
+.form-field{display:flex;flex-direction:column;gap:.5rem;}
+.form-field--full{grid-column:1/-1;}
+
+.form-label{
+  font-family:var(--f-d);font-size:.9375rem;font-weight:600;
+  letter-spacing:.08em;text-transform:uppercase;
+  color:var(--cream);
+}
+.form-required{color:var(--gold);margin-left:.125rem;}
+
+.form-input{
+  background:var(--black3);
+  border:1.5px solid rgba(184,147,74,.2);
+  color:var(--cream);
+  font-family:var(--f-b);font-size:1rem;
+  padding:.875rem 1.125rem;
+  border-radius:2px;
+  transition:border-color .2s, box-shadow .2s;
+  min-height:52px;
+  width:100%;
+}
+.form-input::placeholder{color:rgba(249,245,238,.3);}
+.form-input:focus{
+  outline:none;
+  border-color:var(--gold);
+  box-shadow:0 0 0 3px rgba(184,147,74,.15);
+}
+.form-input:invalid:not(:placeholder-shown){
+  border-color:rgba(220,80,80,.6);
+}
+.form-select{
+  appearance:none;-webkit-appearance:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23B8934A' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;
+  background-position:right 1.125rem center;
+  padding-right:2.5rem;
+  cursor:pointer;
+}
+.form-select option{background:var(--black2);color:var(--cream);}
+.form-textarea{
+  min-height:160px;resize:vertical;line-height:1.7;
+}
+
+/* Erreurs champ */
+.field-error{
+  font-size:.875rem;color:rgba(220,100,100,.9);
+  display:flex;align-items:center;gap:.375rem;
+}
+.field-error::before{content:'⚠';font-size:.8rem;}
+
+/* Erreur globale */
+.form-error{
+  background:rgba(220,80,80,.12);
+  border:1px solid rgba(220,80,80,.3);
+  border-left:4px solid rgba(220,80,80,.8);
+  color:rgba(249,245,238,.9);
+  padding:1rem 1.25rem;
+  border-radius:2px;
+  margin-bottom:1.5rem;
+  font-size:.9375rem;
+  line-height:1.6;
+}
+
+/* Footer formulaire */
+.form-footer{
+  display:flex;flex-direction:column;gap:1.25rem;
+}
+@media(min-width:600px){
+  .form-footer{
+    flex-direction:row;
+    align-items:center;
+    justify-content:space-between;
+  }
+}
+.form-legal{
+  font-size:.875rem;color:rgba(249,245,238,.5);
+  line-height:1.7;max-width:420px;
+}
+.form-legal a{color:var(--gold);text-decoration:underline;}
+.form-submit{min-width:220px;flex-shrink:0;}
+
+/* Succès */
+.form-success{
+  display:flex;flex-direction:column;align-items:center;
+  text-align:center;
+  padding:clamp(3rem,8vw,6rem) 2rem;
+  gap:1rem;
+}
+.form-success-icon{font-size:3rem;line-height:1;}
+.form-success h2{
+  font-family:var(--f-d);font-size:clamp(2rem,5vw,3rem);
+  font-weight:800;letter-spacing:.04em;text-transform:uppercase;
+  color:var(--cream);
+}
+.form-success p{font-size:1.0625rem;color:rgba(249,245,238,.72);}
+</style>
+
+<script>
+(function(){
+  var form = document.getElementById('contact-form');
+  var success = document.getElementById('form-success');
+  var errorBox = document.getElementById('form-error');
+  var submitBtn = document.getElementById('submit-btn');
+  var submitLabel = document.getElementById('submit-label');
+  var submitLoading = document.getElementById('submit-loading');
+
+  if(!form) return;
+
+  // Validation en temps réel
+  var fields = {
+    nom: { el: document.getElementById('nom'), err: document.getElementById('nom-error') },
+    email: { el: document.getElementById('email'), err: document.getElementById('email-error') },
+    'type-projet': { el: document.getElementById('type-projet'), err: document.getElementById('type-error') },
+    message: { el: document.getElementById('message'), err: document.getElementById('message-error') }
+  };
+
+  Object.values(fields).forEach(function(f){
+    if(f.el){
+      f.el.addEventListener('blur', function(){
+        validateField(f);
+      });
+      f.el.addEventListener('input', function(){
+        if(f.err && !f.err.hidden) validateField(f);
+      });
+    }
+  });
+
+  function validateField(f){
+    var ok = f.el.checkValidity();
+    if(f.err) f.err.hidden = ok;
+    f.el.setAttribute('aria-invalid', String(!ok));
+    return ok;
+  }
+
+  function validateAll(){
+    var ok = true;
+    Object.values(fields).forEach(function(f){ if(!validateField(f)) ok = false; });
+    return ok;
+  }
+
+  // Soumission
+  form.addEventListener('submit', async function(e){
+    e.preventDefault();
+    if(!validateAll()) return;
+
+    // Loading state
+    submitBtn.disabled = true;
+    submitLabel.hidden = true;
+    submitLoading.hidden = false;
+    if(errorBox) errorBox.hidden = true;
+
+    try {
+      var data = Object.fromEntries(new FormData(form));
+      var res = await fetch('https://formspree.io/f/xbdbljey', {
+        method: 'POST',
+        headers: { 'Accept': 'application/json' },
+        body: new FormData(form)
+      });
+      var json = await res.json();
+
+      if(res.ok){
+        form.hidden = true;
+        if(success) success.hidden = false;
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else {
+        throw new Error(json.message || 'Erreur inconnue');
+      }
+    } catch(err) {
+      submitBtn.disabled = false;
+      submitLabel.hidden = false;
+      submitLoading.hidden = true;
+      if(errorBox) errorBox.hidden = false;
+    }
+  });
+})();
+</script>
