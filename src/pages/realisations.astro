@@ -38,53 +38,23 @@ import Layout from '../layouts/Layout.astro';
   <!-- ████ GRILLE PROJETS ████ -->
   <div class="proj-full-grid" role="list">
 
-    <article class="proj-full-card" data-cat="commercial" role="listitem">
-      <img
-        src="/images/projets/projet-placeholder-1.jpg"
-        alt="Projet commercial — Eurolook Construction"
-        loading="lazy"
-        width="700"
-        height="280"
-      />
-      <div class="proj-card-info">
-        <span class="proj-cat">Commercial</span>
-        <h3 class="proj-name">Projet à venir</h3>
-        <span class="proj-meta">En cours d'intégration</span>
-        <p class="proj-snippet">Les détails de ce projet seront ajoutés prochainement.</p>
-      </div>
-    </article>
-
-    <article class="proj-full-card" data-cat="structure" role="listitem">
-      <img
-        src="/images/projets/projet-placeholder-2.jpg"
-        alt="Projet structure — Eurolook Construction"
-        loading="lazy"
-        width="700"
-        height="280"
-      />
-      <div class="proj-card-info">
-        <span class="proj-cat">Structure</span>
-        <h3 class="proj-name">Projet à venir</h3>
-        <span class="proj-meta">En cours d'intégration</span>
-        <p class="proj-snippet">Les détails de ce projet seront ajoutés prochainement.</p>
-      </div>
-    </article>
-
-    <article class="proj-full-card" data-cat="industriel" role="listitem">
-      <img
-        src="/images/projets/projet-placeholder-3.jpg"
-        alt="Projet industriel — Eurolook Construction"
-        loading="lazy"
-        width="700"
-        height="280"
-      />
-      <div class="proj-card-info">
-        <span class="proj-cat">Industriel</span>
-        <h3 class="proj-name">Projet à venir</h3>
-        <span class="proj-meta">En cours d'intégration</span>
-        <p class="proj-snippet">Les détails de ce projet seront ajoutés prochainement.</p>
-      </div>
-    </article>
+    <a href="/realisations/four-poche-arcelormittal" class="proj-card-link" role="listitem" aria-label="Voir la fiche projet : Four Poche ArcelorMittal">
+      <article class="proj-full-card" data-cat="industriel">
+        <img
+          src="/images/realisations/four-poche/05-pompe-beton.jpg"
+          alt="Four Poche ArcelorMittal — Eurolook Construction"
+          loading="lazy"
+          width="700"
+          height="280"
+        />
+        <div class="proj-card-info">
+          <span class="proj-cat">Industriel</span>
+          <h3 class="proj-name">Four Poche ArcelorMittal</h3>
+          <span class="proj-meta">Fos-sur-Mer · Février 2023</span>
+          <p class="proj-snippet">Sous-traitance Eiffage Génie Civil — gros-œuvre béton (radier armé, murs blocs) pour locaux techniques industriels en environnement ATEX.</p>
+        </div>
+      </article>
+    </a>
 
   </div>
 
@@ -95,3 +65,20 @@ import Layout from '../layouts/Layout.astro';
   </div>
 
 </Layout>
+
+<style>
+  .proj-card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    transition: transform .3s ease, box-shadow .3s ease;
+  }
+  .proj-card-link:hover {
+    transform: translateY(-4px);
+  }
+  .proj-card-link:focus-visible {
+    outline: 3px solid #B8934A;
+    outline-offset: 4px;
+    border-radius: 2px;
+  }
+</style>
