@@ -1,5 +1,13 @@
 ---
+// src/pages/index.astro
+// Homepage Eurolook Construction
+// La section "Chantiers marquants" est alimentée automatiquement
+// depuis src/data/projets.ts (champ enAvant: true)
+
 import Layout from '../layouts/Layout.astro';
+import { getProjetsEnAvant } from '../data/projets';
+
+const projetsEnAvant = getProjetsEnAvant(3);
 ---
 
 <Layout
@@ -291,7 +299,7 @@ import Layout from '../layouts/Layout.astro';
     </div>
   </section>
 
-  <!-- ████ RÉALISATIONS (aperçu) ████ -->
+  <!-- ████ RÉALISATIONS (aperçu — alimenté automatiquement depuis projets.ts) ████ -->
   <section id="realisations" class="proj-section" aria-labelledby="proj-h2">
     <div class="s-head">
       <div>
@@ -302,37 +310,24 @@ import Layout from '../layouts/Layout.astro';
     </div>
 
     <div class="proj-grid" role="list">
-
-      <article class="proj-card" data-cat="commercial" role="listitem" aria-label="Grand Place — Grenoble">
-        <img src="/images/projets/grand-place-grenoble.jpg" alt="Grand Place Grenoble — réhabilitation galeries commerciales" loading="lazy" width="700" height="480" />
-        <div class="proj-ov">
-          <span class="proj-cat">Commercial</span>
-          <h3 class="proj-name">Grand Place — Grenoble</h3>
-          <span class="proj-meta">2,4 M€ · Klépierre</span>
-          <p class="proj-desc">Réhabilitation 3 800 m² galeries en site occupé. 14 mois, zéro interruption.</p>
-        </div>
-      </article>
-
-      <article class="proj-card" data-cat="structure" role="listitem" aria-label="La Défense — 1 800 m²">
-        <img src="/images/projets/la-defense.jpg" alt="La Défense — renforcement structurel plateau bureaux" loading="lazy" width="700" height="480" />
-        <div class="proj-ov">
-          <span class="proj-cat">Structure</span>
-          <h3 class="proj-name">La Défense — 1 800 m²</h3>
-          <span class="proj-meta">980 K€ · Carmila</span>
-          <p class="proj-desc">Renforcement structurel plateau bureaux. Micropieux sur nappe phréatique.</p>
-        </div>
-      </article>
-
-      <article class="proj-card" data-cat="industriel" role="listitem" aria-label="Pétrochimie — Kem One">
-        <img src="/images/projets/kemone.jpg" alt="Pétrochimie Kem One — structure zone ATEX" loading="lazy" width="700" height="480" />
-        <div class="proj-ov">
-          <span class="proj-cat">Industriel</span>
-          <h3 class="proj-name">Pétrochimie — Kem One</h3>
-          <span class="proj-meta">760 K€ · Kem One</span>
-          <p class="proj-desc">Structure en zone ATEX classifiée. Protocoles sécurité renforcés.</p>
-        </div>
-      </article>
-
+      {projetsEnAvant.map(p => (
+        <a
+          href={`/realisations/${p.slug}`}
+          class="proj-card-link-home"
+          role="listitem"
+          aria-label={`Voir la fiche projet : ${p.titre}`}
+        >
+          <article class="proj-card" data-cat={p.categorie}>
+            <img src={p.image} alt={p.alt} loading="lazy" width="700" height="480" />
+            <div class="proj-ov">
+              <span class="proj-cat">{p.categorieLabel}</span>
+              <h3 class="proj-name">{p.titre}</h3>
+              <span class="proj-meta">{p.lieu} · {p.date}</span>
+              <p class="proj-desc">{p.resume}</p>
+            </div>
+          </article>
+        </a>
+      ))}
     </div>
 
     <div class="proj-cta-bar">
@@ -383,3 +378,21 @@ import Layout from '../layouts/Layout.astro';
   </section>
 
 </Layout>
+
+<style>
+  /* Cards Réalisations sur la homepage — wrapper cliquable */
+  .proj-card-link-home {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    transition: transform .3s ease;
+  }
+  .proj-card-link-home:hover {
+    transform: translateY(-4px);
+  }
+  .proj-card-link-home:focus-visible {
+    outline: 3px solid #B8934A;
+    outline-offset: 4px;
+    border-radius: 2px;
+  }
+</style>

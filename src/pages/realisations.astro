@@ -1,5 +1,12 @@
 ---
+// src/pages/realisations.astro
+// Page Réalisations — utilise src/data/projets.ts comme source unique
+// Pour ajouter/modifier un projet : éditer projets.ts, c'est tout.
+
 import Layout from '../layouts/Layout.astro';
+import { getTousLesProjets } from '../data/projets';
+
+const projets = getTousLesProjets();
 ---
 
 <Layout
@@ -35,45 +42,32 @@ import Layout from '../layouts/Layout.astro';
     <a class="btn btn-gold btn-sm" href="/contact">Demander un devis</a>
   </div>
 
-  <!-- ████ GRILLE PROJETS ████ -->
+  <!-- ████ GRILLE PROJETS (générée automatiquement) ████ -->
   <div class="proj-full-grid" role="list">
-
-    <a href="/realisations/four-poche-arcelormittal" class="proj-card-link" role="listitem" aria-label="Voir la fiche projet : Four Poche ArcelorMittal">
-      <article class="proj-full-card" data-cat="industriel">
-        <img
-          src="/images/realisations/four-poche/05-pompe-beton.jpg"
-          alt="Four Poche ArcelorMittal — Eurolook Construction"
-          loading="lazy"
-          width="700"
-          height="280"
-        />
-        <div class="proj-card-info">
-          <span class="proj-cat">Industriel</span>
-          <h3 class="proj-name">Four Poche ArcelorMittal</h3>
-          <span class="proj-meta">Fos-sur-Mer · Février 2023</span>
-          <p class="proj-snippet">Sous-traitance Eiffage Génie Civil — gros-œuvre béton (radier armé, murs blocs) pour locaux techniques industriels en environnement ATEX.</p>
-        </div>
-      </article>
-    </a>
-
-    <a href="/realisations/viaxoft-marseille" class="proj-card-link" role="listitem" aria-label="Voir la fiche projet : ViaXoft Marseille">
-      <article class="proj-full-card" data-cat="commercial">
-        <img
-          src="/images/realisations/viaxoft-marseille/07-vue-ensemble.jpg"
-          alt="Le ViaXoft Marseille — Eurolook Construction"
-          loading="lazy"
-          width="700"
-          height="280"
-        />
-        <div class="proj-card-info">
-          <span class="proj-cat">Commercial</span>
-          <h3 class="proj-name">Le ViaXoft Marseille</h3>
-          <span class="proj-meta">Marseille 13e · Novembre 2023</span>
-          <p class="proj-snippet">Sous-traitance MRSE — lot gros œuvre complet d'un bâtiment tertiaire R+1 contemporain, ZAC Château Gombert. Architecte : Atelier Yvann Pluskwa.</p>
-        </div>
-      </article>
-    </a>
-
+    {projets.map(p => (
+      <a
+        href={`/realisations/${p.slug}`}
+        class="proj-card-link"
+        role="listitem"
+        aria-label={`Voir la fiche projet : ${p.titre}`}
+      >
+        <article class="proj-full-card" data-cat={p.categorie}>
+          <img
+            src={p.image}
+            alt={p.alt}
+            loading="lazy"
+            width="700"
+            height="280"
+          />
+          <div class="proj-card-info">
+            <span class="proj-cat">{p.categorieLabel}</span>
+            <h3 class="proj-name">{p.titre}</h3>
+            <span class="proj-meta">{p.lieu} · {p.date}</span>
+            <p class="proj-snippet">{p.resume}</p>
+          </div>
+        </article>
+      </a>
+    ))}
   </div>
 
   <!-- ████ CTA BAS DE PAGE ████ -->
@@ -89,7 +83,7 @@ import Layout from '../layouts/Layout.astro';
     text-decoration: none;
     color: inherit;
     display: block;
-    transition: transform .3s ease, box-shadow .3s ease;
+    transition: transform .3s ease;
   }
   .proj-card-link:hover {
     transform: translateY(-4px);
