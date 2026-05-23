@@ -53,8 +53,6 @@ const {
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet" />
 
-
-
   <!-- Schema.org JSON-LD -->
   <script type="application/ld+json">
   {
@@ -62,12 +60,17 @@ const {
     "@type": "Organization",
     "name": "Eurolook Construction",
     "url": "https://eurolookgroup.com",
-    "logo": "https://eurolookgroup.com/logos/logo-eurolook-light.svg",
+    "logo": "https://eurolookgroup.com/logos/logo.svg",
     "description": "Renforcement structurel, réhabilitation technique et aménagement commercial. EGB certifié MASE depuis 2015.",
     "address": {
       "@type": "PostalAddress",
+      "streetAddress": "309 Rue Louis Lépine",
+      "addressLocality": "Bouc-Bel-Air",
+      "postalCode": "13320",
       "addressCountry": "FR"
     },
+    "telephone": "+33983039959",
+    "email": "secretariat@construction-eurolook.com",
     "sameAs": []
   }
   </script>
@@ -85,7 +88,7 @@ const {
         <!-- Logo -->
         <a class="nav-logo" href="/" aria-label="Eurolook Construction — Accueil">
           <img
-            src="/logos/logo-eurolook-light.svg"
+            src="/logos/logo.svg"
             alt="Eurolook Construction"
             width="160"
             height="36"
@@ -102,42 +105,42 @@ const {
               Expertises<span class="nav-arrow" aria-hidden="true">▾</span>
             </a>
             <div class="dropdown" role="region" aria-labelledby="exp-trigger">
-              <a class="drop-item" href="/expertises#renforcement">
+              <a class="drop-item" href="/expertises/renforcement-structurel">
                 <span class="drop-ic" aria-hidden="true">🏗</span>
                 <span>
                   <span class="drop-strong">Renforcement structurel</span>
                   <span class="drop-sub">Reprise en sous-œuvre, micropieux</span>
                 </span>
               </a>
-              <a class="drop-item" href="/expertises#rehabilitation">
+              <a class="drop-item" href="/expertises/rehabilitation-technique">
                 <span class="drop-ic" aria-hidden="true">🔧</span>
                 <span>
                   <span class="drop-strong">Réhabilitation technique</span>
                   <span class="drop-sub">Site occupé, nuit et week-end</span>
                 </span>
               </a>
-              <a class="drop-item" href="/expertises#commerces">
+              <a class="drop-item" href="/expertises/amenagement-commerce">
                 <span class="drop-ic" aria-hidden="true">🏪</span>
                 <span>
                   <span class="drop-strong">Aménagement de commerces</span>
                   <span class="drop-sub">Multi-sites, enseignes nationales</span>
                 </span>
               </a>
-              <a class="drop-item" href="/expertises#aluminium">
+              <a class="drop-item" href="/expertises/menuiserie-aluminium">
                 <span class="drop-ic" aria-hidden="true">🪟</span>
                 <span>
                   <span class="drop-strong">Menuiseries aluminium</span>
                   <span class="drop-sub">Atelier La Fabrique intégré</span>
                 </span>
               </a>
-              <a class="drop-item" href="/expertises#coordination">
+              <a class="drop-item" href="/expertises/coordination-technique">
                 <span class="drop-ic" aria-hidden="true">⚙</span>
                 <span>
                   <span class="drop-strong">Coordination technique</span>
                   <span class="drop-sub">Pilotage MOE/MOA, plans d'exécution</span>
                 </span>
               </a>
-              <a class="drop-item" href="/expertises#interieur">
+              <a class="drop-item" href="/expertises/amenagement-interieur">
                 <span class="drop-ic" aria-hidden="true">🏢</span>
                 <span>
                   <span class="drop-strong">Aménagement intérieur</span>
@@ -148,6 +151,7 @@ const {
             </div>
           </li>
           <li><a class="nav-link" href="/realisations">Réalisations</a></li>
+          <li><a class="nav-link" href="/la-fabrique">La Fabrique</a></li>
           <li><a class="nav-link" href="/#engagements">Engagements</a></li>
           <li><a class="nav-link" href="/contact">Contact</a></li>
         </ul>
@@ -188,15 +192,16 @@ const {
             Expertises<span class="mob-exp-arrow" aria-hidden="true">▾</span>
           </button>
           <div id="mob-exp-list" class="mob-exp-list" role="list">
-            <a class="mob-exp-item" href="/expertises#renforcement">Renforcement structurel</a>
-            <a class="mob-exp-item" href="/expertises#rehabilitation">Réhabilitation technique</a>
-            <a class="mob-exp-item" href="/expertises#commerces">Aménagement de commerces</a>
-            <a class="mob-exp-item" href="/expertises#aluminium">Menuiseries aluminium</a>
-            <a class="mob-exp-item" href="/expertises#coordination">Coordination technique</a>
-            <a class="mob-exp-item" href="/expertises#interieur">Aménagement intérieur</a>
+            <a class="mob-exp-item" href="/expertises/renforcement-structurel">Renforcement structurel</a>
+            <a class="mob-exp-item" href="/expertises/rehabilitation-technique">Réhabilitation technique</a>
+            <a class="mob-exp-item" href="/expertises/amenagement-commerce">Aménagement de commerces</a>
+            <a class="mob-exp-item" href="/expertises/menuiserie-aluminium">Menuiseries aluminium</a>
+            <a class="mob-exp-item" href="/expertises/coordination-technique">Coordination technique</a>
+            <a class="mob-exp-item" href="/expertises/amenagement-interieur">Aménagement intérieur</a>
           </div>
         </li>
         <li><a class="mob-link" href="/realisations">Réalisations</a></li>
+        <li><a class="mob-link" href="/la-fabrique">La Fabrique</a></li>
         <li><a class="mob-link" href="/#engagements">Engagements</a></li>
         <li><a class="mob-link" href="/contact">Contact</a></li>
       </ul>
@@ -214,7 +219,7 @@ const {
     <div class="footer-inner">
       <a class="footer-logo" href="/" aria-label="Eurolook Construction">
         <img
-          src="/logos/logo-eurolook-light.svg"
+          src="/logos/logo.svg"
           alt="Eurolook Construction"
           width="120"
           height="30"
