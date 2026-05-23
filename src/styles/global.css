@@ -13,7 +13,7 @@
 
   --f-d:'Barlow Condensed',sans-serif;
   --f-b:'Barlow',sans-serif;
-  --nav-h:64px; --gap:clamp(1.25rem,5vw,5rem);
+  --nav-h:72px; --gap:clamp(1.25rem,5vw,5rem);
 
   /* Tokens dark */
   --bg:var(--black); --bg2:var(--black2); --bg3:var(--black3);
@@ -92,7 +92,7 @@ a,button{min-height:44px;display:inline-flex;align-items:center;}
   max-width:1440px;margin:0 auto;
 }
 .nav-logo{display:flex;align-items:center;min-height:44px;flex-shrink:0;}
-.nav-logo img{height:clamp(28px,3.5vw,36px);width:auto;}
+.nav-logo img{height:clamp(40px,5vw,56px);width:auto;}
 .nav-links{display:none;align-items:center;gap:.125rem;flex:1;justify-content:center;}
 .nav-item{position:relative;}
 .nav-link{
@@ -730,7 +730,7 @@ body.menu-open{overflow:hidden;}
 /* ════ FOOTER ════ */
 .site-footer{background:var(--f-bg);border-top:1px solid var(--f-b);padding:2.5rem var(--gap);}
 .footer-inner{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:1.25rem;max-width:1440px;margin:0 auto;}
-.footer-logo img{height:30px;width:auto;opacity:.5;}
+.footer-logo img{height:42px;width:auto;opacity:.65;}
 .footer-links{display:flex;flex-wrap:wrap;gap:.5rem 1.5rem;}
 .footer-links a{font-size:.9375rem;color:var(--f-tx);text-decoration:underline;text-underline-offset:3px;min-height:44px;display:inline-flex;align-items:center;transition:color .2s;}
 .footer-links a:hover{color:var(--gold);}
