@@ -1,414 +1,448 @@
 ---
-import Layout from '../layouts/Layout.astro';
+// src/pages/contact.astro
+// Page Contact — VERSION 2.0
+// Refonte esthétique + corrections factuelles (pas de "48h", pas de "interlocuteur unique")
 
-// ══════════════════════════════════════════════════════════
-// POUR CHANGER L'ADRESSE EMAIL DE RÉCEPTION :
-// 1. Va sur https://formspree.io
-// 2. Entre ta nouvelle adresse mail → clique "Create Access Key"
-// 3. Copie la clé générée
-// 4. Remplace la valeur de ACCESS_KEY ci-dessous par ta nouvelle clé
-// ══════════════════════════════════════════════════════════
+import Layout from '../layouts/Layout.astro';
 const FORMSPREE_URL = "https://formspree.io/f/xbdbljey";
 ---
 
 <Layout
   title="Contact & Devis — Eurolook Construction"
-  description="Demandez un devis gratuit à Eurolook Construction. Réponse sous 48h. Renforcement structurel, réhabilitation technique, aménagement commercial."
+  description="Contactez Eurolook Construction pour votre projet de renforcement structurel, réhabilitation technique ou aménagement commercial. Bouc-Bel-Air, France entière."
   canonical="https://eurolookgroup.com/contact"
 >
 
-  <!-- ████ EN-TÊTE ████ -->
-  <div class="real-header">
-    <nav aria-label="Fil d'Ariane">
-      <p class="breadcrumb">
-        <a href="/" style="color:inherit;text-decoration:none;">Accueil</a>
-        &nbsp;→&nbsp; Contact
+  <!-- ████ EN-TÊTE (pas de hero) ████ -->
+  <section class="contact-header reveal">
+    <div class="contact-header-inner">
+      <nav aria-label="Fil d'Ariane">
+        <p class="page-breadcrumb">
+          <a href="/">Accueil</a>
+          <span aria-hidden="true">→</span>
+          <span>Contact</span>
+        </p>
+      </nav>
+
+      <span class="hero-eyebrow">
+        <span class="dot" aria-hidden="true"></span>
+        Parlons de votre projet
+      </span>
+
+      <h1 class="contact-h1">
+        DEMANDER<br/><em>UN DEVIS.</em>
+      </h1>
+      <p class="contact-lead">
+        Notre équipe vous répond rapidement.
+        Renforcement structurel, réhabilitation, aménagement — confiez-nous votre projet.
       </p>
-    </nav>
-    <h1 class="real-h1">DEMANDER<br>UN <span style="color:var(--gold);">DEVIS</span></h1>
-    <p class="real-intro">Réponse sous 48h, sans engagement. Un interlocuteur unique du premier échange à la livraison.</p>
-  </div>
-
-  <!-- ████ CORPS DE LA PAGE ████ -->
-  <div class="contact-wrap">
-
-    <!-- Colonne gauche : infos -->
-    <aside class="contact-info" aria-label="Informations de contact">
-      <div class="contact-info-block">
-        <span class="contact-info-icon" aria-hidden="true">⏱</span>
-        <div>
-          <strong>Délai de réponse</strong>
-          <p>Sous 48h ouvrées</p>
-        </div>
-      </div>
-      <div class="contact-info-block">
-        <span class="contact-info-icon" aria-hidden="true">📍</span>
-        <div>
-          <strong>Zone d'intervention</strong>
-          <p>France entière · Marchés internationaux</p>
-        </div>
-      </div>
-      <div class="contact-info-block">
-        <span class="contact-info-icon" aria-hidden="true">📞</span>
-        <div>
-          <strong>Téléphone</strong>
-          <p><a href="tel:0983039959" style="color:var(--gold3);text-decoration:none;">09 83 03 99 59</a></p>
-        </div>
-      </div>
-      <div class="contact-info-block">
-        <span class="contact-info-icon" aria-hidden="true">✉</span>
-        <div>
-          <strong>Email</strong>
-          <p><a href="mailto:secretariat@construction-eurolook.com" style="color:var(--gold3);text-decoration:none;font-size:.875rem;">secretariat@construction-eurolook.com</a></p>
-        </div>
-      </div>
-      <div class="contact-info-block">
-        <span class="contact-info-icon" aria-hidden="true">📍</span>
-        <div>
-          <strong>Adresse</strong>
-          <p>309 Rue Louis Lépine<br>13320 Bouc-Bel-Air</p>
-        </div>
-      </div>
-      <div class="contact-info-block">
-        <span class="contact-info-icon" aria-hidden="true">🏗</span>
-        <div>
-          <strong>Types de projets</strong>
-          <p>Renforcement structurel, réhabilitation, aménagement commercial, menuiseries aluminium</p>
-        </div>
-      </div>
-      <div class="contact-info-block">
-        <span class="contact-info-icon" aria-hidden="true">🦺</span>
-        <div>
-          <strong>Certifications</strong>
-          <p>EGB · Certification MASE 2019</p>
-        </div>
-      </div>
-    </aside>
-
-    <!-- Colonne droite : formulaire -->
-    <div class="contact-form-wrap">
-
-      <!-- Message de succès (caché par défaut) -->
-      <div id="form-success" class="form-success" hidden role="alert" aria-live="polite">
-        <span class="form-success-icon" aria-hidden="true">✅</span>
-        <h2>Message envoyé !</h2>
-        <p>Nous vous répondrons sous 48h ouvrées.</p>
-        <a class="btn btn-navy" href="/" style="margin-top:1.5rem;">Retour à l'accueil</a>
-      </div>
-
-      <!-- Formulaire -->
-      <form id="contact-form" class="contact-form" novalidate aria-label="Formulaire de demande de devis">
-
-        <!-- Clé Web3Forms (cachée) -->
-        <!-- Honeypot anti-spam Formspree -->
-        <input type="text" name="_gotcha" style="display:none;" />
-
-        <!-- Message d'erreur global -->
-        <div id="form-error" class="form-error" hidden role="alert">
-          Une erreur est survenue. Veuillez réessayer ou nous contacter directement.
-        </div>
-
-        <div class="form-grid">
-
-          <!-- Nom -->
-          <div class="form-field">
-            <label class="form-label" for="nom">
-              Nom complet <span class="form-required" aria-hidden="true">*</span>
-            </label>
-            <input
-              class="form-input"
-              type="text"
-              id="nom"
-              name="nom"
-              placeholder="Jean Dupont"
-              autocomplete="name"
-              required
-              aria-required="true"
-              aria-describedby="nom-error"
-            />
-            <span id="nom-error" class="field-error" hidden>Ce champ est obligatoire.</span>
-          </div>
-
-          <!-- Société -->
-          <div class="form-field">
-            <label class="form-label" for="societe">Société</label>
-            <input
-              class="form-input"
-              type="text"
-              id="societe"
-              name="societe"
-              placeholder="Nom de votre entreprise"
-              autocomplete="organization"
-            />
-          </div>
-
-          <!-- Email -->
-          <div class="form-field">
-            <label class="form-label" for="email">
-              Email <span class="form-required" aria-hidden="true">*</span>
-            </label>
-            <input
-              class="form-input"
-              type="email"
-              id="email"
-              name="email"
-              placeholder="vous@exemple.fr"
-              autocomplete="email"
-              required
-              aria-required="true"
-              aria-describedby="email-error"
-            />
-            <span id="email-error" class="field-error" hidden>Veuillez entrer un email valide.</span>
-          </div>
-
-          <!-- Téléphone -->
-          <div class="form-field">
-            <label class="form-label" for="telephone">Téléphone</label>
-            <input
-              class="form-input"
-              type="tel"
-              id="telephone"
-              name="telephone"
-              placeholder="06 00 00 00 00"
-              autocomplete="tel"
-            />
-          </div>
-
-          <!-- Type de projet -->
-          <div class="form-field form-field--full">
-            <label class="form-label" for="type-projet">
-              Type de projet <span class="form-required" aria-hidden="true">*</span>
-            </label>
-            <select
-              class="form-input form-select"
-              id="type-projet"
-              name="type_projet"
-              required
-              aria-required="true"
-              aria-describedby="type-error"
-            >
-              <option value="" disabled selected>Sélectionnez un type de projet</option>
-              <option value="Renforcement structurel">Renforcement structurel</option>
-              <option value="Réhabilitation technique">Réhabilitation technique</option>
-              <option value="Aménagement de commerces">Aménagement de commerces</option>
-              <option value="Menuiseries aluminium">Menuiseries aluminium</option>
-              <option value="Coordination technique">Coordination technique</option>
-              <option value="Aménagement intérieur">Aménagement intérieur</option>
-              <option value="Autre">Autre / Je ne sais pas encore</option>
-            </select>
-            <span id="type-error" class="field-error" hidden>Veuillez sélectionner un type de projet.</span>
-          </div>
-
-          <!-- Budget estimé -->
-          <div class="form-field form-field--full">
-            <label class="form-label" for="budget">Budget estimé</label>
-            <select class="form-input form-select" id="budget" name="budget">
-              <option value="" disabled selected>Fourchette budgétaire (facultatif)</option>
-              <option value="Moins de 50 000 €">Moins de 50 000 €</option>
-              <option value="50 000 – 200 000 €">50 000 – 200 000 €</option>
-              <option value="200 000 – 500 000 €">200 000 – 500 000 €</option>
-              <option value="500 000 – 1 000 000 €">500 000 – 1 000 000 €</option>
-              <option value="Plus de 1 000 000 €">Plus de 1 000 000 €</option>
-              <option value="Non défini">Non défini pour l'instant</option>
-            </select>
-          </div>
-
-          <!-- Message -->
-          <div class="form-field form-field--full">
-            <label class="form-label" for="message">
-              Description du projet <span class="form-required" aria-hidden="true">*</span>
-            </label>
-            <textarea
-              class="form-input form-textarea"
-              id="message"
-              name="message"
-              placeholder="Décrivez votre projet : localisation, superficie, contraintes particulières, délais souhaités…"
-              rows="6"
-              required
-              aria-required="true"
-              aria-describedby="message-error"
-            ></textarea>
-            <span id="message-error" class="field-error" hidden>Veuillez décrire votre projet.</span>
-          </div>
-
-        </div>
-
-        <div class="form-footer">
-          <p class="form-legal">
-            En soumettant ce formulaire, vous acceptez que vos données soient utilisées pour traiter votre demande.
-            <a href="/confidentialite">Politique de confidentialité</a>
-          </p>
-          <button class="btn btn-gold form-submit" type="submit" id="submit-btn">
-            <span id="submit-label">Envoyer ma demande</span>
-            <span id="submit-loading" hidden aria-live="polite">Envoi en cours…</span>
-          </button>
-        </div>
-
-      </form>
     </div>
+  </section>
 
-  </div>
+  <!-- ████ CARTES INFOS — Téléphone / Email / Adresse ████ -->
+  <section class="contact-cards-band" aria-label="Coordonnées">
+    <div class="contact-cards-inner stagger">
+
+      <a href="tel:0983039959" class="contact-card">
+        <div class="contact-card-icon" aria-hidden="true">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <span class="contact-card-label">Téléphone</span>
+        <strong class="contact-card-value">09 83 03 99 59</strong>
+        <span class="contact-card-meta">Appeler maintenant</span>
+      </a>
+
+      <a href="mailto:secretariat@construction-eurolook.com" class="contact-card">
+        <div class="contact-card-icon" aria-hidden="true">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M22 6l-10 7L2 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <span class="contact-card-label">Email</span>
+        <strong class="contact-card-value contact-card-value-sm">secretariat@<wbr/>construction-eurolook.com</strong>
+        <span class="contact-card-meta">Écrire un message</span>
+      </a>
+
+      <a href="https://maps.google.com/?q=309+Rue+Louis+Lépine+13320+Bouc-Bel-Air" target="_blank" rel="noopener" class="contact-card">
+        <div class="contact-card-icon" aria-hidden="true">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="12" cy="10" r="3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <span class="contact-card-label">Adresse</span>
+        <strong class="contact-card-value contact-card-value-sm">309 Rue Louis Lépine<br/>13320 Bouc-Bel-Air</strong>
+        <span class="contact-card-meta">Voir sur la carte</span>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- ████ FORMULAIRE — Light break crème ████ -->
+  <section class="contact-form-section" aria-labelledby="form-h2">
+    <div class="contact-form-inner">
+
+      <div class="contact-form-head reveal">
+        <span class="s-tag">Formulaire de contact</span>
+        <h2 id="form-h2" class="about-title">
+          DÉCRIVEZ<br/><em>VOTRE PROJET.</em>
+        </h2>
+        <p>
+          Plus votre description est détaillée, plus notre réponse sera précise.
+          Localisation, superficie, contraintes, délais — toutes les informations comptent.
+        </p>
+      </div>
+
+      <div class="contact-form-wrap-v2 reveal">
+
+        <!-- Message de succès -->
+        <div id="form-success" class="form-success" hidden role="alert" aria-live="polite">
+          <span class="form-success-icon" aria-hidden="true">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none">
+              <circle cx="12" cy="12" r="11" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M8 12.5L11 15.5L16 9.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+          <h2>Message envoyé</h2>
+          <p>Notre équipe vous répondra rapidement.</p>
+          <a class="btn btn-dark" href="/" style="margin-top:1.5rem;">Retour à l'accueil</a>
+        </div>
+
+        <form id="contact-form" class="form-v2" novalidate aria-label="Formulaire de demande de devis">
+          <input type="text" name="_gotcha" style="display:none;" />
+
+          <div id="form-error" class="form-v2-error-global" hidden role="alert">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+              <line x1="12" y1="8" x2="12" y2="12" stroke="currentColor" stroke-width="2"/>
+              <circle cx="12" cy="16" r="1" fill="currentColor"/>
+            </svg>
+            Une erreur est survenue. Veuillez réessayer ou nous contacter directement.
+          </div>
+
+          <!-- ROW 1 : Nom + Société -->
+          <div class="form-v2-row form-v2-row-2">
+
+            <div class="form-v2-field">
+              <input
+                class="form-v2-input"
+                type="text"
+                id="nom"
+                name="nom"
+                placeholder=" "
+                autocomplete="name"
+                required
+                aria-required="true"
+                aria-describedby="nom-error"
+              />
+              <label class="form-v2-label" for="nom">
+                Nom complet <span class="form-v2-req" aria-hidden="true">*</span>
+              </label>
+              <span class="form-v2-line" aria-hidden="true"></span>
+              <span id="nom-error" class="form-v2-error" hidden>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+                  <line x1="12" y1="8" x2="12" y2="12" stroke="currentColor" stroke-width="2"/>
+                  <circle cx="12" cy="16" r="1" fill="currentColor"/>
+                </svg>
+                Ce champ est obligatoire
+              </span>
+            </div>
+
+            <div class="form-v2-field">
+              <input
+                class="form-v2-input"
+                type="text"
+                id="societe"
+                name="societe"
+                placeholder=" "
+                autocomplete="organization"
+              />
+              <label class="form-v2-label" for="societe">Société</label>
+              <span class="form-v2-line" aria-hidden="true"></span>
+            </div>
+
+          </div>
+
+          <!-- ROW 2 : Email + Téléphone -->
+          <div class="form-v2-row form-v2-row-2">
+
+            <div class="form-v2-field">
+              <input
+                class="form-v2-input"
+                type="email"
+                id="email"
+                name="email"
+                placeholder=" "
+                autocomplete="email"
+                required
+                aria-required="true"
+                aria-describedby="email-error"
+              />
+              <label class="form-v2-label" for="email">
+                Email <span class="form-v2-req" aria-hidden="true">*</span>
+              </label>
+              <span class="form-v2-line" aria-hidden="true"></span>
+              <span id="email-error" class="form-v2-error" hidden>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+                  <line x1="12" y1="8" x2="12" y2="12" stroke="currentColor" stroke-width="2"/>
+                  <circle cx="12" cy="16" r="1" fill="currentColor"/>
+                </svg>
+                Veuillez entrer un email valide
+              </span>
+            </div>
+
+            <div class="form-v2-field">
+              <input
+                class="form-v2-input"
+                type="tel"
+                id="telephone"
+                name="telephone"
+                placeholder=" "
+                autocomplete="tel"
+              />
+              <label class="form-v2-label" for="telephone">Téléphone</label>
+              <span class="form-v2-line" aria-hidden="true"></span>
+            </div>
+
+          </div>
+
+          <!-- ROW 3 : Type de projet (select custom) -->
+          <div class="form-v2-row">
+
+            <div class="form-v2-field form-v2-field-select">
+              <select
+                class="form-v2-input form-v2-select"
+                id="type-projet"
+                name="type_projet"
+                required
+                aria-required="true"
+                aria-describedby="type-error"
+              >
+                <option value="" disabled selected hidden></option>
+                <option value="Renforcement structurel">Renforcement structurel</option>
+                <option value="Réhabilitation technique">Réhabilitation technique</option>
+                <option value="Aménagement de commerces">Aménagement de commerces</option>
+                <option value="Menuiseries aluminium">Menuiseries aluminium</option>
+                <option value="Coordination technique">Coordination technique</option>
+                <option value="Aménagement intérieur">Aménagement intérieur</option>
+                <option value="Autre">Autre / Je ne sais pas encore</option>
+              </select>
+              <label class="form-v2-label" for="type-projet">
+                Type de projet <span class="form-v2-req" aria-hidden="true">*</span>
+              </label>
+              <svg class="form-v2-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <span class="form-v2-line" aria-hidden="true"></span>
+              <span id="type-error" class="form-v2-error" hidden>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+                  <line x1="12" y1="8" x2="12" y2="12" stroke="currentColor" stroke-width="2"/>
+                  <circle cx="12" cy="16" r="1" fill="currentColor"/>
+                </svg>
+                Veuillez sélectionner un type de projet
+              </span>
+            </div>
+
+          </div>
+
+          <!-- ROW 4 : Budget (select custom) -->
+          <div class="form-v2-row">
+
+            <div class="form-v2-field form-v2-field-select">
+              <select class="form-v2-input form-v2-select" id="budget" name="budget">
+                <option value="" disabled selected hidden></option>
+                <option value="Moins de 50 000 €">Moins de 50 000 €</option>
+                <option value="50 000 – 200 000 €">50 000 – 200 000 €</option>
+                <option value="200 000 – 500 000 €">200 000 – 500 000 €</option>
+                <option value="500 000 – 1 000 000 €">500 000 – 1 000 000 €</option>
+                <option value="Plus de 1 000 000 €">Plus de 1 000 000 €</option>
+                <option value="Non défini">Non défini pour l'instant</option>
+              </select>
+              <label class="form-v2-label" for="budget">Budget estimé (facultatif)</label>
+              <svg class="form-v2-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <span class="form-v2-line" aria-hidden="true"></span>
+            </div>
+
+          </div>
+
+          <!-- ROW 5 : Message (textarea) -->
+          <div class="form-v2-row">
+
+            <div class="form-v2-field form-v2-field-textarea">
+              <textarea
+                class="form-v2-input form-v2-textarea"
+                id="message"
+                name="message"
+                placeholder=" "
+                rows="5"
+                maxlength="2000"
+                required
+                aria-required="true"
+                aria-describedby="message-error message-counter"
+              ></textarea>
+              <label class="form-v2-label" for="message">
+                Description du projet <span class="form-v2-req" aria-hidden="true">*</span>
+              </label>
+              <span class="form-v2-line" aria-hidden="true"></span>
+              <span id="message-counter" class="form-v2-counter" aria-live="polite">
+                <span id="msg-count">0</span>/2000
+              </span>
+              <span id="message-error" class="form-v2-error" hidden>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+                  <line x1="12" y1="8" x2="12" y2="12" stroke="currentColor" stroke-width="2"/>
+                  <circle cx="12" cy="16" r="1" fill="currentColor"/>
+                </svg>
+                Veuillez décrire votre projet
+              </span>
+              <span class="form-v2-hint">Localisation, superficie, contraintes, délais souhaités…</span>
+            </div>
+
+          </div>
+
+          <div class="form-v2-footer">
+            <p class="form-v2-legal">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <rect x="3" y="11" width="18" height="11" rx="2" stroke="currentColor" stroke-width="2"/>
+                <path d="M7 11V7a5 5 0 0 1 10 0v4" stroke="currentColor" stroke-width="2"/>
+              </svg>
+              En soumettant ce formulaire, vous acceptez que vos données soient utilisées pour traiter votre demande.
+              <a href="/confidentialite">Politique de confidentialité</a>
+            </p>
+            <button class="form-v2-submit" type="submit" id="submit-btn">
+              <span id="submit-label">
+                Envoyer ma demande
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M5 12h14M13 5l7 7-7 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+              <span id="submit-loading" hidden aria-live="polite">
+                <span class="form-v2-spinner" aria-hidden="true"></span>
+                Envoi en cours…
+              </span>
+            </button>
+          </div>
+
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ████ TIMELINE — Ce qui se passe après ████ -->
+  <section class="contact-timeline" aria-labelledby="tl-h2">
+    <div class="contact-timeline-inner">
+
+      <div class="s-head-v2 reveal">
+        <div>
+          <span class="s-tag">Après votre demande</span>
+          <h2 id="tl-h2" class="s-title-v2">
+            COMMENT ÇA<br/><em>SE PASSE.</em>
+          </h2>
+        </div>
+      </div>
+
+      <ol class="timeline-list stagger" role="list">
+
+        <li class="timeline-step" role="listitem">
+          <span class="timeline-num">01</span>
+          <div class="timeline-body">
+            <h3>Réception & analyse</h3>
+            <p>Notre équipe étudie votre demande dès sa réception et identifie les points-clés du projet.</p>
+          </div>
+        </li>
+
+        <li class="timeline-step" role="listitem">
+          <span class="timeline-num">02</span>
+          <div class="timeline-body">
+            <h3>Premier contact</h3>
+            <p>Un de nos chargés d'affaires vous contacte pour affiner le périmètre et planifier — si nécessaire — une visite technique.</p>
+          </div>
+        </li>
+
+        <li class="timeline-step" role="listitem">
+          <span class="timeline-num">03</span>
+          <div class="timeline-body">
+            <h3>Étude technique</h3>
+            <p>Notre bureau d'étude élabore la faisabilité technique : méthode, planning, contraintes spécifiques (site occupé, MASE…).</p>
+          </div>
+        </li>
+
+        <li class="timeline-step" role="listitem">
+          <span class="timeline-num">04</span>
+          <div class="timeline-body">
+            <h3>Devis détaillé</h3>
+            <p>Vous recevez un devis détaillé et chiffré, ligne par ligne — sans surprise ni coût caché.</p>
+          </div>
+        </li>
+
+      </ol>
+    </div>
+  </section>
+
+  <!-- ████ CARTE GOOGLE MAPS ████ -->
+  <section class="contact-map" aria-label="Localisation Eurolook Construction">
+    <div class="contact-map-inner">
+
+      <div class="contact-map-side reveal-left">
+        <span class="s-tag">Nos bureaux</span>
+        <h2 class="about-title">
+          BOUC-BEL-AIR<br/><em>PROVENCE.</em>
+        </h2>
+        <p>
+          Implantée au cœur des Bouches-du-Rhône, à proximité immédiate d'Aix-en-Provence et de l'autoroute A51.
+          Zone d'intervention : France entière et marchés internationaux.
+        </p>
+        <address class="contact-address">
+          <strong>Eurolook Construction</strong><br/>
+          309 Rue Louis Lépine<br/>
+          13320 Bouc-Bel-Air<br/>
+          France
+        </address>
+        <a href="https://maps.google.com/?q=309+Rue+Louis+Lépine+13320+Bouc-Bel-Air" target="_blank" rel="noopener" class="about-link">
+          Itinéraire Google Maps
+          <svg width="20" height="12" viewBox="0 0 20 12" fill="none" aria-hidden="true">
+            <path d="M14 1L19 6L14 11M19 6H1" stroke="currentColor" stroke-width="2"/>
+          </svg>
+        </a>
+      </div>
+
+      <div class="contact-map-frame reveal-right">
+        <iframe
+          src="https://www.google.com/maps?q=309+Rue+Louis+L%C3%A9pine+13320+Bouc-Bel-Air&output=embed"
+          width="100%"
+          height="100%"
+          style="border:0;"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="Carte de localisation Eurolook Construction"
+        ></iframe>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ████ CTA FINALE ████ -->
+  <section class="cta-band-v2" aria-labelledby="contact-cta-h2">
+    <div class="cta-band-v2-inner reveal">
+      <h2 id="contact-cta-h2">PENSER<br/>PLUS <em>GRAND.</em></h2>
+      <div>
+        <p>Une question, un projet à discuter ? Notre équipe est à votre écoute.</p>
+        <br>
+        <a href="tel:0983039959" class="btn btn-dark">09 83 03 99 59</a>
+      </div>
+    </div>
+  </section>
 
 </Layout>
-
-<style>
-/* ════ CONTACT PAGE ════ */
-.contact-wrap{
-  display:grid;
-  grid-template-columns:1fr;
-  gap:0;
-  background:var(--black2);
-  min-height:60vh;
-}
-@media(min-width:900px){
-  .contact-wrap{
-    grid-template-columns:320px 1fr;
-    align-items:start;
-  }
-}
-
-/* Info latérale */
-.contact-info{
-  background:var(--navy);
-  padding:clamp(3rem,6vw,5rem) clamp(1.5rem,4vw,3rem);
-  display:flex;flex-direction:column;gap:2.5rem;
-  border-bottom:1px solid rgba(184,147,74,.12);
-}
-@media(min-width:900px){
-  .contact-info{
-    border-bottom:none;
-    border-right:1px solid rgba(184,147,74,.12);
-    min-height:100%;
-    position:sticky;top:var(--nav-h);
-  }
-}
-.contact-info-block{
-  display:flex;align-items:flex-start;gap:1.125rem;
-}
-.contact-info-icon{
-  font-size:1.5rem;flex-shrink:0;
-  margin-top:.125rem;line-height:1;
-}
-.contact-info-block strong{
-  display:block;
-  font-family:var(--f-d);font-size:.9375rem;font-weight:700;
-  letter-spacing:.08em;text-transform:uppercase;
-  color:var(--cream);margin-bottom:.375rem;
-}
-.contact-info-block p{
-  font-size:.9375rem;color:rgba(249,245,238,.7);line-height:1.7;
-}
-
-/* Formulaire */
-.contact-form-wrap{
-  padding:clamp(3rem,6vw,5rem) clamp(1.5rem,4vw,3rem);
-}
-.contact-form{display:flex;flex-direction:column;gap:0;}
-.form-grid{
-  display:grid;
-  grid-template-columns:1fr;
-  gap:1.375rem;
-  margin-bottom:2rem;
-}
-@media(min-width:600px){
-  .form-grid{grid-template-columns:1fr 1fr;}
-}
-.form-field{display:flex;flex-direction:column;gap:.5rem;}
-.form-field--full{grid-column:1/-1;}
-
-.form-label{
-  font-family:var(--f-d);font-size:.9375rem;font-weight:600;
-  letter-spacing:.08em;text-transform:uppercase;
-  color:var(--cream);
-}
-.form-required{color:var(--gold);margin-left:.125rem;}
-
-.form-input{
-  background:var(--black3);
-  border:1.5px solid rgba(184,147,74,.2);
-  color:var(--cream);
-  font-family:var(--f-b);font-size:1rem;
-  padding:.875rem 1.125rem;
-  border-radius:2px;
-  transition:border-color .2s, box-shadow .2s;
-  min-height:52px;
-  width:100%;
-}
-.form-input::placeholder{color:rgba(249,245,238,.3);}
-.form-input:focus{
-  outline:none;
-  border-color:var(--gold);
-  box-shadow:0 0 0 3px rgba(184,147,74,.15);
-}
-.form-input:invalid:not(:placeholder-shown){
-  border-color:rgba(220,80,80,.6);
-}
-.form-select{
-  appearance:none;-webkit-appearance:none;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23B8934A' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
-  background-repeat:no-repeat;
-  background-position:right 1.125rem center;
-  padding-right:2.5rem;
-  cursor:pointer;
-}
-.form-select option{background:var(--black2);color:var(--cream);}
-.form-textarea{
-  min-height:160px;resize:vertical;line-height:1.7;
-}
-
-/* Erreurs champ */
-.field-error{
-  font-size:.875rem;color:rgba(220,100,100,.9);
-  display:flex;align-items:center;gap:.375rem;
-}
-.field-error::before{content:'⚠';font-size:.8rem;}
-
-/* Erreur globale */
-.form-error{
-  background:rgba(220,80,80,.12);
-  border:1px solid rgba(220,80,80,.3);
-  border-left:4px solid rgba(220,80,80,.8);
-  color:rgba(249,245,238,.9);
-  padding:1rem 1.25rem;
-  border-radius:2px;
-  margin-bottom:1.5rem;
-  font-size:.9375rem;
-  line-height:1.6;
-}
-
-/* Footer formulaire */
-.form-footer{
-  display:flex;flex-direction:column;gap:1.25rem;
-}
-@media(min-width:600px){
-  .form-footer{
-    flex-direction:row;
-    align-items:center;
-    justify-content:space-between;
-  }
-}
-.form-legal{
-  font-size:.875rem;color:rgba(249,245,238,.5);
-  line-height:1.7;max-width:420px;
-}
-.form-legal a{color:var(--gold);text-decoration:underline;}
-.form-submit{min-width:220px;flex-shrink:0;}
-
-/* Succès */
-.form-success{
-  display:flex;flex-direction:column;align-items:center;
-  text-align:center;
-  padding:clamp(3rem,8vw,6rem) 2rem;
-  gap:1rem;
-}
-.form-success-icon{font-size:3rem;line-height:1;}
-.form-success h2{
-  font-family:var(--f-d);font-size:clamp(2rem,5vw,3rem);
-  font-weight:800;letter-spacing:.04em;text-transform:uppercase;
-  color:var(--cream);
-}
-.form-success p{font-size:1.0625rem;color:rgba(249,245,238,.72);}
-</style>
 
 <script>
 (function(){
@@ -421,7 +455,28 @@ const FORMSPREE_URL = "https://formspree.io/f/xbdbljey";
 
   if(!form) return;
 
-  // Validation en temps réel
+  // Compteur textarea
+  var msgInput = document.getElementById('message');
+  var msgCount = document.getElementById('msg-count');
+  if(msgInput && msgCount){
+    msgInput.addEventListener('input', function(){
+      msgCount.textContent = msgInput.value.length;
+    });
+  }
+
+  // Floating label pour les selects (ajout classe has-value)
+  form.querySelectorAll('.form-v2-select').forEach(function(sel){
+    function updateSelectState(){
+      if(sel.value){
+        sel.classList.add('has-value');
+      } else {
+        sel.classList.remove('has-value');
+      }
+    }
+    sel.addEventListener('change', updateSelectState);
+    updateSelectState();
+  });
+
   var fields = {
     nom: { el: document.getElementById('nom'), err: document.getElementById('nom-error') },
     email: { el: document.getElementById('email'), err: document.getElementById('email-error') },
@@ -431,12 +486,8 @@ const FORMSPREE_URL = "https://formspree.io/f/xbdbljey";
 
   Object.values(fields).forEach(function(f){
     if(f.el){
-      f.el.addEventListener('blur', function(){
-        validateField(f);
-      });
-      f.el.addEventListener('input', function(){
-        if(f.err && !f.err.hidden) validateField(f);
-      });
+      f.el.addEventListener('blur', function(){ validateField(f); });
+      f.el.addEventListener('input', function(){ if(f.err && !f.err.hidden) validateField(f); });
     }
   });
 
@@ -453,19 +504,16 @@ const FORMSPREE_URL = "https://formspree.io/f/xbdbljey";
     return ok;
   }
 
-  // Soumission
   form.addEventListener('submit', async function(e){
     e.preventDefault();
     if(!validateAll()) return;
 
-    // Loading state
     submitBtn.disabled = true;
     submitLabel.hidden = true;
     submitLoading.hidden = false;
     if(errorBox) errorBox.hidden = true;
 
     try {
-      var data = Object.fromEntries(new FormData(form));
       var res = await fetch('https://formspree.io/f/xbdbljey', {
         method: 'POST',
         headers: { 'Accept': 'application/json' },

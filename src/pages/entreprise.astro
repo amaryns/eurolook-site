@@ -1,4 +1,8 @@
 ---
+// src/pages/entreprise.astro
+// Page L'Entreprise — VERSION 2.0
+// Refonte esthétique + corrections factuelles
+
 import Layout from '../layouts/Layout.astro';
 ---
 
@@ -8,168 +12,265 @@ import Layout from '../layouts/Layout.astro';
   canonical="https://eurolookgroup.com/entreprise"
 >
 
-  <!-- ████ EN-TÊTE ████ -->
-  <div class="real-header">
-    <nav aria-label="Fil d'Ariane">
-      <p class="breadcrumb">
-        <a href="/" style="color:inherit;text-decoration:none;">Accueil</a>
-        &nbsp;→&nbsp; L'entreprise
-      </p>
-    </nav>
-    <h1 class="real-h1">L'ENTRE&shy;PRISE</h1>
-    <p class="real-intro">Penser plus grand — depuis 2015.</p>
-  </div>
+  <!-- ████ HERO ████ -->
+  <section class="page-hero" aria-labelledby="ent-hero-h1">
+    <img
+      class="hero-bg-img"
+      src="/images/about-equipe.jpg"
+      alt=""
+      role="presentation"
+      loading="eager"
+      fetchpriority="high"
+      width="1600"
+      height="900"
+    />
+    <div class="hero-bg-overlay" aria-hidden="true"></div>
 
-  <!-- ████ PRÉSENTATION GROUPE ████ -->
-  <section class="about-teaser" aria-labelledby="groupe-h2" style="--about-bg2:var(--black3);">
-    <div class="about-teaser-img">
-      <img
-        src="/images/about-equipe.jpg"
-        alt="Eurolook Construction — chantier en cours"
-        loading="lazy"
-        width="800"
-        height="600"
-      />
-    </div>
-    <div class="about-teaser-body">
-      <span class="s-tag">Le groupe</span>
-      <h2 id="groupe-h2" class="about-teaser-title">HOLDING MG<br>EUROLOOK</h2>
-      <p>Fondée en 2015, Eurolook Construction est une Entreprise Générale du Bâtiment spécialisée dans la rénovation de magasins en centres commerciaux et le renforcement structurel. Référencée auprès de Carrefour, Carmila et Klépierre, elle est aujourd'hui un acteur incontournable de la réhabilitation technique en site occupé.</p>
-      <p style="margin-top:1rem;">Depuis l'obtention de la certification MASE en 2019, l'entreprise s'est ouverte à de nouveaux marchés inaccessibles jusque-là — dont la pétrochimie — en garantissant un système de management fondé sur la qualité, la santé, la sécurité et l'environnement.</p>
-      <div class="about-chips" role="list" style="margin-top:1.5rem;">
-        <span class="chip" role="listitem">EGB depuis 2015</span>
-        <span class="chip" role="listitem">Certification MASE 2019</span>
-        <span class="chip" role="listitem">Partenaire ISER</span>
-        <span class="chip" role="listitem">Holding MG</span>
-      </div>
+    <div class="page-hero-body">
+      <nav aria-label="Fil d'Ariane">
+        <p class="page-breadcrumb">
+          <a href="/">Accueil</a>
+          <span aria-hidden="true">→</span>
+          <span>L'entreprise</span>
+        </p>
+      </nav>
+
+      <span class="hero-eyebrow">
+        <span class="dot" aria-hidden="true"></span>
+        Holding MG · Depuis 2015
+      </span>
+
+      <h1 id="ent-hero-h1" class="page-hero-title">
+        <span class="line"><span>BÂTISSEURS</span></span>
+        <span class="line"><span><em>DEPUIS 2015.</em></span></span>
+      </h1>
+
+      <p class="page-hero-lead">
+        Entreprise Générale du Bâtiment, certifiée MASE depuis 2019.
+        Renforcement structurel, réhabilitation technique, aménagement commercial.
+      </p>
     </div>
   </section>
 
-  <!-- ████ CHIFFRES CLÉS ████ -->
-  <div class="stats-band" role="list" aria-label="Chiffres clés 2023" style="border-top:3px solid var(--gold);">
-    <div class="stat-item" role="listitem">
-      <span class="stat-num">2015</span>
-      <span class="stat-lbl">Création</span>
-    </div>
-    <div class="stat-item" role="listitem">
-      <span class="stat-num">MASE</span>
-      <span class="stat-lbl">Certifié 2019</span>
-    </div>
-    <div class="stat-item" role="listitem">
-      <span class="stat-num">50%</span>
-      <span class="stat-lbl">CA renforcement structurel</span>
-    </div>
-    <div class="stat-item" role="listitem">
-      <span class="stat-num">2</span>
-      <span class="stat-lbl">Entités du groupe</span>
-    </div>
-  </div>
+  <!-- ████ STATS BAND VERTICALE ████ -->
+  <section class="stats-band-v2" aria-label="Chiffres clés">
+    <div class="stats-v2-inner">
 
-  <!-- ████ LES DEUX ENTITÉS ████ -->
-  <section class="ent-section" aria-labelledby="entites-h2">
-    <div class="ent-inner">
-      <div class="s-head">
-        <div>
-          <span class="s-tag">Structure du groupe</span>
-          <h2 id="entites-h2" class="s-title">DEUX ENTITÉS,<br>UNE VISION</h2>
+      <div class="stats-v2-head reveal">
+        <span class="s-tag">Repères</span>
+        <h2 class="stats-v2-title">EN <em>BREF.</em></h2>
+      </div>
+
+      <ul class="stats-v2-list stagger" role="list">
+
+        <li class="stat-line" role="listitem">
+          <span class="stat-line-num stat-num-gradient" data-count="2015">2015</span>
+          <div class="stat-line-body">
+            <span class="stat-line-label">Création d'Euro Look</span>
+            <span class="stat-line-desc">Entreprise Générale du Bâtiment — Holding MG</span>
+          </div>
+        </li>
+
+        <li class="stat-line" role="listitem">
+          <span class="stat-line-num stat-num-gradient" data-count="2019">2019</span>
+          <div class="stat-line-body">
+            <span class="stat-line-label">Certification MASE</span>
+            <span class="stat-line-desc">Qualité, santé, sécurité, environnement — objectif Zéro Accident</span>
+          </div>
+        </li>
+
+        <li class="stat-line" role="listitem">
+          <span class="stat-line-num stat-num-gradient" data-count="2021">2021</span>
+          <div class="stat-line-body">
+            <span class="stat-line-label">Création de La Fabrique</span>
+            <span class="stat-line-desc">Atelier de menuiseries aluminium — Partenaire Reynaers</span>
+          </div>
+        </li>
+
+        <li class="stat-line" role="listitem">
+          <span class="stat-line-num stat-num-gradient" data-count="50">50%</span>
+          <div class="stat-line-body">
+            <span class="stat-line-label">CA Renforcement structurel</span>
+            <span class="stat-line-desc">Cœur de métier — partenariat avec le cabinet ISER</span>
+          </div>
+        </li>
+
+      </ul>
+    </div>
+  </section>
+
+  <!-- ████ PRÉSENTATION GROUPE — LIGHT BREAK ████ -->
+  <section class="about-light" aria-labelledby="groupe-h2">
+    <div class="about-inner">
+
+      <div class="about-img-wrap reveal-left">
+        <img
+          src="/images/about-equipe.jpg"
+          alt="Eurolook Construction — chantier en cours"
+          loading="lazy"
+          width="800"
+          height="600"
+        />
+        <div class="about-img-badge">Holding MG · Bouc-Bel-Air</div>
+      </div>
+
+      <div class="about-content reveal">
+        <span class="s-tag">Le groupe</span>
+        <h2 id="groupe-h2" class="about-title">
+          HOLDING MG<br/><em>EUROLOOK.</em>
+        </h2>
+        <p>
+          Fondée en 2015, Eurolook Construction est une Entreprise Générale du Bâtiment spécialisée dans la rénovation de magasins en centres commerciaux et le renforcement structurel. Référencée auprès de Carrefour, Carmila et Klépierre, elle est aujourd'hui un acteur incontournable de la réhabilitation technique en site occupé.
+        </p>
+        <p>
+          Depuis l'obtention de la certification MASE en 2019, l'entreprise s'est ouverte à de nouveaux marchés — dont la pétrochimie — en garantissant un système de management fondé sur la qualité, la santé, la sécurité et l'environnement.
+        </p>
+
+        <div class="about-chips">
+          <span class="about-chip">Création 2015</span>
+          <span class="about-chip">MASE 2019</span>
+          <span class="about-chip">Partenaire ISER</span>
+          <span class="about-chip">Holding MG</span>
         </div>
       </div>
 
-      <div class="ent-grid">
+    </div>
+  </section>
+
+  <!-- ████ LES DEUX ENTITÉS — fond sombre ████ -->
+  <section class="ent-section-v2" aria-labelledby="entites-h2">
+    <div class="ent-inner-v2">
+      <div class="s-head-v2 reveal">
+        <div>
+          <span class="s-tag">Structure du groupe</span>
+          <h2 id="entites-h2" class="s-title-v2">
+            DEUX ENTITÉS,<br/><em>UNE VISION.</em>
+          </h2>
+        </div>
+      </div>
+
+      <div class="ent-grid-v2 stagger">
 
         <!-- Euro Look -->
-        <div class="ent-card">
-          <div class="ent-card-header">
-            <span class="ent-card-tag">SARL · Créée en 2015</span>
-            <h3 class="ent-card-title">EURO LOOK</h3>
-            <p class="ent-card-sub">Entreprise Générale du Bâtiment</p>
+        <article class="ent-card-v2">
+          <div class="ent-card-header-v2">
+            <span class="ent-card-tag-v2">SARL · Créée en 2015</span>
+            <h3 class="ent-card-title-v2">EURO LOOK</h3>
+            <p class="ent-card-sub-v2">Entreprise Générale du Bâtiment</p>
           </div>
-          <div class="ent-card-body">
-            <p>Eurolook Construction intervient sur tous types de chantiers : réhabilitation de centres commerciaux en site occupé, renforcement structurel, gros-œuvre résidentiel et tertiaire.</p>
-            <p style="margin-top:.875rem;">En partenariat avec le cabinet d'ingénieur structure ISER, les travaux de renforcement représentent aujourd'hui 50 % du chiffre d'affaires.</p>
-            <div class="ent-services">
-              <span class="ent-service">Renforcement structurel</span>
-              <span class="ent-service">Réhabilitation technique</span>
-              <span class="ent-service">Aménagement commercial</span>
-              <span class="ent-service">Gros-œuvre</span>
-              <span class="ent-service">Pétrochimie (MASE)</span>
-              <span class="ent-service">Site occupé</span>
+          <div class="ent-card-body-v2">
+            <p>
+              Eurolook Construction intervient sur tous types de chantiers : réhabilitation de centres commerciaux en site occupé, renforcement structurel, gros-œuvre résidentiel et tertiaire.
+            </p>
+            <p>
+              En partenariat avec le cabinet d'ingénieur structure ISER, les travaux de renforcement représentent aujourd'hui 50 % du chiffre d'affaires.
+            </p>
+            <div class="ent-services-v2">
+              <span class="ent-service-v2">Renforcement structurel</span>
+              <span class="ent-service-v2">Réhabilitation technique</span>
+              <span class="ent-service-v2">Aménagement commercial</span>
+              <span class="ent-service-v2">Gros-œuvre</span>
+              <span class="ent-service-v2">Pétrochimie (MASE)</span>
+              <span class="ent-service-v2">Site occupé</span>
             </div>
           </div>
-        </div>
+        </article>
 
         <!-- La Fabrique -->
-        <div class="ent-card ent-card--gold">
-          <div class="ent-card-header">
-            <span class="ent-card-tag">SAS · Créée en 2021</span>
-            <h3 class="ent-card-title">LA FABRIQUE</h3>
-            <p class="ent-card-sub">Atelier de menuiseries aluminium</p>
+        <article class="ent-card-v2 ent-card-v2--gold">
+          <div class="ent-card-header-v2">
+            <span class="ent-card-tag-v2">SAS · Créée en 2021</span>
+            <h3 class="ent-card-title-v2">LA FABRIQUE</h3>
+            <p class="ent-card-sub-v2">Atelier de menuiseries aluminium</p>
           </div>
-          <div class="ent-card-body">
-            <p>Née pour compléter l'activité du Groupe, La Fabrique est un atelier de production de menuiseries extérieures en aluminium. Elle accompagne les professionnels sur mesure avec des machines FOM dernière génération.</p>
-            <p style="margin-top:.875rem;">Partenaire officiel <strong>REYNAERS</strong> — toujours à la pointe de l'innovation thermique et normative.</p>
-            <div class="ent-services">
-              <span class="ent-service">Murs rideaux</span>
-              <span class="ent-service">Portes pare-balle</span>
-              <span class="ent-service">Portes coupe-feu</span>
-              <span class="ent-service">Pivots déportés</span>
-              <span class="ent-service">Vitrines</span>
-              <span class="ent-service">Menuiseries sur mesure</span>
+          <div class="ent-card-body-v2">
+            <p>
+              Née pour compléter l'activité du Groupe, La Fabrique est un atelier de production de menuiseries extérieures en aluminium. Elle accompagne les professionnels sur mesure avec des machines FOM dernière génération.
+            </p>
+            <p>
+              Partenaire officiel <strong>Reynaers</strong> — à la pointe de l'innovation thermique et normative.
+            </p>
+            <div class="ent-services-v2">
+              <span class="ent-service-v2">Murs rideaux</span>
+              <span class="ent-service-v2">Portes pare-balle</span>
+              <span class="ent-service-v2">Portes coupe-feu</span>
+              <span class="ent-service-v2">Pivots déportés</span>
+              <span class="ent-service-v2">Vitrines</span>
+              <span class="ent-service-v2">Sur mesure</span>
             </div>
+            <a href="/la-fabrique" class="ent-card-link-v2">
+              Découvrir La Fabrique
+              <svg width="20" height="12" viewBox="0 0 20 12" fill="none" aria-hidden="true">
+                <path d="M14 1L19 6L14 11M19 6H1" stroke="currentColor" stroke-width="2"/>
+              </svg>
+            </a>
           </div>
-        </div>
+        </article>
 
       </div>
     </div>
   </section>
 
   <!-- ████ ÉQUIPE & ORGANISATION ████ -->
-  <section class="org-section" aria-labelledby="org-h2">
-    <div class="org-inner">
-      <div class="s-head">
+  <section class="org-section-v2" aria-labelledby="org-h2">
+    <div class="org-inner-v2">
+      <div class="s-head-v2 reveal">
         <div>
           <span class="s-tag">Organisation</span>
-          <h2 id="org-h2" class="s-title">UNE ÉQUIPE<br>PLURIDISCIPLINAIRE</h2>
+          <h2 id="org-h2" class="s-title-v2">
+            UNE ÉQUIPE<br/><em>PLURIDISCIPLINAIRE.</em>
+          </h2>
         </div>
       </div>
-      <div class="org-grid">
-        <div class="org-card">
-          <span class="org-icon" aria-hidden="true">📋</span>
+
+      <div class="org-grid-v2 stagger">
+        <article class="org-card-v2">
+          <span class="org-icon-v2" aria-hidden="true">📋</span>
           <h3>Service administratif</h3>
           <p>Gestion financière rigoureuse, suivi contractuel et administratif de tous les marchés.</p>
-        </div>
-        <div class="org-card">
-          <span class="org-icon" aria-hidden="true">📐</span>
+        </article>
+        <article class="org-card-v2">
+          <span class="org-icon-v2" aria-hidden="true">📐</span>
           <h3>Bureau d'étude</h3>
           <p>Intervient après validation du devis pour élaborer la faisabilité technique. Pivot essentiel avant chaque chantier.</p>
-        </div>
-        <div class="org-card">
-          <span class="org-icon" aria-hidden="true">🏗</span>
+        </article>
+        <article class="org-card-v2">
+          <span class="org-icon-v2" aria-hidden="true">🏗</span>
           <h3>Service travaux</h3>
           <p>Économiste du bâtiment, conducteur de travaux et chefs de chantier expérimentés — gros-œuvre et second-œuvre.</p>
-        </div>
-        <div class="org-card">
-          <span class="org-icon" aria-hidden="true">🏭</span>
+        </article>
+        <article class="org-card-v2">
+          <span class="org-icon-v2" aria-hidden="true">🏭</span>
           <h3>Atelier de fabrication</h3>
           <p>Machines FOM dernière génération. Fabrication, assemblage et pose de menuiseries aluminium sur mesure.</p>
-        </div>
-        <div class="org-card">
-          <span class="org-icon" aria-hidden="true">🦺</span>
+        </article>
+        <article class="org-card-v2">
+          <span class="org-icon-v2" aria-hidden="true">🦺</span>
           <h3>QSSE</h3>
-          <p>Responsable QSSE dédié. Politique "Zéro Accident" appliquée à tous les niveaux de l'entreprise.</p>
-        </div>
-        <div class="org-card">
-          <span class="org-icon" aria-hidden="true">🤝</span>
+          <p>Responsable QSSE dédié. Politique « Zéro Accident » appliquée à tous les niveaux de l'entreprise.</p>
+        </article>
+        <article class="org-card-v2">
+          <span class="org-icon-v2" aria-hidden="true">🤝</span>
           <h3>Partenaires sous-traitants</h3>
           <p>Réseau qualifié : Provence Prestige Menuiserie, QID Infissi — pour les projets les plus complexes.</p>
-        </div>
+        </article>
       </div>
     </div>
   </section>
 
-  <!-- ████ CLIENTS DE RÉFÉRENCE ████ -->
-  <section class="clients-band" aria-label="Références clients" style="padding:clamp(3rem,5vw,4rem) 0;">
-    <p class="clients-label" role="heading" aria-level="2">Ils nous font confiance</p>
+  <!-- ████ CLIENTS — Carrousel ████ -->
+  <section class="clients-band" aria-label="Références clients">
+    <div class="clients-header">
+      <div class="clients-header-left reveal">
+        <span class="s-tag">Références</span>
+        <h2>ILS NOUS FONT<br/><em>CONFIANCE.</em></h2>
+      </div>
+      <div class="clients-header-right reveal">
+        <strong>6+</strong>
+        Enseignes<br/>nationales
+      </div>
+    </div>
+
     <div class="carousel-inner" role="region" aria-label="Logos de nos clients" aria-live="off">
       <div class="carousel-track" role="list">
         <div class="c-item" role="listitem">
@@ -179,133 +280,31 @@ import Layout from '../layouts/Layout.astro';
           <img src="/logos/carousel/carmila.png" alt="Carmila" loading="lazy" width="120" height="40" />
         </div>
         <div class="c-item" role="listitem">
-          <img src="/logos/carousel/carrefour.png" alt="Carrefour" loading="lazy" width="120" height="40" />
-        </div>
-        <div class="c-item" role="listitem">
-          <img src="/logos/carousel/kemone.png" alt="Kem One" loading="lazy" width="120" height="40" />
-        </div>
-        <div class="c-item" role="listitem">
-          <img src="/logos/carousel/klepierre.png" alt="Klépierre" loading="lazy" width="120" height="40" />
-        </div>
-        <div class="c-item" role="listitem">
-          <img src="/logos/carousel/carmila.png" alt="Carmila" loading="lazy" width="120" height="40" />
+          <img src="/logos/carousel/leroymerlin.png" alt="Leroy Merlin" loading="lazy" width="120" height="40" />
         </div>
         <div class="c-item" role="listitem">
           <img src="/logos/carousel/carrefour.png" alt="Carrefour" loading="lazy" width="120" height="40" />
         </div>
         <div class="c-item" role="listitem">
-          <img src="/logos/carousel/kemone.png" alt="Kem One" loading="lazy" width="120" height="40" />
+          <img src="/logos/carousel/cic.png" alt="CIC" loading="lazy" width="120" height="40" />
+        </div>
+        <div class="c-item" role="listitem">
+          <img src="/logos/carousel/societegenerale.png" alt="Société Générale" loading="lazy" width="120" height="40" />
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ████ CTA BAND ████ -->
-  <section class="cta-band" aria-labelledby="ent-cta-h2">
-    <div>
-      <h2 id="ent-cta-h2">PENSER<br>PLUS <em>GRAND.</em></h2>
-      <p>Un interlocuteur unique du premier échange à la livraison. Devis personnalisé sous 48h.</p>
+  <!-- ████ CTA FINALE ████ -->
+  <section class="cta-band-v2" aria-labelledby="ent-cta-h2">
+    <div class="cta-band-v2-inner reveal">
+      <h2 id="ent-cta-h2">PENSER<br/>PLUS <em>GRAND.</em></h2>
+      <div>
+        <p>Confiez-nous votre projet : renforcement structurel, réhabilitation technique, aménagement commercial.</p>
+        <br>
+        <a href="/contact" class="btn btn-dark">Demander un devis</a>
+      </div>
     </div>
-    <a class="btn btn-navy" href="/contact">Demander un devis</a>
   </section>
 
 </Layout>
-
-<style>
-/* ════ PAGE ENTREPRISE ════ */
-.ent-section{
-  padding:clamp(4.5rem,9vw,8rem) var(--gap);
-  background:var(--black2);
-}
-.ent-inner{max-width:1440px;margin:0 auto;}
-.ent-grid{
-  display:grid;
-  grid-template-columns:1fr;
-  gap:1.5rem;
-  margin-top:clamp(2rem,4vw,3rem);
-}
-@media(min-width:768px){
-  .ent-grid{grid-template-columns:1fr 1fr;}
-}
-
-.ent-card{
-  background:var(--black3);
-  border:1px solid rgba(184,147,74,.12);
-  border-top:4px solid rgba(184,147,74,.3);
-  border-radius:2px;overflow:hidden;
-  display:flex;flex-direction:column;
-}
-.ent-card--gold{border-top-color:var(--gold);}
-
-.ent-card-header{
-  background:var(--navy);
-  padding:2rem 2rem 1.5rem;
-  border-bottom:1px solid rgba(184,147,74,.12);
-}
-.ent-card-tag{
-  display:inline-block;
-  font-family:var(--f-d);font-size:.8125rem;font-weight:600;
-  letter-spacing:.22em;text-transform:uppercase;
-  color:var(--gold);margin-bottom:.75rem;
-}
-.ent-card-title{
-  font-family:var(--f-d);font-size:clamp(1.75rem,3.5vw,2.5rem);
-  font-weight:800;letter-spacing:.04em;text-transform:uppercase;
-  color:var(--cream);line-height:1;margin-bottom:.375rem;
-}
-.ent-card-sub{
-  font-size:1rem;color:rgba(249,245,238,.65);
-  font-style:italic;
-}
-
-.ent-card-body{
-  padding:2rem;flex:1;
-  display:flex;flex-direction:column;gap:.875rem;
-}
-.ent-card-body p{
-  font-size:1rem;color:rgba(249,245,238,.78);line-height:1.8;
-}
-.ent-card-body strong{color:var(--gold3);}
-
-.ent-services{
-  display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.5rem;
-}
-.ent-service{
-  font-family:var(--f-d);font-size:.8125rem;font-weight:600;
-  letter-spacing:.1em;text-transform:uppercase;
-  padding:.4rem .875rem;border:1px solid rgba(184,147,74,.25);
-  color:var(--gold3);border-radius:2px;
-  background:rgba(184,147,74,.05);
-}
-
-/* Organigramme */
-.org-section{
-  padding:clamp(4.5rem,9vw,8rem) var(--gap);
-  background:var(--black3);
-}
-.org-inner{max-width:1440px;margin:0 auto;}
-.org-grid{
-  display:grid;
-  grid-template-columns:1fr;
-  gap:1.25rem;
-  margin-top:clamp(2rem,4vw,3rem);
-}
-@media(min-width:640px){.org-grid{grid-template-columns:repeat(2,1fr);}}
-@media(min-width:1024px){.org-grid{grid-template-columns:repeat(3,1fr);}}
-
-.org-card{
-  background:var(--black2);
-  border:1px solid rgba(184,147,74,.1);
-  border-left:4px solid var(--gold);
-  padding:1.75rem;border-radius:0 2px 2px 0;
-  transition:background .2s;
-}
-.org-card:hover{background:rgba(24,35,56,.4);}
-.org-icon{font-size:1.75rem;display:block;margin-bottom:1rem;}
-.org-card h3{
-  font-family:var(--f-d);font-size:1.0625rem;font-weight:700;
-  letter-spacing:.06em;text-transform:uppercase;
-  color:var(--cream);margin-bottom:.75rem;
-}
-.org-card p{font-size:.9375rem;color:rgba(249,245,238,.7);line-height:1.8;}
-</style>
