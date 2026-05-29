@@ -1,25 +1,26 @@
 ---
 // src/pages/index.astro
-// Homepage Eurolook Construction
+// Homepage Eurolook Construction — VERSION 2.0
+// Refonte esthétique + corrections factuelles
 // La section "Chantiers marquants" est alimentée automatiquement
 // depuis src/data/projets.ts (champ enAvant: true)
 
 import Layout from '../layouts/Layout.astro';
 import { getProjetsEnAvant } from '../data/projets';
 
-const projetsEnAvant = getProjetsEnAvant(3);
+const projetsEnAvant = getProjetsEnAvant(2);
 ---
 
 <Layout
   title="Eurolook Construction — Renforcement structurel, réhabilitation technique & aménagement commercial"
-  description="Eurolook Construction — Expert en renforcement structurel, réhabilitation technique et aménagement commercial. EGB certifié MASE depuis 2015. Klépierre, Carmila, Carrefour nous font confiance."
+  description="Entreprise Générale du Bâtiment certifiée MASE depuis 2019. Renforcement structurel, réhabilitation technique et aménagement commercial. Klépierre, Carmila, Carrefour nous font confiance."
   canonical="https://eurolookgroup.com/"
 >
 
-  <!-- ████ HERO ████ -->
+  <!-- ████ 1. HERO — Cinématique ████ -->
   <section class="hero" aria-labelledby="hero-h1">
     <img
-      class="hero-bg"
+      class="hero-bg-img"
       src="/images/hero-home.jpg"
       alt=""
       role="presentation"
@@ -28,16 +29,30 @@ const projetsEnAvant = getProjetsEnAvant(3);
       width="1600"
       height="900"
     />
+    <div class="hero-bg-overlay" aria-hidden="true"></div>
+
     <div class="hero-body">
-      <span class="hero-eyebrow">EGB · Certification MASE · Depuis 2015</span>
+      <span class="hero-eyebrow">
+        <span class="dot" aria-hidden="true"></span>
+        Certification MASE · Depuis 2015
+      </span>
+
       <h1 id="hero-h1" class="hero-title">
-        NOUS<br>BÂTISSONS<br><em>CE QUI DURE.</em>
+        <span class="line"><span>NOUS</span></span>
+        <span class="line"><span>BÂTISSONS</span></span>
+        <span class="line"><span><em>CE QUI DURE.</em></span></span>
       </h1>
-      <p class="hero-lead">Réhabilitation technique, renforcement structurel et aménagement commercial. Klépierre, Carmila, Carrefour nous font confiance depuis 2015.</p>
+
+      <p class="hero-lead">
+        Renforcement structurel, réhabilitation technique et aménagement commercial.
+        Klépierre, Carmila, Carrefour nous font confiance.
+      </p>
+
       <div class="hero-actions">
-        <a class="btn btn-gold" href="/realisations">Voir nos chantiers</a>
+        <a class="btn btn-gold-v2" href="/realisations">Voir nos chantiers</a>
         <a class="btn btn-outline-light" href="/contact">Devis gratuit</a>
       </div>
+
       <div class="hero-scroll" aria-hidden="true">
         <span class="hero-scroll-label">Découvrir</span>
         <span class="hero-scroll-line"></span>
@@ -45,71 +60,303 @@ const projetsEnAvant = getProjetsEnAvant(3);
     </div>
   </section>
 
-  <!-- ████ STATS ████ -->
-  <div class="stats-band" role="list" aria-label="Chiffres clés">
-    <div class="stat-item" role="listitem">
-      <span class="stat-num" data-count="210" data-suffix="+">200+</span>
-      <span class="stat-lbl">Projets réalisés</span>
-    </div>
-    <div class="stat-item" role="listitem">
-      <span class="stat-num" data-count="14">14</span>
-      <span class="stat-lbl">Années d'expertise</span>
-    </div>
-    <div class="stat-item" role="listitem">
-      <span class="stat-num">MASE</span>
-      <span class="stat-lbl">Certifié sécurité</span>
-    </div>
-    <div class="stat-item" role="listitem">
-      <span class="stat-num">48h</span>
-      <span class="stat-lbl">Délai de réponse</span>
-    </div>
-  </div>
+  <!-- ████ 2. STATS BAND — Compteurs animés ████ -->
+  <section class="stats-band" aria-label="Chiffres clés">
+    <div class="stats-inner stagger" role="list">
 
-  <!-- ████ L'ENTREPRISE ████ -->
-  <section id="entreprise" class="about-teaser" aria-labelledby="about-h2">
-    <div class="about-teaser-img">
-      <img
-        src="/images/about-equipe.jpg"
-        alt="Équipe Eurolook Construction en action sur chantier"
-        loading="lazy"
-        width="800"
-        height="600"
-      />
+      <div class="stat-item" role="listitem">
+        <span class="stat-num stat-num-gradient" data-count="2015">2015</span>
+        <span class="stat-lbl">Création</span>
+        <span class="stat-sub">Euro Look</span>
+      </div>
+
+      <div class="stat-item" role="listitem">
+        <span class="stat-num stat-num-gradient" data-count="2021">2021</span>
+        <span class="stat-lbl">Création</span>
+        <span class="stat-sub">La Fabrique</span>
+      </div>
+
+      <div class="stat-item" role="listitem">
+        <span class="stat-num stat-num-gradient">MASE</span>
+        <span class="stat-lbl">Certifié</span>
+        <span class="stat-sub">depuis 2019</span>
+      </div>
+
     </div>
-    <div class="about-teaser-body">
-      <span class="s-tag">L'entreprise</span>
-      <h2 id="about-h2" class="about-teaser-title">BÂTISSEURS DEPUIS 2015</h2>
-      <div class="about-teaser-kpis" role="list" aria-label="Chiffres de l'entreprise">
-        <div class="about-kpi" role="listitem">
-          <span class="about-kpi-num">200+</span>
-          <span class="about-kpi-lbl">Projets livrés</span>
-        </div>
-        <div class="about-kpi" role="listitem">
-          <span class="about-kpi-num">3</span>
-          <span class="about-kpi-lbl">Corps de métier</span>
-        </div>
-        <div class="about-kpi" role="listitem">
-          <span class="about-kpi-num">MASE</span>
-          <span class="about-kpi-lbl">Certifié 2019</span>
-        </div>
+  </section>
+
+  <!-- ████ 3. L'ENTREPRISE — Light break crème ████ -->
+  <section id="entreprise" class="about-light" aria-labelledby="about-h2">
+    <div class="about-inner">
+
+      <div class="about-img-wrap reveal-left">
+        <img
+          src="/images/about-equipe.jpg"
+          alt="Équipe Eurolook Construction en action sur chantier"
+          loading="lazy"
+          width="800"
+          height="600"
+        />
+        <div class="about-img-badge">Holding MG · Depuis 2015</div>
       </div>
-      <p>Fondée en 2015, Eurolook Construction est devenue la référence en réhabilitation technique sur site occupé. Centres commerciaux en activité, tertiaire, industriel — nous intervenons là où d'autres ne peuvent pas.</p>
-      <div class="about-chips" role="list">
-        <span class="chip" role="listitem">Certification MASE</span>
-        <span class="chip" role="listitem">Bureau d'étude intégré</span>
-        <span class="chip" role="listitem">Atelier aluminium</span>
-        <span class="chip" role="listitem">Site occupé</span>
+
+      <div class="about-content reveal">
+        <span class="s-tag">L'entreprise</span>
+        <h2 id="about-h2" class="about-title">
+          BÂTISSEURS<br/><em>DEPUIS 2015.</em>
+        </h2>
+        <p>
+          Fondée en 2015, Eurolook Construction est une Entreprise Générale du Bâtiment spécialisée dans la rénovation de magasins en centres commerciaux et le renforcement structurel. Référencée auprès de Carrefour, Carmila et Klépierre.
+        </p>
+        <p>
+          Depuis l'obtention de la certification MASE en 2019, l'entreprise s'est ouverte à de nouveaux marchés — dont la pétrochimie — en garantissant un système de management fondé sur la qualité, la santé, la sécurité et l'environnement.
+        </p>
+
+        <div class="about-chips">
+          <span class="about-chip">Création 2015</span>
+          <span class="about-chip">MASE 2019</span>
+          <span class="about-chip">Partenaire ISER</span>
+          <span class="about-chip">50% CA Renforcement</span>
+        </div>
+
+        <a href="/entreprise" class="about-link">
+          Découvrir l'entreprise
+          <svg width="20" height="12" viewBox="0 0 20 12" fill="none" aria-hidden="true">
+            <path d="M14 1L19 6L14 11M19 6H1" stroke="currentColor" stroke-width="2"/>
+          </svg>
+        </a>
       </div>
-      <div style="margin-top:2rem;display:flex;gap:1rem;flex-wrap:wrap;">
-        <a class="btn btn-navy" href="/entreprise" aria-label="Découvrir l'histoire d'Eurolook Construction">Découvrir l'entreprise</a>
-        <a class="btn btn-ghost" href="/contact" aria-label="Demander un devis">Demander un devis</a>
+
+    </div>
+  </section>
+
+  <!-- ████ 4. EXPERTISES — Cards modernes ████ -->
+  <section class="exp-section" aria-labelledby="exp-h2">
+    <div class="exp-inner" style="max-width:1440px;margin:0 auto;padding:0 var(--gap);">
+
+      <div class="s-head-v2 reveal">
+        <div>
+          <span class="s-tag">Nos expertises</span>
+          <h2 id="exp-h2" class="s-title-v2">
+            CE QUE NOUS<br/><em>FAISONS.</em>
+          </h2>
+        </div>
+        <a href="/expertises" class="see-all">
+          Toutes nos expertises
+          <svg width="18" height="10" viewBox="0 0 18 10" fill="none" aria-hidden="true">
+            <path d="M13 1L17 5L13 9M17 5H1" stroke="currentColor" stroke-width="2"/>
+          </svg>
+        </a>
+      </div>
+
+      <div class="exp-grid-cards stagger">
+
+        <article class="exp-card-v2">
+          <div class="exp-card-img-v2">
+            <img src="/images/expertises/renforcement.jpg" alt="Renforcement structurel — chantier Eurolook" loading="lazy" width="800" height="480" />
+            <div class="exp-card-num">01</div>
+          </div>
+          <div class="exp-card-body-v2">
+            <span class="exp-card-tag">Cœur de métier — 50 % CA</span>
+            <h3 class="exp-card-title-v2">Renforcement structurel</h3>
+            <p class="exp-card-desc-v2">
+              Reprise en sous-œuvre, micropieux, injection de résines. En partenariat avec le cabinet ISER.
+            </p>
+            <a href="/expertises/renforcement-structurel" class="exp-card-link">Découvrir →</a>
+          </div>
+        </article>
+
+        <article class="exp-card-v2">
+          <div class="exp-card-img-v2">
+            <img src="/images/expertises/rehabilitation.jpg" alt="Réhabilitation technique en site occupé" loading="lazy" width="800" height="480" />
+            <div class="exp-card-num">02</div>
+          </div>
+          <div class="exp-card-body-v2">
+            <span class="exp-card-tag">Site occupé</span>
+            <h3 class="exp-card-title-v2">Réhabilitation technique</h3>
+            <p class="exp-card-desc-v2">
+              Centres commerciaux, agences bancaires, sites industriels — sans jamais interrompre l'activité.
+            </p>
+            <a href="/expertises/rehabilitation-technique" class="exp-card-link">Découvrir →</a>
+          </div>
+        </article>
+
+        <article class="exp-card-v2">
+          <div class="exp-card-img-v2">
+            <img src="/images/expertises/commerces.jpg" alt="Aménagement de commerces multi-sites" loading="lazy" width="800" height="480" />
+            <div class="exp-card-num">03</div>
+          </div>
+          <div class="exp-card-body-v2">
+            <span class="exp-card-tag">Enseignes nationales</span>
+            <h3 class="exp-card-title-v2">Aménagement de commerces</h3>
+            <p class="exp-card-desc-v2">
+              Déploiement multi-sites : La Barbe de Papa (29 boutiques), Indémodable, Shoozze.
+            </p>
+            <a href="/expertises/amenagement-commerce" class="exp-card-link">Découvrir →</a>
+          </div>
+        </article>
+
+        <article class="exp-card-v2">
+          <div class="exp-card-img-v2">
+            <img src="/images/expertises/aluminium.jpg" alt="Menuiseries aluminium — Atelier La Fabrique" loading="lazy" width="800" height="480" />
+            <div class="exp-card-num">04</div>
+          </div>
+          <div class="exp-card-body-v2">
+            <span class="exp-card-tag">Atelier La Fabrique</span>
+            <h3 class="exp-card-title-v2">Menuiseries aluminium</h3>
+            <p class="exp-card-desc-v2">
+              Murs rideaux, portes pare-balle et coupe-feu, pivots déportés. Partenaire Reynaers, machines FOM.
+            </p>
+            <a href="/expertises/menuiserie-aluminium" class="exp-card-link">Découvrir →</a>
+          </div>
+        </article>
+
+        <article class="exp-card-v2">
+          <div class="exp-card-img-v2">
+            <img src="/images/expertises/coordination.jpg" alt="Coordination technique — pilotage MOE/MOA" loading="lazy" width="800" height="480" />
+            <div class="exp-card-num">05</div>
+          </div>
+          <div class="exp-card-body-v2">
+            <span class="exp-card-tag">Pilotage MOE/MOA</span>
+            <h3 class="exp-card-title-v2">Coordination technique</h3>
+            <p class="exp-card-desc-v2">
+              Dessins exécutifs, OPC, suivi de chantier multi-lots jusqu'à la réception.
+            </p>
+            <a href="/expertises/coordination-technique" class="exp-card-link">Découvrir →</a>
+          </div>
+        </article>
+
+        <article class="exp-card-v2">
+          <div class="exp-card-img-v2">
+            <img src="/images/expertises/interieur.jpg" alt="Aménagement intérieur tertiaire et commercial" loading="lazy" width="800" height="480" />
+            <div class="exp-card-num">06</div>
+          </div>
+          <div class="exp-card-body-v2">
+            <span class="exp-card-tag">Tertiaire & Commercial</span>
+            <h3 class="exp-card-title-v2">Aménagement intérieur</h3>
+            <p class="exp-card-desc-v2">
+              Cloisons, faux plafonds, revêtements, fluides. Finitions haut de gamme.
+            </p>
+            <a href="/expertises/amenagement-interieur" class="exp-card-link">Découvrir →</a>
+          </div>
+        </article>
+
       </div>
     </div>
   </section>
 
-  <!-- ████ CAROUSEL LOGOS CLIENTS ████ -->
+  <!-- ████ 5. CTA LIGHT BREAK — entre expertises et réalisations ████ -->
+  <section class="cta-light" aria-labelledby="cta-light-h2">
+    <div class="cta-light-inner reveal">
+      <h2 id="cta-light-h2">UN PROJET DE<br/><em>RENFORCEMENT</em> STRUCTUREL ?</h2>
+      <div>
+        <p>Notre cœur de métier depuis 2015. Partenariat exclusif avec le cabinet ISER pour les opérations les plus exigeantes.</p>
+        <br>
+        <a href="/contact" class="btn btn-dark">Demander un devis</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ████ 6. RÉALISATIONS — Alimenté automatiquement depuis projets.ts ████ -->
+  <section id="realisations" class="proj-section" aria-labelledby="proj-h2">
+    <div class="exp-inner" style="max-width:1440px;margin:0 auto;padding:0 var(--gap);">
+
+      <div class="s-head-v2 reveal">
+        <div>
+          <span class="s-tag">Nos réalisations</span>
+          <h2 id="proj-h2" class="s-title-v2">
+            CHANTIERS<br/><em>MARQUANTS.</em>
+          </h2>
+        </div>
+        <a href="/realisations" class="see-all">
+          Tous les projets
+          <svg width="18" height="10" viewBox="0 0 18 10" fill="none" aria-hidden="true">
+            <path d="M13 1L17 5L13 9M17 5H1" stroke="currentColor" stroke-width="2"/>
+          </svg>
+        </a>
+      </div>
+
+      <div class="proj-grid stagger">
+        {projetsEnAvant.map(p => (
+          <a
+            href={`/realisations/${p.slug}`}
+            class="proj-card-link"
+            aria-label={`Voir la fiche projet : ${p.titre}`}
+          >
+            <article class="proj-card" data-cat={p.categorie}>
+              <img
+                src={p.image}
+                alt={p.alt}
+                loading="lazy"
+                width="800"
+                height="500"
+              />
+              <div class="proj-ov">
+                <span class="proj-cat">{p.categorieLabel}</span>
+                <h3 class="proj-name">{p.titre}</h3>
+                <span class="proj-meta">{p.lieu} · {p.date}</span>
+                <p class="proj-desc">{p.resume}</p>
+              </div>
+            </article>
+          </a>
+        ))}
+      </div>
+
+    </div>
+
+    <div class="proj-cta-bar">
+      <span>Votre chantier pourrait être le suivant</span>
+      <a class="btn btn-gold-v2" href="/contact" aria-label="Demander un devis gratuit">Demander un devis</a>
+    </div>
+  </section>
+
+  <!-- ████ 7. LA FABRIQUE — Section mini dédiée ████ -->
+  <section class="fabrique-band" aria-labelledby="fabrique-h2">
+    <div class="fabrique-inner">
+
+      <div class="fabrique-img reveal-left">
+        <img
+          src="/images/expertises/aluminium.jpg"
+          alt="Atelier La Fabrique — menuiseries aluminium"
+          loading="lazy"
+          width="800"
+          height="500"
+        />
+      </div>
+
+      <div class="fabrique-content reveal">
+        <span class="s-tag">Filiale du groupe · Depuis 2021</span>
+        <h2 id="fabrique-h2" class="fabrique-title">
+          LA <em>FABRIQUE.</em>
+        </h2>
+        <p>
+          Atelier de fabrication et pose de menuiseries extérieures en aluminium. Murs rideaux, portes pare-balle et coupe-feu, pivots déportés. Partenaire officiel Reynaers, machines FOM dernière génération.
+        </p>
+        <a href="/la-fabrique" class="fabrique-link">
+          Découvrir La Fabrique
+          <svg width="20" height="12" viewBox="0 0 20 12" fill="none" aria-hidden="true">
+            <path d="M14 1L19 6L14 11M19 6H1" stroke="currentColor" stroke-width="2"/>
+          </svg>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ████ 8. CARROUSEL CLIENTS — Monochrome ████ -->
   <section class="clients-band" aria-label="Références clients">
-    <p class="clients-label" role="heading" aria-level="2">Ils nous font confiance</p>
+
+    <div class="clients-header">
+      <div class="clients-header-left reveal">
+        <span class="s-tag">Références</span>
+        <h2>ILS NOUS FONT<br/><em>CONFIANCE.</em></h2>
+      </div>
+      <div class="clients-header-right reveal">
+        <strong>6+</strong>
+        Enseignes<br/>nationales
+      </div>
+    </div>
+
     <div class="carousel-inner" role="region" aria-label="Logos de nos clients" aria-live="off">
       <div class="carousel-track" role="list">
         <div class="c-item" role="listitem">
@@ -119,280 +366,75 @@ const projetsEnAvant = getProjetsEnAvant(3);
           <img src="/logos/carousel/carmila.png" alt="Carmila" loading="lazy" width="120" height="40" />
         </div>
         <div class="c-item" role="listitem">
-          <img src="/logos/carousel/carrefour.png" alt="Carrefour" loading="lazy" width="120" height="40" />
-        </div>
-        <div class="c-item" role="listitem">
-          <img src="/logos/carousel/kemone.png" alt="Kem One" loading="lazy" width="120" height="40" />
-        </div>
-        <div class="c-item" role="listitem">
-          <img src="/logos/carousel/klepierre.png" alt="Klépierre" loading="lazy" width="120" height="40" />
-        </div>
-        <div class="c-item" role="listitem">
-          <img src="/logos/carousel/carmila.png" alt="Carmila" loading="lazy" width="120" height="40" />
+          <img src="/logos/carousel/leroymerlin.png" alt="Leroy Merlin" loading="lazy" width="120" height="40" />
         </div>
         <div class="c-item" role="listitem">
           <img src="/logos/carousel/carrefour.png" alt="Carrefour" loading="lazy" width="120" height="40" />
         </div>
         <div class="c-item" role="listitem">
-          <img src="/logos/carousel/kemone.png" alt="Kem One" loading="lazy" width="120" height="40" />
+          <img src="/logos/carousel/cic.png" alt="CIC" loading="lazy" width="120" height="40" />
         </div>
+        <div class="c-item" role="listitem">
+          <img src="/logos/carousel/societegenerale.png" alt="Société Générale" loading="lazy" width="120" height="40" />
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ████ 9. ENGAGEMENTS — Bandelette mini ████ -->
+  <section class="engagements-v2" aria-labelledby="eng-h2">
+    <div class="eng-inner">
+
+      <div class="s-head-v2 reveal">
+        <div>
+          <span class="s-tag">Nos engagements</span>
+          <h2 id="eng-h2" class="s-title-v2">
+            CE QUE NOUS<br/><em>GARANTISSONS.</em>
+          </h2>
+        </div>
+      </div>
+
+      <div class="eng-grid stagger">
+
+        <article class="eng-card">
+          <span class="eng-icon" aria-hidden="true">🦺</span>
+          <h3>Sécurité MASE</h3>
+          <p>
+            Certifiés MASE depuis 2019, nous appliquons un système de management fondé sur la qualité, la santé, la sécurité et l'environnement. Objectif prioritaire : « Zéro Accident ».
+          </p>
+        </article>
+
+        <article class="eng-card">
+          <span class="eng-icon" aria-hidden="true">🌱</span>
+          <h3>Environnement</h3>
+          <p>
+            Tri sélectif sur tous nos chantiers et dans nos locaux. Réduction active de nos émissions de gaz à effet de serre.
+          </p>
+        </article>
+
+        <article class="eng-card">
+          <span class="eng-icon" aria-hidden="true">🌙</span>
+          <h3>Site occupé</h3>
+          <p>
+            Centres commerciaux, agences bancaires, sites industriels en exploitation : nous intervenons sans interrompre l'activité — y compris en travaux de nuit.
+          </p>
+        </article>
+
       </div>
     </div>
   </section>
 
-  <!-- ████ EXPERTISES ████ -->
-  <section id="expertises" class="exp-section" aria-labelledby="exp-h2">
-    <div class="s-head">
+  <!-- ████ 10. CTA FINALE — Penser plus grand ████ -->
+  <section class="cta-band-v2" aria-labelledby="cta-final-h2">
+    <div class="cta-band-v2-inner reveal">
+      <h2 id="cta-final-h2">PENSER<br/>PLUS <em>GRAND.</em></h2>
       <div>
-        <span class="s-tag">Nos expertises</span>
-        <h2 id="exp-h2" class="s-title">CE QUE NOUS FAISONS</h2>
-      </div>
-      <a class="see-all" href="/expertises">Tout voir →</a>
-    </div>
-
-    <div class="exp-tabs-wrap" role="tablist" aria-label="Sélectionner une expertise">
-      <!-- Liste des onglets -->
-      <div class="exp-tab-list">
-        <button class="exp-tab-btn is-active" data-tab="str" aria-selected="true" role="tab">
-          <span class="exp-tab-num" aria-hidden="true">01</span>
-          <span class="exp-tab-name">Renforcement structurel</span>
-          <span class="exp-tab-arrow" aria-hidden="true">▶</span>
-        </button>
-        <button class="exp-tab-btn" data-tab="renov" aria-selected="false" role="tab">
-          <span class="exp-tab-num" aria-hidden="true">02</span>
-          <span class="exp-tab-name">Réhabilitation technique</span>
-          <span class="exp-tab-arrow" aria-hidden="true">▶</span>
-        </button>
-        <button class="exp-tab-btn" data-tab="com" aria-selected="false" role="tab">
-          <span class="exp-tab-num" aria-hidden="true">03</span>
-          <span class="exp-tab-name">Aménagement de commerces</span>
-          <span class="exp-tab-arrow" aria-hidden="true">▶</span>
-        </button>
-        <button class="exp-tab-btn" data-tab="alu" aria-selected="false" role="tab">
-          <span class="exp-tab-num" aria-hidden="true">04</span>
-          <span class="exp-tab-name">Menuiseries aluminium</span>
-          <span class="exp-tab-arrow" aria-hidden="true">▶</span>
-        </button>
-        <button class="exp-tab-btn" data-tab="coord" aria-selected="false" role="tab">
-          <span class="exp-tab-num" aria-hidden="true">05</span>
-          <span class="exp-tab-name">Coordination technique</span>
-          <span class="exp-tab-arrow" aria-hidden="true">▶</span>
-        </button>
-        <button class="exp-tab-btn" data-tab="int" aria-selected="false" role="tab">
-          <span class="exp-tab-num" aria-hidden="true">06</span>
-          <span class="exp-tab-name">Aménagement intérieur</span>
-          <span class="exp-tab-arrow" aria-hidden="true">▶</span>
-        </button>
-      </div>
-
-      <!-- Panneaux -->
-      <div class="exp-panel-wrap">
-
-        <div id="panel-str" class="exp-panel is-active" role="tabpanel" style="display:grid">
-          <div class="exp-panel-img">
-            <img src="/images/expertises/renforcement.jpg" alt="Renforcement structurel — chantier Eurolook" loading="lazy" width="900" height="500" />
-          </div>
-          <div class="exp-panel-body">
-            <span class="exp-panel-badge">★ Cœur de métier</span>
-            <h3 class="exp-panel-h3">Renforcement structurel</h3>
-            <p class="exp-panel-p">Reprise en sous-œuvre, micropieux, injection de résines, renforcement de dalles et voiles béton. Notre cœur de métier depuis 2015.</p>
-            <div class="exp-panel-tags">
-              <span class="exp-panel-tag">Micropieux</span>
-              <span class="exp-panel-tag">Sous-œuvre</span>
-              <span class="exp-panel-tag">Béton armé</span>
-              <span class="exp-panel-tag">Bureau Veritas</span>
-            </div>
-          </div>
-        </div>
-
-        <div id="panel-renov" class="exp-panel" role="tabpanel" style="display:none">
-          <div class="exp-panel-img">
-            <img src="/images/expertises/rehabilitation.jpg" alt="Réhabilitation technique — site occupé" loading="lazy" width="900" height="500" />
-          </div>
-          <div class="exp-panel-body">
-            <span class="exp-panel-badge">Expertise 02</span>
-            <h3 class="exp-panel-h3">Réhabilitation technique</h3>
-            <p class="exp-panel-p">Intervention en site occupé, de nuit comme en semaine. Centres commerciaux, tertiaire, industriel — sans jamais interrompre l'activité.</p>
-            <div class="exp-panel-tags">
-              <span class="exp-panel-tag">Site occupé</span>
-              <span class="exp-panel-tag">Nuit & week-end</span>
-              <span class="exp-panel-tag">Multi-corps</span>
-              <span class="exp-panel-tag">Zéro interruption</span>
-            </div>
-          </div>
-        </div>
-
-        <div id="panel-com" class="exp-panel" role="tabpanel" style="display:none">
-          <div class="exp-panel-img">
-            <img src="/images/expertises/commerces.jpg" alt="Aménagement de commerces — multi-sites" loading="lazy" width="900" height="500" />
-          </div>
-          <div class="exp-panel-body">
-            <span class="exp-panel-badge">Expertise 03</span>
-            <h3 class="exp-panel-h3">Aménagement de commerces</h3>
-            <p class="exp-panel-p">Déploiement multi-sites pour enseignes nationales. Respect strict des chartes enseigne, délais de réouverture et budgets contractuels.</p>
-            <div class="exp-panel-tags">
-              <span class="exp-panel-tag">Multi-sites</span>
-              <span class="exp-panel-tag">Chartes enseigne</span>
-              <span class="exp-panel-tag">Délais garantis</span>
-              <span class="exp-panel-tag">Gestion projet</span>
-            </div>
-          </div>
-        </div>
-
-        <div id="panel-alu" class="exp-panel" role="tabpanel" style="display:none">
-          <div class="exp-panel-img">
-            <img src="/images/expertises/aluminium.jpg" alt="Menuiseries aluminium — Atelier La Fabrique" loading="lazy" width="900" height="500" />
-          </div>
-          <div class="exp-panel-body">
-            <span class="exp-panel-badge">Expertise 04</span>
-            <h3 class="exp-panel-h3">Menuiseries aluminium</h3>
-            <p class="exp-panel-p">Atelier La Fabrique intégré — fabrication sur mesure de façades rideau, vitrines, verrières et portes automatiques. Tout en interne.</p>
-            <div class="exp-panel-tags">
-              <span class="exp-panel-tag">Façades rideau</span>
-              <span class="exp-panel-tag">Vitrines</span>
-              <span class="exp-panel-tag">Verrières</span>
-              <span class="exp-panel-tag">Sur mesure</span>
-            </div>
-          </div>
-        </div>
-
-        <div id="panel-coord" class="exp-panel" role="tabpanel" style="display:none">
-          <div class="exp-panel-img">
-            <img src="/images/expertises/coordination.jpg" alt="Coordination technique — pilotage MOE/MOA" loading="lazy" width="900" height="500" />
-          </div>
-          <div class="exp-panel-body">
-            <span class="exp-panel-badge">Expertise 05</span>
-            <h3 class="exp-panel-h3">Coordination technique</h3>
-            <p class="exp-panel-p">Pilotage technique de chantier, interface MOE/MOA, plans d'exécution et conformité réglementaire. Coordination jusqu'à réception OPR.</p>
-            <div class="exp-panel-tags">
-              <span class="exp-panel-tag">MOE/MOA</span>
-              <span class="exp-panel-tag">Plans d'exécution</span>
-              <span class="exp-panel-tag">OPR</span>
-              <span class="exp-panel-tag">Réglementaire</span>
-            </div>
-          </div>
-        </div>
-
-        <div id="panel-int" class="exp-panel" role="tabpanel" style="display:none">
-          <div class="exp-panel-img">
-            <img src="/images/expertises/interieur.jpg" alt="Aménagement intérieur tertiaire et commercial" loading="lazy" width="900" height="500" />
-          </div>
-          <div class="exp-panel-body">
-            <span class="exp-panel-badge">Expertise 06</span>
-            <h3 class="exp-panel-h3">Aménagement intérieur</h3>
-            <p class="exp-panel-p">Cloisons, faux plafonds, revêtements sols et murs, fluides. Finitions haut de gamme pour espaces tertiaires et commerciaux.</p>
-            <div class="exp-panel-tags">
-              <span class="exp-panel-tag">Cloisons</span>
-              <span class="exp-panel-tag">Faux plafonds</span>
-              <span class="exp-panel-tag">Revêtements</span>
-              <span class="exp-panel-tag">Fluides</span>
-            </div>
-          </div>
-        </div>
-
+        <p>Renforcement structurel, réhabilitation, aménagement commercial : confiez-nous votre projet.</p>
+        <br>
+        <a href="/contact" class="btn btn-dark">Demander un devis</a>
       </div>
     </div>
-
-    <div class="exp-inline-cta">
-      <p>Un projet de <em>renforcement structurel</em>&nbsp;?</p>
-      <a class="btn btn-gold" href="/contact">Demander un devis</a>
-    </div>
-  </section>
-
-  <!-- ████ RÉALISATIONS (aperçu — alimenté automatiquement depuis projets.ts) ████ -->
-  <section id="realisations" class="proj-section" aria-labelledby="proj-h2">
-    <div class="s-head">
-      <div>
-        <span class="s-tag">Nos réalisations</span>
-        <h2 id="proj-h2" class="s-title">CHANTIERS MARQUANTS</h2>
-      </div>
-      <a class="see-all" href="/realisations">Tous les projets →</a>
-    </div>
-
-    <div class="proj-grid" role="list">
-      {projetsEnAvant.map(p => (
-        <a
-          href={`/realisations/${p.slug}`}
-          class="proj-card-link-home"
-          role="listitem"
-          aria-label={`Voir la fiche projet : ${p.titre}`}
-        >
-          <article class="proj-card" data-cat={p.categorie}>
-            <img src={p.image} alt={p.alt} loading="lazy" width="700" height="480" />
-            <div class="proj-ov">
-              <span class="proj-cat">{p.categorieLabel}</span>
-              <h3 class="proj-name">{p.titre}</h3>
-              <span class="proj-meta">{p.lieu} · {p.date}</span>
-              <p class="proj-desc">{p.resume}</p>
-            </div>
-          </article>
-        </a>
-      ))}
-    </div>
-
-    <div class="proj-cta-bar">
-      <span>Votre chantier pourrait être le suivant</span>
-      <a class="btn btn-navy" href="/contact">Obtenir un devis gratuit</a>
-    </div>
-  </section>
-
-  <!-- ████ ENGAGEMENTS ████ -->
-  <section id="engagements" class="engagements" aria-labelledby="eng-h2">
-    <div class="s-head" style="--s-rule:rgba(249,245,238,.15);">
-      <div>
-        <span class="s-tag">Nos engagements</span>
-        <h2 id="eng-h2" class="s-title" style="color:var(--cream);">NOS ENGAGEMENTS</h2>
-      </div>
-    </div>
-    <div class="eng-grid" role="list">
-      <div class="eng-card" role="listitem">
-        <span class="eng-icon" aria-hidden="true">🦺</span>
-        <h3>Sécurité avant tout</h3>
-        <p>Certification MASE, protocoles renforcés en zone ATEX, formation permanente. Zéro accident grave depuis 2015.</p>
-      </div>
-      <div class="eng-card" role="listitem">
-        <span class="eng-icon" aria-hidden="true">⏱</span>
-        <h3>Respect des délais</h3>
-        <p>Chantiers contractuellement encadrés. Chaque retard engage notre responsabilité — c'est notre garantie.</p>
-      </div>
-      <div class="eng-card" role="listitem">
-        <span class="eng-icon" aria-hidden="true">🌱</span>
-        <h3>Responsabilité environnementale</h3>
-        <p>Gestion rigoureuse des déchets, réemploi des matériaux, bilan carbone suivi sur chaque projet.</p>
-      </div>
-      <div class="eng-card" role="listitem">
-        <span class="eng-icon" aria-hidden="true">🤝</span>
-        <h3>Transparence totale</h3>
-        <p>Compte-rendu hebdomadaire, journal de chantier partagé. Un seul interlocuteur du devis à la réception.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ████ CTA BAND ████ -->
-  <section class="cta-band" id="contact" aria-labelledby="cta-h2">
-    <div>
-      <h2 id="cta-h2">UN PROJET<br>À NOUS<br><em>CONFIER&nbsp;?</em></h2>
-      <p>Devis personnalisé sous 48&nbsp;heures, sans engagement. Un interlocuteur unique du premier échange à la livraison.</p>
-    </div>
-    <a class="btn btn-navy" href="/contact" aria-label="Demander un devis gratuit">Demander un devis</a>
   </section>
 
 </Layout>
-
-<style>
-  /* Cards Réalisations sur la homepage — wrapper cliquable */
-  .proj-card-link-home {
-    text-decoration: none;
-    color: inherit;
-    display: block;
-    transition: transform .3s ease;
-  }
-  .proj-card-link-home:hover {
-    transform: translateY(-4px);
-  }
-  .proj-card-link-home:focus-visible {
-    outline: 3px solid #B8934A;
-    outline-offset: 4px;
-    border-radius: 2px;
-  }
-</style>

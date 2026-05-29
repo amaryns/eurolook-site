@@ -61,7 +61,7 @@ const {
     "name": "Eurolook Construction",
     "url": "https://eurolookgroup.com",
     "logo": "https://eurolookgroup.com/logos/logo.svg",
-    "description": "Renforcement structurel, réhabilitation technique et aménagement commercial. EGB certifié MASE depuis 2015.",
+    "description": "Entreprise Générale du Bâtiment certifiée MASE depuis 2019. Renforcement structurel, réhabilitation technique et aménagement commercial.",
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "309 Rue Louis Lépine",
@@ -152,7 +152,6 @@ const {
           </li>
           <li><a class="nav-link" href="/realisations">Réalisations</a></li>
           <li><a class="nav-link" href="/la-fabrique">La Fabrique</a></li>
-          <li><a class="nav-link" href="/engagements">Engagements</a></li>
           <li><a class="nav-link" href="/contact">Contact</a></li>
         </ul>
 
@@ -202,7 +201,6 @@ const {
         </li>
         <li><a class="mob-link" href="/realisations">Réalisations</a></li>
         <li><a class="mob-link" href="/la-fabrique">La Fabrique</a></li>
-        <li><a class="mob-link" href="/engagements">Engagements</a></li>
         <li><a class="mob-link" href="/contact">Contact</a></li>
       </ul>
       <a class="mob-cta" href="/contact">Devis gratuit</a>
@@ -354,6 +352,27 @@ const {
       }
     }
 
+  })();
+
+  /* ── REVEAL ON SCROLL (système global) ── */
+  (function(){
+    if(!('IntersectionObserver' in window)){
+      document.querySelectorAll('.reveal,.reveal-left,.reveal-right,.reveal-scale,.stagger').forEach(function(el){
+        el.classList.add('is-visible');
+      });
+      return;
+    }
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){
+          entry.target.classList.add('is-visible');
+          io.unobserve(entry.target);
+        }
+      });
+    },{threshold:.15,rootMargin:'0px 0px -80px 0px'});
+    document.querySelectorAll('.reveal,.reveal-left,.reveal-right,.reveal-scale,.stagger').forEach(function(el){
+      io.observe(el);
+    });
   })();
 
   /* ── ONGLETS EXPERTISES ── */
