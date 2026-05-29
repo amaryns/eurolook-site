@@ -434,6 +434,160 @@ body.menu-open{overflow:hidden;}
    NOUVELLES CLASSES — HOME 2.0
 ══════════════════════════════════════════════════════════════════ */
 
+/* STATS BAND V2 — Format éditorial vertical (key facts) */
+.stats-band-v2{
+  background:linear-gradient(135deg,var(--navy) 0%,var(--navy2) 100%);
+  padding:clamp(4rem,8vw,7rem) var(--gap);
+  position:relative;
+  overflow:hidden;
+  border-top:3px solid var(--gold);
+  border-bottom:3px solid var(--gold);
+}
+.stats-band-v2::before{
+  content:'';
+  position:absolute;
+  top:-30%;
+  right:-15%;
+  width:clamp(300px,60vw,700px);
+  height:clamp(300px,60vw,700px);
+  background:radial-gradient(circle,rgba(184,147,74,.1) 0%,transparent 60%);
+  pointer-events:none;
+}
+.stats-v2-inner{
+  max-width:1100px;
+  margin:0 auto;
+  position:relative;
+  z-index:1;
+}
+.stats-v2-head{
+  margin-bottom:clamp(2.5rem,4vw,3.5rem);
+  padding-bottom:1.5rem;
+  border-bottom:1px solid rgba(184,147,74,.2);
+  position:relative;
+}
+.stats-v2-head::after{
+  content:'';
+  position:absolute;
+  bottom:-1px;
+  left:0;
+  width:80px;
+  height:3px;
+  background:var(--gold);
+}
+.stats-v2-head .s-tag{color:var(--gold);}
+.stats-v2-head .s-tag::before{background:var(--gold);}
+.stats-v2-title{
+  font-family:var(--f-d);
+  font-size:clamp(2rem,4.5vw,3.5rem);
+  font-weight:800;
+  line-height:.95;
+  letter-spacing:.01em;
+  text-transform:uppercase;
+  color:var(--cream);
+  margin-top:1rem;
+}
+.stats-v2-title em{font-style:normal;color:var(--gold);}
+.stats-v2-list{
+  display:flex;
+  flex-direction:column;
+  gap:0;
+}
+.stat-line{
+  display:grid;
+  grid-template-columns:auto 1fr;
+  gap:clamp(1.5rem,4vw,3rem);
+  align-items:center;
+  padding:clamp(1.75rem,3vw,2.5rem) 0;
+  border-bottom:1px solid rgba(184,147,74,.15);
+  transition:padding-left .4s ease, background .4s ease;
+  position:relative;
+}
+.stat-line::before{
+  content:'';
+  position:absolute;
+  left:0;
+  top:50%;
+  transform:translateY(-50%);
+  width:0;
+  height:60%;
+  background:linear-gradient(180deg,var(--gold),var(--gold3));
+  transition:width .4s ease;
+}
+.stat-line:hover{
+  padding-left:1.5rem;
+  background:rgba(184,147,74,.04);
+}
+.stat-line:hover::before{
+  width:3px;
+}
+.stat-line:last-child{border-bottom:none;}
+.stat-line-num{
+  font-family:var(--f-d);
+  font-size:clamp(3rem,7vw,5rem);
+  font-weight:900;
+  line-height:.9;
+  letter-spacing:-.01em;
+  min-width:clamp(120px,15vw,200px);
+}
+.stat-line-body{
+  display:flex;
+  flex-direction:column;
+  gap:.375rem;
+}
+.stat-line-label{
+  font-family:var(--f-d);
+  font-size:clamp(1.0625rem,1.6vw,1.375rem);
+  font-weight:700;
+  letter-spacing:.04em;
+  text-transform:uppercase;
+  color:var(--cream);
+  line-height:1.2;
+}
+.stat-line-desc{
+  font-size:clamp(.875rem,1.1vw,.9875rem);
+  color:rgba(249,245,238,.6);
+  line-height:1.65;
+}
+@media (max-width:600px){
+  .stat-line{
+    grid-template-columns:1fr;
+    gap:.5rem;
+    padding:1.5rem 0;
+  }
+  .stat-line-num{min-width:auto;}
+  .stat-line:hover{padding-left:0;}
+}
+
+/* PROJ-CARD — Uniformisation du ratio des cards Réalisations */
+.proj-card{
+  position:relative;
+  overflow:hidden;
+  border-radius:2px;
+  background:var(--black2);
+  border:1px solid rgba(184,147,74,.12);
+  aspect-ratio:4/3;
+  transition:all .5s cubic-bezier(.22,.9,.34,1);
+}
+.proj-card img{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+  transition:transform .8s ease, filter .5s ease;
+}
+.proj-card-link{display:block;}
+.proj-card-link:hover .proj-card{
+  border-color:rgba(184,147,74,.4);
+  box-shadow:var(--sh-md);
+  transform:translateY(-6px);
+}
+.proj-card-link:hover .proj-card img{
+  transform:scale(1.08);
+  filter:brightness(.7);
+}
+
 /* HERO 2.0 — animation lignes */
 .hero-title .line{display:block;overflow:hidden;}
 .hero-title .line>span{display:inline-block;transform:translateY(110%);animation:lineUp 1.2s cubic-bezier(.22,.9,.34,1) forwards;}
