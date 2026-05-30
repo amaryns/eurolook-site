@@ -51,6 +51,7 @@ const {
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://images.unsplash.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet" />
 
   <!-- Schema.org JSON-LD -->
@@ -439,24 +440,40 @@ const {
     }
   })();
 
-  /* ── CARROUSEL LOGOS ── */
+  /* ── CARROUSEL LOGOS (optimisé : pause hors viewport + onglet inactif) ── */
   (function(){
     var track = document.querySelector('.carousel-track');
     if(!track) return;
     track.querySelectorAll('.c-item').forEach(function(item){
       track.appendChild(item.cloneNode(true));
     });
-    var pos = 0, speed = 0.55, paused = false;
-    (function loop(){
-      if(!paused){
+    var pos = 0, speed = 0.55, paused = false, inView = true, tabVisible = true;
+    var wrap = document.querySelector('.carousel-inner');
+    track.style.willChange = 'transform';
+
+    function loop(){
+      if(!paused && inView && tabVisible){
         pos -= speed;
         var hw = track.scrollWidth / 2;
         if(Math.abs(pos) >= hw) pos = 0;
         track.style.transform = 'translateX(' + pos + 'px)';
       }
       requestAnimationFrame(loop);
-    })();
-    var wrap = document.querySelector('.carousel-inner');
+    }
+    requestAnimationFrame(loop);
+
+    // Pause quand carrousel hors viewport
+    if('IntersectionObserver' in window && wrap){
+      var io = new IntersectionObserver(function(entries){
+        entries.forEach(function(e){ inView = e.isIntersecting; });
+      },{threshold:0.05});
+      io.observe(wrap);
+    }
+    // Pause quand onglet inactif
+    document.addEventListener('visibilitychange', function(){
+      tabVisible = !document.hidden;
+    });
+
     if(wrap){
       wrap.addEventListener('mouseenter', function(){ paused = true; });
       wrap.addEventListener('mouseleave', function(){ paused = false; });
