@@ -954,6 +954,332 @@ body.menu-open{overflow:hidden;}
 
 
 /* ════════════════════════════════════════════════════════════════
+   PAGES EXPERTISES (hub + détail)
+══════════════════════════════════════════════════════════════════ */
+
+/* HUB — Card link wrap (la card est elle-même un lien) */
+.exp-card-link-wrap{display:block;color:inherit;text-decoration:none;}
+.exp-card-link-wrap article{height:100%;display:flex;flex-direction:column;}
+.exp-card-link-wrap .exp-card-body-v2{flex:1;display:flex;flex-direction:column;}
+.exp-card-link-wrap .exp-card-link{margin-top:auto;}
+
+/* MÉTHODOLOGIE — body texte */
+.exp-method-body{
+  font-size:clamp(1rem,1.5vw,1.125rem);
+  color:rgba(249,245,238,.78);
+  line-height:1.85;
+  max-width:820px;
+  margin-top:1rem;
+}
+.exp-method-body p+p{margin-top:1.25rem;}
+.exp-method-body strong{color:var(--gold3);font-weight:600;}
+
+/* TYPES D'INTERVENTIONS — Liste premium */
+.exp-interventions-section{
+  background:linear-gradient(180deg,var(--black) 0%,var(--black2) 100%);
+  padding:clamp(4.5rem,9vw,8rem) var(--gap);
+  position:relative;
+}
+.exp-interventions-inner{max-width:1100px;margin:0 auto;}
+.exp-interventions-list{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:0;
+  margin-top:3rem;
+  list-style:none;
+  padding:0;
+}
+@media(min-width:768px){
+  .exp-interventions-list{grid-template-columns:1fr 1fr;gap:0 2rem;}
+}
+.exp-intervention-item{
+  display:grid;
+  grid-template-columns:auto 1fr;
+  gap:1.25rem;
+  align-items:flex-start;
+  padding:1.25rem 0;
+  border-bottom:1px solid rgba(184,147,74,.12);
+  transition:padding-left .3s;
+}
+.exp-intervention-item:hover{
+  padding-left:.75rem;
+  background:rgba(184,147,74,.03);
+}
+.exp-intervention-num{
+  font-family:var(--f-d);
+  font-size:.875rem;
+  font-weight:700;
+  letter-spacing:.18em;
+  color:var(--gold);
+  min-width:2rem;
+  padding-top:.125rem;
+}
+.exp-intervention-text{
+  font-size:1rem;
+  color:rgba(249,245,238,.85);
+  line-height:1.6;
+}
+
+/* LA FABRIQUE — Détails (dans light break) */
+.exp-fab-details{
+  display:flex;
+  flex-direction:column;
+  gap:1.25rem;
+}
+.exp-fab-block{
+  padding:1.5rem;
+  background:var(--cream2);
+  border:1px solid rgba(24,35,56,.1);
+  border-left:3px solid var(--gold);
+  border-radius:2px;
+  transition:all .3s;
+}
+.exp-fab-block:hover{
+  transform:translateX(4px);
+  border-left-width:5px;
+}
+.exp-fab-block h3{
+  font-family:var(--f-d);
+  font-size:.875rem;
+  font-weight:800;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:var(--gold);
+  margin-bottom:.875rem;
+}
+.exp-fab-block p{
+  font-size:.9375rem;
+  color:rgba(12,11,9,.75);
+  line-height:1.7;
+  margin:0;
+}
+.exp-fab-block ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:.375rem;}
+.exp-fab-block li{
+  font-size:.9375rem;
+  color:rgba(12,11,9,.78);
+  padding-left:1rem;
+  position:relative;
+}
+.exp-fab-block li::before{
+  content:'';
+  position:absolute;
+  left:0;
+  top:.625rem;
+  width:6px;
+  height:2px;
+  background:var(--gold);
+}
+
+/* PROJETS DE RÉFÉRENCE — Cards */
+.exp-projets-grid{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:1.25rem;
+  margin-top:3rem;
+}
+@media(min-width:640px){.exp-projets-grid{grid-template-columns:repeat(2,1fr);}}
+.exp-projet-card{
+  position:relative;
+  background:var(--black3);
+  border:1px solid rgba(184,147,74,.12);
+  border-top:3px solid var(--gold);
+  padding:2rem 1.875rem;
+  border-radius:2px;
+  transition:all .4s cubic-bezier(.22,.9,.34,1);
+  overflow:hidden;
+}
+.exp-projet-card::before{
+  content:'';
+  position:absolute;
+  top:0;
+  right:0;
+  width:80px;
+  height:80px;
+  background:radial-gradient(circle,rgba(184,147,74,.12) 0%,transparent 70%);
+  opacity:0;
+  transition:opacity .4s;
+}
+.exp-projet-card:hover{
+  transform:translateY(-6px);
+  border-color:rgba(184,147,74,.4);
+  box-shadow:var(--sh-md);
+}
+.exp-projet-card:hover::before{opacity:1;}
+.exp-projet-num{
+  position:absolute;
+  top:1.25rem;
+  right:1.5rem;
+  font-family:var(--f-d);
+  font-size:2rem;
+  font-weight:800;
+  color:rgba(184,147,74,.35);
+  line-height:1;
+}
+.exp-projet-titre{
+  font-family:var(--f-d);
+  font-size:1.1875rem;
+  font-weight:800;
+  letter-spacing:.04em;
+  text-transform:uppercase;
+  color:var(--cream);
+  line-height:1.2;
+  margin-bottom:.875rem;
+  padding-right:3rem;
+}
+.exp-projet-details{
+  font-size:.9375rem;
+  color:rgba(249,245,238,.7);
+  line-height:1.75;
+  margin-bottom:1.5rem;
+}
+.exp-projet-meta{
+  display:flex;
+  align-items:center;
+  gap:1rem;
+  flex-wrap:wrap;
+  padding-top:1.25rem;
+  border-top:1px solid rgba(184,147,74,.15);
+}
+.exp-projet-client{
+  font-family:var(--f-d);
+  font-size:.75rem;
+  font-weight:700;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:rgba(249,245,238,.55);
+}
+.exp-projet-montant{
+  font-family:var(--f-d);
+  font-size:1rem;
+  font-weight:800;
+  letter-spacing:.04em;
+  text-transform:uppercase;
+  color:var(--gold3);
+  margin-left:auto;
+}
+
+/* PARTENAIRES — Chips premium */
+.exp-partenaires-section{
+  background:var(--black);
+  padding:clamp(4rem,8vw,7rem) var(--gap);
+  position:relative;
+}
+.exp-partenaires-inner{max-width:1100px;margin:0 auto;}
+.exp-partenaires-list{
+  display:flex;
+  flex-wrap:wrap;
+  gap:.875rem;
+  margin-top:3rem;
+}
+.exp-partenaire-chip{
+  display:inline-flex;
+  align-items:center;
+  gap:.625rem;
+  padding:.875rem 1.5rem;
+  font-family:var(--f-d);
+  font-size:.9375rem;
+  font-weight:700;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  color:var(--gold3);
+  background:rgba(184,147,74,.06);
+  border:1.5px solid rgba(184,147,74,.3);
+  border-radius:2px;
+  transition:all .3s;
+}
+.exp-partenaire-chip::before{
+  content:'';
+  width:8px;
+  height:8px;
+  background:var(--gold);
+  border-radius:50%;
+}
+.exp-partenaire-chip:hover{
+  background:rgba(184,147,74,.12);
+  border-color:var(--gold);
+  transform:translateY(-2px);
+}
+
+/* AUTRES EXPERTISES — Cards de navigation */
+.exp-others-section{
+  background:var(--black2);
+  padding:clamp(4.5rem,9vw,8rem) var(--gap);
+  position:relative;
+}
+.exp-others-inner{max-width:1440px;margin:0 auto;}
+.exp-others-grid{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:1rem;
+  margin-top:3rem;
+}
+@media(min-width:640px){.exp-others-grid{grid-template-columns:repeat(2,1fr);}}
+@media(min-width:1024px){.exp-others-grid{grid-template-columns:repeat(3,1fr);}}
+.exp-other-card-v2{
+  position:relative;
+  display:flex;
+  flex-direction:column;
+  gap:.625rem;
+  background:var(--black3);
+  border:1px solid rgba(184,147,74,.12);
+  padding:1.75rem 1.625rem;
+  border-radius:2px;
+  text-decoration:none;
+  color:inherit;
+  transition:all .4s cubic-bezier(.22,.9,.34,1);
+  overflow:hidden;
+}
+.exp-other-card-v2::before{
+  content:'';
+  position:absolute;
+  top:0;
+  left:0;
+  width:3px;
+  height:0;
+  background:var(--gold);
+  transition:height .4s ease;
+}
+.exp-other-card-v2:hover{
+  transform:translateY(-4px);
+  border-color:rgba(184,147,74,.4);
+  background:rgba(184,147,74,.04);
+}
+.exp-other-card-v2:hover::before{height:100%;}
+.exp-other-num-v2{
+  font-family:var(--f-d);
+  font-size:.875rem;
+  font-weight:700;
+  letter-spacing:.2em;
+  color:var(--gold);
+}
+.exp-other-titre-v2{
+  font-family:var(--f-d);
+  font-size:1.125rem;
+  font-weight:800;
+  letter-spacing:.04em;
+  text-transform:uppercase;
+  color:var(--cream);
+  line-height:1.2;
+}
+.exp-other-tagline{
+  font-size:.875rem;
+  color:rgba(249,245,238,.6);
+  line-height:1.6;
+  margin-bottom:.625rem;
+}
+.exp-other-arrow{
+  font-family:var(--f-d);
+  font-size:1.5rem;
+  font-weight:700;
+  color:var(--gold);
+  margin-top:auto;
+  align-self:flex-end;
+  transition:transform .3s;
+}
+.exp-other-card-v2:hover .exp-other-arrow{transform:translateX(6px);}
+
+
+/* ════════════════════════════════════════════════════════════════
    NOUVELLES CLASSES — HOME 2.0
 ══════════════════════════════════════════════════════════════════ */
 

@@ -1,0 +1,325 @@
+---
+// src/pages/expertises/[slug].astro
+// TEMPLATE DYNAMIQUE — VERSION 2.0
+// Génère les 6 pages expertises depuis src/data/expertises.ts
+// Refonte DA premium : hero massif, stats vertical, light breaks, animations
+
+import Layout from '../../layouts/Layout.astro';
+import { getToutesLesExpertises, getExpertisesSauf } from '../../data/expertises';
+
+export async function getStaticPaths() {
+  const expertises = getToutesLesExpertises();
+  return expertises.map(expertise => ({
+    params: { slug: expertise.slug },
+    props: { expertise },
+  }));
+}
+
+const { expertise } = Astro.props;
+const autresExpertises = getExpertisesSauf(expertise.slug);
+
+// Images Unsplash WebP par expertise (cohérence avec la home)
+const expImages: Record<string, string> = {
+  'renforcement-structurel': 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=1600&fm=webp&q=72&auto=compress',
+  'rehabilitation-technique': 'https://images.unsplash.com/photo-1581094288338-2314dddb7ece?w=1600&fm=webp&q=72&auto=compress',
+  'conception-amenagement-points-de-vente': 'https://images.unsplash.com/photo-1604014237800-1c9102c219da?w=1600&fm=webp&q=72&auto=compress',
+  'menuiserie-et-aluminium': 'https://images.unsplash.com/photo-1545153996-d9b9beea6ce8?w=1600&fm=webp&q=72&auto=compress',
+  'pilotage-coordination-chantier-opc': 'https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=1600&fm=webp&q=72&auto=compress',
+  'amenagements-tertiaires-finitions': 'https://images.unsplash.com/photo-1631679706909-1844bbd07221?w=1600&fm=webp&q=72&auto=compress',
+};
+const expImagesMid: Record<string, string> = {
+  'renforcement-structurel': 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=900&fm=webp&q=72&auto=compress',
+  'rehabilitation-technique': 'https://images.unsplash.com/photo-1581094288338-2314dddb7ece?w=900&fm=webp&q=72&auto=compress',
+  'conception-amenagement-points-de-vente': 'https://images.unsplash.com/photo-1604014237800-1c9102c219da?w=900&fm=webp&q=72&auto=compress',
+  'menuiserie-et-aluminium': 'https://images.unsplash.com/photo-1545153996-d9b9beea6ce8?w=900&fm=webp&q=72&auto=compress',
+  'pilotage-coordination-chantier-opc': 'https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=900&fm=webp&q=72&auto=compress',
+  'amenagements-tertiaires-finitions': 'https://images.unsplash.com/photo-1631679706909-1844bbd07221?w=900&fm=webp&q=72&auto=compress',
+};
+
+const heroImg = expImages[expertise.slug] || expImages['renforcement-structurel'];
+const midImg = expImagesMid[expertise.slug] || expImagesMid['renforcement-structurel'];
+---
+
+<Layout
+  title={expertise.meta.title}
+  description={expertise.meta.description}
+  canonical={`https://eurolookgroup.com/expertises/${expertise.slug}`}
+>
+
+  <!-- ████ HERO ████ -->
+  <section class="page-hero" aria-labelledby="exp-hero-h1">
+    <img
+      class="hero-bg-img"
+      src={heroImg}
+      alt=""
+      role="presentation"
+      loading="eager"
+      fetchpriority="high"
+      width="1600"
+      height="900"
+    />
+    <div class="hero-bg-overlay" aria-hidden="true"></div>
+
+    <div class="page-hero-body">
+      <nav aria-label="Fil d'Ariane">
+        <p class="page-breadcrumb">
+          <a href="/">Accueil</a>
+          <span aria-hidden="true">→</span>
+          <a href="/expertises">Expertises</a>
+          <span aria-hidden="true">→</span>
+          <span>{expertise.titre}</span>
+        </p>
+      </nav>
+
+      <span class="hero-eyebrow">
+        <span class="dot" aria-hidden="true"></span>
+        Expertise {expertise.numero}
+      </span>
+
+      <h1 id="exp-hero-h1" class="page-hero-title">
+        <span class="line"><span>{expertise.titreLong.split(' ').slice(0, -1).join(' ')}</span></span>
+        <span class="line"><span><em>{expertise.titreLong.split(' ').slice(-1).join(' ')}.</em></span></span>
+      </h1>
+
+      <p class="page-hero-lead">{expertise.tagline}</p>
+    </div>
+  </section>
+
+  <!-- ████ STATS BAND — Valeur ajoutée (KPIs depuis data) ████ -->
+  <section class="stats-band-v2" aria-label="Repères">
+    <div class="stats-v2-inner">
+
+      <div class="stats-v2-head reveal">
+        <span class="s-tag">Valeur ajoutée</span>
+        <h2 class="stats-v2-title">EN <em>BREF.</em></h2>
+      </div>
+
+      <ul class="stats-v2-list stagger" role="list">
+        {expertise.valeurAjoutee.map(kpi => (
+          <li class="stat-line" role="listitem">
+            <span class="stat-line-num stat-num-gradient">{kpi.value}</span>
+            <div class="stat-line-body">
+              <span class="stat-line-label">{kpi.label}</span>
+            </div>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <!-- ████ PRÉSENTATION — Light break crème ████ -->
+  <section class="about-light" aria-labelledby="exp-pres-h2">
+    <div class="about-inner">
+
+      <div class="about-img-wrap reveal-left">
+        <img
+          src={midImg}
+          alt={`Illustration : ${expertise.titre}`}
+          loading="lazy"
+          decoding="async"
+          width="800"
+          height="600"
+        />
+        <div class="about-img-badge">Expertise {expertise.numero}</div>
+      </div>
+
+      <div class="about-content reveal">
+        <span class="s-tag">Présentation</span>
+        <h2 id="exp-pres-h2" class="about-title">
+          {expertise.titreLong}
+        </h2>
+        {expertise.introduction.map(paragraphe => <p>{paragraphe}</p>)}
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ████ MÉTHODOLOGIE — Fond sombre ████ -->
+  <section class="exp-section" aria-labelledby="exp-method-h2">
+    <div class="exp-inner" style="max-width:1100px;margin:0 auto;padding:0 var(--gap);">
+
+      <div class="s-head-v2 reveal">
+        <div>
+          <span class="s-tag">Méthodologie</span>
+          <h2 id="exp-method-h2" class="s-title-v2">
+            NOTRE<br/><em>APPROCHE.</em>
+          </h2>
+        </div>
+      </div>
+
+      <div class="exp-method-body reveal">
+        {expertise.methodologie.map(paragraphe => <p>{paragraphe}</p>)}
+      </div>
+    </div>
+  </section>
+
+  <!-- ████ TYPES D'INTERVENTIONS — Liste premium ████ -->
+  <section class="exp-interventions-section" aria-labelledby="exp-int-h2">
+    <div class="exp-interventions-inner">
+
+      <div class="s-head-v2 reveal">
+        <div>
+          <span class="s-tag">Types d'interventions</span>
+          <h2 id="exp-int-h2" class="s-title-v2">
+            CE QUE NOUS<br/><em>RÉALISONS.</em>
+          </h2>
+        </div>
+      </div>
+
+      <ul class="exp-interventions-list stagger" role="list">
+        {expertise.interventions.map((item, idx) => (
+          <li class="exp-intervention-item" role="listitem">
+            <span class="exp-intervention-num">{String(idx + 1).padStart(2, '0')}</span>
+            <span class="exp-intervention-text">{item}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <!-- ████ LA FABRIQUE (uniquement menuiserie alu) ████ -->
+  {expertise.laFabrique && (
+    <section class="about-light" aria-labelledby="exp-fab-h2">
+      <div class="about-inner">
+
+        <div class="about-content reveal">
+          <span class="s-tag">L'Atelier La Fabrique</span>
+          <h2 id="exp-fab-h2" class="about-title">
+            ATELIER<br/><em>INTÉGRÉ.</em>
+          </h2>
+          {expertise.laFabrique.presentation.map(paragraphe => <p>{paragraphe}</p>)}
+          <a href="/la-fabrique" class="about-link">
+            Découvrir La Fabrique en détail
+            <svg width="20" height="12" viewBox="0 0 20 12" fill="none" aria-hidden="true">
+              <path d="M14 1L19 6L14 11M19 6H1" stroke="currentColor" stroke-width="2"/>
+            </svg>
+          </a>
+        </div>
+
+        <div class="reveal-right exp-fab-details">
+          <div class="exp-fab-block">
+            <h3>Spécialités</h3>
+            <ul>
+              {expertise.laFabrique.specialites.map(item => <li>{item}</li>)}
+            </ul>
+          </div>
+          <div class="exp-fab-block">
+            <h3>Équipement</h3>
+            <p>{expertise.laFabrique.equipement}</p>
+          </div>
+          <div class="exp-fab-block">
+            <h3>Partenaire innovation</h3>
+            <p>{expertise.laFabrique.partenaireInnovation}</p>
+          </div>
+          <div class="exp-fab-block">
+            <h3>Sous-traitants</h3>
+            <ul>
+              {expertise.laFabrique.sousTraitants.map(item => <li>{item}</li>)}
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  )}
+
+  <!-- ████ PROJETS DE RÉFÉRENCE — Cards premium ████ -->
+  {expertise.projetsExemples.length > 0 && (
+    <section class="exp-section" style="background:var(--black2);" aria-labelledby="exp-proj-h2">
+      <div class="exp-inner" style="max-width:1440px;margin:0 auto;padding:0 var(--gap);">
+
+        <div class="s-head-v2 reveal">
+          <div>
+            <span class="s-tag">Projets de référence</span>
+            <h2 id="exp-proj-h2" class="s-title-v2">
+              RÉALISATIONS<br/><em>MARQUANTES.</em>
+            </h2>
+          </div>
+        </div>
+
+        <div class="exp-projets-grid stagger">
+          {expertise.projetsExemples.map((projet, idx) => (
+            <article class="exp-projet-card">
+              <span class="exp-projet-num">{String(idx + 1).padStart(2, '0')}</span>
+              <h3 class="exp-projet-titre">{projet.titre}</h3>
+              <p class="exp-projet-details">{projet.details}</p>
+              <div class="exp-projet-meta">
+                {projet.client && <span class="exp-projet-client">{projet.client}</span>}
+                {projet.montant && <span class="exp-projet-montant">{projet.montant}</span>}
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- ████ PARTENAIRES (si présents) ████ -->
+  {expertise.partenaires && expertise.partenaires.length > 0 && (
+    <section class="exp-partenaires-section" aria-labelledby="exp-part-h2">
+      <div class="exp-partenaires-inner">
+
+        <div class="s-head-v2 reveal">
+          <div>
+            <span class="s-tag">Partenaires techniques</span>
+            <h2 id="exp-part-h2" class="s-title-v2">
+              NOS<br/><em>PARTENAIRES.</em>
+            </h2>
+          </div>
+        </div>
+
+        <div class="exp-partenaires-list stagger">
+          {expertise.partenaires.map(partenaire => (
+            <span class="exp-partenaire-chip">{partenaire}</span>
+          ))}
+        </div>
+
+      </div>
+    </section>
+  )}
+
+  <!-- ████ AUTRES EXPERTISES — Liens vers les autres pages ████ -->
+  <section class="exp-others-section" aria-labelledby="exp-other-h2">
+    <div class="exp-others-inner">
+
+      <div class="s-head-v2 reveal">
+        <div>
+          <span class="s-tag">Nos autres savoir-faire</span>
+          <h2 id="exp-other-h2" class="s-title-v2">
+            AUTRES<br/><em>EXPERTISES.</em>
+          </h2>
+        </div>
+        <a href="/expertises" class="see-all">
+          Toutes nos expertises
+          <svg width="18" height="10" viewBox="0 0 18 10" fill="none" aria-hidden="true">
+            <path d="M13 1L17 5L13 9M17 5H1" stroke="currentColor" stroke-width="2"/>
+          </svg>
+        </a>
+      </div>
+
+      <div class="exp-others-grid stagger">
+        {autresExpertises.map(autre => (
+          <a href={`/expertises/${autre.slug}`} class="exp-other-card-v2">
+            <span class="exp-other-num-v2">{autre.numero}</span>
+            <h3 class="exp-other-titre-v2">{autre.titreLong}</h3>
+            <span class="exp-other-tagline">{autre.tagline}</span>
+            <span class="exp-other-arrow" aria-hidden="true">→</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ████ CTA FINALE ████ -->
+  <section class="cta-band-v2" aria-labelledby="exp-cta-h2">
+    <div class="cta-band-v2-inner reveal">
+      <h2 id="exp-cta-h2">UN PROJET DE<br/><em>{expertise.titre.toUpperCase()}</em> ?</h2>
+      <div>
+        <p>Confiez-nous votre projet : notre équipe spécialisée vous accompagne du devis à la réception.</p>
+        <br>
+        <a href="/contact" class="btn btn-dark">Demander un devis</a>
+      </div>
+    </div>
+  </section>
+
+</Layout>

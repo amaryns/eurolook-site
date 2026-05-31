@@ -1,0 +1,164 @@
+---
+// src/pages/expertises/index.astro
+// PAGE HUB EXPERTISES — VERSION 2.0
+// Liste toutes les expertises (overview)
+// Alimentée automatiquement depuis src/data/expertises.ts
+
+import Layout from '../../layouts/Layout.astro';
+import { getToutesLesExpertises } from '../../data/expertises';
+
+const expertises = getToutesLesExpertises();
+
+// Images Unsplash WebP pour chaque expertise (cohérentes avec la home)
+const expImages: Record<string, string> = {
+  'renforcement-structurel': 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=600&fm=webp&q=70&auto=compress',
+  'rehabilitation-technique': 'https://images.unsplash.com/photo-1581094288338-2314dddb7ece?w=600&fm=webp&q=70&auto=compress',
+  'conception-amenagement-points-de-vente': 'https://images.unsplash.com/photo-1604014237800-1c9102c219da?w=600&fm=webp&q=70&auto=compress',
+  'menuiserie-et-aluminium': 'https://images.unsplash.com/photo-1545153996-d9b9beea6ce8?w=600&fm=webp&q=70&auto=compress',
+  'pilotage-coordination-chantier-opc': 'https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=600&fm=webp&q=70&auto=compress',
+  'amenagements-tertiaires-finitions': 'https://images.unsplash.com/photo-1631679706909-1844bbd07221?w=600&fm=webp&q=70&auto=compress',
+};
+---
+
+<Layout
+  title="Nos expertises — Eurolook Construction | 6 savoir-faire complémentaires"
+  description="Découvrez les 6 expertises d'Eurolook Construction : renforcement structurel, réhabilitation technique, aménagement de commerces, menuiserie aluminium, coordination technique et aménagement intérieur."
+  canonical="https://eurolookgroup.com/expertises"
+>
+
+  <!-- ████ HERO ████ -->
+  <section class="page-hero" aria-labelledby="hub-hero-h1">
+    <img
+      class="hero-bg-img"
+      src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=1600&fm=webp&q=72&auto=compress"
+      alt=""
+      role="presentation"
+      loading="eager"
+      fetchpriority="high"
+      width="1600"
+      height="900"
+    />
+    <div class="hero-bg-overlay" aria-hidden="true"></div>
+
+    <div class="page-hero-body">
+      <nav aria-label="Fil d'Ariane">
+        <p class="page-breadcrumb">
+          <a href="/">Accueil</a>
+          <span aria-hidden="true">→</span>
+          <span>Expertises</span>
+        </p>
+      </nav>
+
+      <span class="hero-eyebrow">
+        <span class="dot" aria-hidden="true"></span>
+        Six savoir-faire complémentaires
+      </span>
+
+      <h1 id="hub-hero-h1" class="page-hero-title">
+        <span class="line"><span>NOS</span></span>
+        <span class="line"><span><em>EXPERTISES.</em></span></span>
+      </h1>
+
+      <p class="page-hero-lead">
+        Du renforcement structurel au déploiement multi-sites pour les enseignes nationales, six savoir-faire complémentaires structurent notre activité.
+      </p>
+    </div>
+  </section>
+
+  <!-- ████ STATS BAND VERTICALE ████ -->
+  <section class="stats-band-v2" aria-label="Repères">
+    <div class="stats-v2-inner">
+
+      <div class="stats-v2-head reveal">
+        <span class="s-tag">Repères</span>
+        <h2 class="stats-v2-title">EN <em>BREF.</em></h2>
+      </div>
+
+      <ul class="stats-v2-list stagger" role="list">
+
+        <li class="stat-line" role="listitem">
+          <span class="stat-line-num stat-num-gradient" data-count="6">6</span>
+          <div class="stat-line-body">
+            <span class="stat-line-label">Expertises complémentaires</span>
+            <span class="stat-line-desc">Renforcement, réhab, aménagement, menuiseries alu, coordination, intérieur</span>
+          </div>
+        </li>
+
+        <li class="stat-line" role="listitem">
+          <span class="stat-line-num stat-num-gradient" data-count="2015">2015</span>
+          <div class="stat-line-body">
+            <span class="stat-line-label">Création d'Euro Look</span>
+            <span class="stat-line-desc">Entreprise Générale du Bâtiment — Holding MG</span>
+          </div>
+        </li>
+
+        <li class="stat-line" role="listitem">
+          <span class="stat-line-num stat-num-gradient">MASE</span>
+          <div class="stat-line-body">
+            <span class="stat-line-label">Certifié 2019</span>
+            <span class="stat-line-desc">Qualité, santé, sécurité, environnement — objectif Zéro Accident</span>
+          </div>
+        </li>
+
+      </ul>
+    </div>
+  </section>
+
+  <!-- ████ GRILLE EXPERTISES — Cards modernes ████ -->
+  <section class="exp-section" aria-labelledby="grid-h2">
+    <div class="exp-inner" style="max-width:1440px;margin:0 auto;padding:0 var(--gap);">
+
+      <div class="s-head-v2 reveal">
+        <div>
+          <span class="s-tag">Nos savoir-faire</span>
+          <h2 id="grid-h2" class="s-title-v2">
+            CE QUE NOUS<br/><em>FAISONS.</em>
+          </h2>
+        </div>
+      </div>
+
+      <div class="exp-grid-cards stagger">
+        {expertises.map(expertise => (
+          <a
+            href={`/expertises/${expertise.slug}`}
+            class="exp-card-v2 exp-card-link-wrap"
+            aria-label={`Découvrir l'expertise : ${expertise.titre}`}
+          >
+            <article>
+              <div class="exp-card-img-v2">
+                <img
+                  src={expImages[expertise.slug] || expImages['renforcement-structurel']}
+                  alt={`Expertise ${expertise.titre} — Eurolook Construction`}
+                  loading="lazy"
+                  decoding="async"
+                  width="800"
+                  height="480"
+                />
+                <div class="exp-card-num">{expertise.numero}</div>
+              </div>
+              <div class="exp-card-body-v2">
+                <span class="exp-card-tag">{expertise.tagline}</span>
+                <h3 class="exp-card-title-v2">{expertise.titreLong}</h3>
+                <p class="exp-card-desc-v2">{expertise.introduction[0]}</p>
+                <span class="exp-card-link">Découvrir l'expertise →</span>
+              </div>
+            </article>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ████ CTA FINALE ████ -->
+  <section class="cta-band-v2" aria-labelledby="hub-cta-h2">
+    <div class="cta-band-v2-inner reveal">
+      <h2 id="hub-cta-h2">UNE EXPERTISE<br/><em>SUR MESURE ?</em></h2>
+      <div>
+        <p>Confiez-nous votre projet : nos équipes spécialisées vous accompagnent du devis à la réception.</p>
+        <br>
+        <a href="/contact" class="btn btn-dark">Demander un devis</a>
+      </div>
+    </div>
+  </section>
+
+</Layout>

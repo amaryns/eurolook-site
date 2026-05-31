@@ -108,7 +108,7 @@ export const expertises: Expertise[] = [
     ],
     methodologie: [
       "La certification MASE obtenue en 2019 encadre l'ensemble de nos interventions. Elle garantit à nos clients un système de management basé sur la qualité, la santé, la sécurité et l'environnement — objectif prioritaire : zéro accident.",
-      "Sur chaque chantier, un conducteur de travaux dédié assure l'interface avec le maître d'ouvrage, le maître d'œuvre et les équipes d'exploitation du site. Compte-rendu hebdomadaire, journal de chantier partagé : la transparence est totale.",
+      "Sur chaque chantier, un conducteur de travaux dédié assure l'interface avec le maître d'ouvrage, le maître d'œuvre et les équipes d'exploitation du site.",
     ],
     interventions: [
       "Démolition intérieure ciblée (cellules commerciales, agences, locaux techniques)",
@@ -139,21 +139,21 @@ export const expertises: Expertise[] = [
   // 03. AMÉNAGEMENT DE COMMERCES
   // ─────────────────────────────────────────────────────────────────────────
   {
-    slug: 'amenagement-commerce',
+    slug: 'conception-amenagement-points-de-vente',
     numero: '03',
-    titre: 'Aménagement de commerces',
-    titreLong: 'AMÉNAGEMENT DE COMMERCES',
+    titre: 'Conception & aménagement de points de vente',
+    titreLong: 'CONCEPTION & AMÉNAGEMENT DE POINTS DE VENTE',
     tagline: "Déploiement multi-sites pour enseignes nationales",
     meta: {
-      title: "Aménagement de cellules commerciales — Eurolook Construction",
-      description: "Spécialiste du déploiement multi-sites de cellules commerciales pour enseignes nationales. Référencé Carrefour, Carmila, Klépierre. La Barbe de Papa, Indémodable, Shoozze.",
+      title: "Conception & aménagement de points de vente — Eurolook Construction",
+      description: "Spécialiste de la conception et de l'aménagement de points de vente pour enseignes nationales. Référencé Carrefour, Carmila, Klépierre. La Barbe de Papa, Indémodable, Shoozze.",
     },
     introduction: [
       "Référencée auprès des principaux acteurs de l'immobilier commercial européen — Carrefour, Carmila, Klépierre — Eurolook Construction est devenue un partenaire de référence pour le déploiement et la réhabilitation de cellules commerciales sur le territoire national.",
       "Notre force : la capacité à industrialiser un savoir-faire artisanal. Du déploiement de 29 boutiques La Barbe de Papa à travers la France aux ouvertures de 9 enseignes Indémodable, nous gérons les délais de réouverture contractuels, les chartes enseigne et les contraintes des centres commerciaux en exploitation.",
     ],
     methodologie: [
-      "Chaque déploiement multi-sites est piloté par un référent unique chez Eurolook, garant du respect des plannings contractuels et de l'homogénéité des prestations entre les différents points de vente.",
+      "Le déploiement multi-sites repose sur une planification rigoureuse et une coordination étroite avec les centres commerciaux et l'enseigne.",
       "Nos équipes travaillent de nuit pour les travaux bruyants dans les centres commerciaux ouverts, et coordonnent l'ensemble des corps d'état secondaires (climatisation, électricité, plomberie, agencement) pour une livraison clé en main.",
     ],
     interventions: [
@@ -168,12 +168,12 @@ export const expertises: Expertise[] = [
     ],
     valeurAjoutee: [
       { label: "Référencements", value: "Carrefour, Carmila, Klépierre" },
-      { label: "Boutiques livrées", value: "100+" },
+      { label: "Boutiques livrées", value: "40+" },
       { label: "Couverture", value: "Nationale" },
       { label: "Multi-enseignes", value: "Spécialité" },
     ],
     projetsExemples: [
-      { titre: "La Barbe de Papa — 29 boutiques (national)", details: "Réhabilitation complète de cellules commerciales pour le réseau national La Barbe de Papa : Nice, Marseille, Toulouse, Strasbourg, Rennes, Lyon, Le Mans, et 22 autres villes. Peinture, climatisation, sols, agencement.", montant: "1 200 000 € HT", client: "La Barbe de Papa" },
+      { titre: "La Barbe de Papa — 29 boutiques (national)", details: "Réhabilitation complète de cellules commerciales pour le réseau national La Barbe de Papa : Nice, Marseille, Toulouse, Strasbourg, Rennes, Lyon, Le Mans, et 22 autres villes. Peinture, climatisation, sols, agencement.", montant: "70 000 € HT / boutique", client: "La Barbe de Papa" },
       { titre: "Indémodable — 9 boutiques", details: "Création de boutiques de vente de chaussures féminines sur toute la France (Nice, Vitrolles, Aix, Marseille, Uzès, Toulouse, Lescar, Anglet, Perpignan, Vénissieux). Démolition, sanitaires, revêtements, climatisation, agencement.", montant: "100 000 € HT / boutique", client: "Indémodable" },
       { titre: "Shoozze — Orange (84)", details: "Réhabilitation complète de cellule commerciale dans le cadre d'un déploiement multi-sites.", montant: "100 000 € HT", client: "Shoozze" },
       { titre: "Mon Petit Herbier — Marseille Bonneveine", details: "Création d'une boutique de vente de CBD pour Red Banana — peinture, climatisation, sol, électricité, plomberie.", montant: "41 000 € HT", client: "Red Banana" },
@@ -185,13 +185,13 @@ export const expertises: Expertise[] = [
   // 04. MENUISERIE ALUMINIUM / LA FABRIQUE
   // ─────────────────────────────────────────────────────────────────────────
   {
-    slug: 'menuiserie-aluminium',
+    slug: 'menuiserie-et-aluminium',
     numero: '04',
-    titre: 'Menuiserie aluminium',
-    titreLong: 'MENUISERIE ALUMINIUM',
+    titre: 'Menuiserie et aluminium',
+    titreLong: 'MENUISERIE ET ALUMINIUM',
     tagline: "L'Atelier La Fabrique — Fabrication & pose intégrées",
     meta: {
-      title: "Menuiserie aluminium — La Fabrique | Eurolook Construction",
+      title: "Menuiserie et aluminium — La Fabrique | Eurolook Construction",
       description: "La Fabrique — atelier de fabrication et pose de menuiseries aluminium du groupe Holding MG. Murs rideaux, portes pare-balle et coupe-feu, façades. Partenaire Reynaers, machines FOM.",
     },
     introduction: [
@@ -225,7 +225,7 @@ export const expertises: Expertise[] = [
     laFabrique: {
       presentation: [
         "La Fabrique est l'entité dédiée à la menuiserie aluminium au sein du groupe Holding MG. Structure indépendante d'Eurolook Construction tout en bénéficiant de la solidité du groupe, elle dispose de ses propres équipes : administratif, commercial, technique, fabrication et pose.",
-        "Une page dédiée à La Fabrique est en préparation et sera prochainement disponible.",
+        "Découvrez en détail l'atelier La Fabrique sur sa page dédiée.",
       ],
       specialites: [
         "Murs rideaux",
@@ -243,13 +243,13 @@ export const expertises: Expertise[] = [
   // 05. COORDINATION TECHNIQUE
   // ─────────────────────────────────────────────────────────────────────────
   {
-    slug: 'coordination-technique',
+    slug: 'pilotage-coordination-chantier-opc',
     numero: '05',
-    titre: 'Coordination technique',
-    titreLong: 'COORDINATION TECHNIQUE',
+    titre: 'Pilotage & coordination de chantier (OPC)',
+    titreLong: 'PILOTAGE & COORDINATION DE CHANTIER',
     tagline: "Pilotage MOE/MOA, dessins exécutifs et OPC",
     meta: {
-      title: "Coordination technique et OPC — Eurolook Construction",
+      title: "Pilotage & coordination de chantier (OPC) — Eurolook Construction",
       description: "Pilotage technique de chantier, dessins exécutifs, ordonnancement-pilotage-coordination (OPC), interface MOE/MOA. Conformité jusqu'à la réception OPR.",
     },
     introduction: [
@@ -287,17 +287,17 @@ export const expertises: Expertise[] = [
   // 06. AMÉNAGEMENT INTÉRIEUR
   // ─────────────────────────────────────────────────────────────────────────
   {
-    slug: 'amenagement-interieur',
+    slug: 'amenagements-tertiaires-finitions',
     numero: '06',
-    titre: 'Aménagement intérieur',
-    titreLong: 'AMÉNAGEMENT INTÉRIEUR',
+    titre: 'Aménagements tertiaires & finitions',
+    titreLong: 'AMÉNAGEMENTS TERTIAIRES & FINITIONS',
     tagline: "Finitions haut de gamme tertiaire et commercial",
     meta: {
-      title: "Aménagement intérieur tertiaire et commercial — Eurolook Construction",
-      description: "Cloisons, faux plafonds, revêtements, fluides. Finitions haut de gamme pour espaces tertiaires, médicaux et commerciaux. Un seul interlocuteur, tous corps d'état.",
+      title: "Aménagements tertiaires & finitions — Eurolook Construction",
+      description: "Cloisons, faux plafonds, revêtements, fluides. Finitions haut de gamme pour espaces tertiaires, médicaux et commerciaux. Tous corps d'état coordonnés en interne.",
     },
     introduction: [
-      "Au-delà du gros-œuvre et du renforcement, Eurolook Construction réalise l'intégralité des prestations d'aménagement intérieur pour les espaces tertiaires, médicaux et commerciaux. Notre approche : un seul interlocuteur pour la totalité des corps d'état secondaires.",
+      "Au-delà du gros-œuvre et du renforcement, Eurolook Construction réalise l'intégralité des prestations d'aménagement intérieur pour les espaces tertiaires, médicaux et commerciaux. Notre approche : la coordination interne de tous les corps d'état secondaires.",
       "Cloisons, faux plafonds, revêtements, fluides : chaque prestation est coordonnée en interne pour garantir une finition homogène, un planning maîtrisé et un budget tenu.",
     ],
     methodologie: [
@@ -316,13 +316,13 @@ export const expertises: Expertise[] = [
     ],
     valeurAjoutee: [
       { label: "Tous corps d'état", value: "Intégrés" },
-      { label: "Interlocuteur", value: "Unique" },
+      { label: "Coordination", value: "Interne" },
       { label: "Marchés", value: "Tertiaire & commercial" },
       { label: "Finitions", value: "Haut de gamme" },
     ],
     projetsExemples: [
       { titre: "Cabinet Médical — Marseille (13015)", details: "Création d'un centre médical : faux plafonds 60x60 sur ossature métallique, doublage périphérique, cloisons BA13, peinture deux couches, sol PVC grand passage type Gerflor.", montant: "100 567 € HT", client: "Cabinet Médical" },
-      { titre: "La Barbe de Papa — Aménagement 29 boutiques", details: "Aménagement intérieur complet de cellules commerciales pour le réseau national La Barbe de Papa.", montant: "1 200 000 € HT", client: "La Barbe de Papa" },
+      { titre: "La Barbe de Papa — Aménagement 29 boutiques", details: "Aménagement intérieur complet de cellules commerciales pour le réseau national La Barbe de Papa.", montant: "70 000 € HT / boutique", client: "La Barbe de Papa" },
       { titre: "Rénovation appartement — Aix-en-Provence", details: "Rénovation salle de bain et cuisine : dépose existant, pose nouveau carrelage et faïence, création douche avec bac et parois, fourniture et pose meuble vasque.", montant: "10 000 € HT", client: "Particulier" },
     ],
     ordre: 6,
