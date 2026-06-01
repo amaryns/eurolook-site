@@ -18,23 +18,17 @@ export async function getStaticPaths() {
 const { expertise } = Astro.props;
 const autresExpertises = getExpertisesSauf(expertise.slug);
 
-// Images Unsplash WebP par expertise (cohérence avec la home)
+// Mapping des images locales par expertise — 1 image dédiée par slug
+// Utilisée à la fois pour le hero ET pour la section présentation
 const expImages: Record<string, string> = {
-  'renforcement-structurel': 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=1600&fm=webp&q=72&auto=compress',
-  'rehabilitation-technique': 'https://images.unsplash.com/photo-1581094288338-2314dddb7ece?w=1600&fm=webp&q=72&auto=compress',
-  'conception-amenagement-points-de-vente': 'https://images.unsplash.com/photo-1604014237800-1c9102c219da?w=1600&fm=webp&q=72&auto=compress',
-  'menuiserie-et-aluminium': 'https://images.unsplash.com/photo-1545153996-d9b9beea6ce8?w=1600&fm=webp&q=72&auto=compress',
-  'pilotage-coordination-chantier-opc': 'https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=1600&fm=webp&q=72&auto=compress',
-  'amenagements-tertiaires-finitions': 'https://images.unsplash.com/photo-1631679706909-1844bbd07221?w=1600&fm=webp&q=72&auto=compress',
+  'renforcement-structurel': '/images/expertises/renforcement-structurel.webp',
+  'rehabilitation-technique': '/images/expertises/rehabilitation-technique.webp',
+  'conception-amenagement-points-de-vente': '/images/expertises/conception-amenagement-points-de-vente.webp',
+  'menuiserie-et-aluminium': '/images/expertises/menuiserie-et-aluminium.webp',
+  'pilotage-coordination-chantier-opc': '/images/expertises/pilotage-coordination-chantier-opc.webp',
+  'amenagements-tertiaires-finitions': '/images/expertises/amenagements-tertiaires-finitions.webp',
 };
-const expImagesMid: Record<string, string> = {
-  'renforcement-structurel': 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=900&fm=webp&q=72&auto=compress',
-  'rehabilitation-technique': 'https://images.unsplash.com/photo-1581094288338-2314dddb7ece?w=900&fm=webp&q=72&auto=compress',
-  'conception-amenagement-points-de-vente': 'https://images.unsplash.com/photo-1604014237800-1c9102c219da?w=900&fm=webp&q=72&auto=compress',
-  'menuiserie-et-aluminium': 'https://images.unsplash.com/photo-1545153996-d9b9beea6ce8?w=900&fm=webp&q=72&auto=compress',
-  'pilotage-coordination-chantier-opc': 'https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=900&fm=webp&q=72&auto=compress',
-  'amenagements-tertiaires-finitions': 'https://images.unsplash.com/photo-1631679706909-1844bbd07221?w=900&fm=webp&q=72&auto=compress',
-};
+const expImagesMid: Record<string, string> = expImages;
 
 const heroImg = expImages[expertise.slug] || expImages['renforcement-structurel'];
 const midImg = expImagesMid[expertise.slug] || expImagesMid['renforcement-structurel'];
