@@ -837,11 +837,12 @@ body.menu-open{overflow:hidden;}
   justify-content:center;
   gap:.75rem;
   min-height:54px;
-  padding:1rem 2rem;
+  width:100%;
+  padding:1rem 1.75rem;
   font-family:var(--f-d);
-  font-size:.9375rem;
+  font-size:.875rem;
   font-weight:800;
-  letter-spacing:.14em;
+  letter-spacing:.12em;
   text-transform:uppercase;
   color:var(--cream);
   background:var(--black);
@@ -851,7 +852,15 @@ body.menu-open{overflow:hidden;}
   overflow:hidden;
   transition:all .3s cubic-bezier(.22,.9,.34,1);
   white-space:nowrap;
-  align-self:stretch;
+}
+@media(min-width:768px){
+  .form-v2-submit{
+    width:auto;
+    min-width:240px;
+    padding:1rem 2rem;
+    font-size:.9375rem;
+    letter-spacing:.14em;
+  }
 }
 .form-v2-submit::before{
   content:'';
