@@ -1,0 +1,144 @@
+---
+// src/pages/plan-du-site.astro
+// Plan du site DATA-DRIVEN
+// Les expertises et les projets s'ajoutent automatiquement depuis les data files
+// Ajouter un projet dans projets.ts ou une expertise dans expertises.ts → apparaît ici
+
+import Layout from '../layouts/Layout.astro';
+import { getToutesLesExpertises } from '../data/expertises';
+import { getTousLesProjets } from '../data/projets';
+
+const expertises = getToutesLesExpertises();
+const projets = getTousLesProjets();
+---
+
+<Layout
+  title="Plan du site — Eurolook Construction"
+  description="Plan complet du site eurolookgroupe.com — accédez rapidement à toutes les pages du site Eurolook Construction."
+  canonical="https://eurolookgroupe.com/plan-du-site"
+>
+
+  <!-- ████ HERO SOBRE ████ -->
+  <section class="legal-hero" aria-labelledby="sitemap-h1">
+    <div class="legal-hero-inner">
+      <nav aria-label="Fil d'Ariane">
+        <p class="page-breadcrumb">
+          <a href="/">Accueil</a>
+          <span aria-hidden="true">→</span>
+          <span>Plan du site</span>
+        </p>
+      </nav>
+
+      <span class="hero-eyebrow">
+        <span class="dot" aria-hidden="true"></span>
+        Navigation
+      </span>
+
+      <h1 id="sitemap-h1" class="legal-hero-title">
+        <span class="line"><span>PLAN</span></span>
+        <span class="line"><span><em>DU SITE.</em></span></span>
+      </h1>
+
+      <p class="legal-hero-lead">
+        Retrouvez en un coup d'œil l'ensemble des pages du site eurolookgroupe.com.
+      </p>
+    </div>
+  </section>
+
+  <!-- ████ CONTENU — Light break crème ████ -->
+  <section class="legal-body" aria-label="Plan du site complet">
+    <div class="sitemap-grid">
+
+      <!-- PAGES PRINCIPALES -->
+      <article class="sitemap-block reveal">
+        <div class="sitemap-block-head">
+          <span class="sitemap-num">01</span>
+          <h2>Pages principales</h2>
+        </div>
+        <ul class="sitemap-list">
+          <li><a href="/"><span class="sitemap-arrow">→</span> Accueil</a></li>
+          <li><a href="/entreprise"><span class="sitemap-arrow">→</span> L'entreprise</a></li>
+          <li><a href="/la-fabrique"><span class="sitemap-arrow">→</span> La Fabrique</a></li>
+          <li><a href="/realisations"><span class="sitemap-arrow">→</span> Réalisations</a></li>
+          <li><a href="/contact"><span class="sitemap-arrow">→</span> Contact</a></li>
+        </ul>
+      </article>
+
+      <!-- EXPERTISES (data-driven) -->
+      <article class="sitemap-block reveal">
+        <div class="sitemap-block-head">
+          <span class="sitemap-num">02</span>
+          <h2>Expertises</h2>
+        </div>
+        <ul class="sitemap-list">
+          <li>
+            <a href="/expertises">
+              <span class="sitemap-arrow">→</span>
+              <strong>Toutes les expertises</strong>
+            </a>
+          </li>
+          {expertises.map(expertise => (
+            <li>
+              <a href={`/expertises/${expertise.slug}`}>
+                <span class="sitemap-arrow">→</span>
+                {expertise.titre}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </article>
+
+      <!-- PROJETS (data-driven) -->
+      <article class="sitemap-block reveal">
+        <div class="sitemap-block-head">
+          <span class="sitemap-num">03</span>
+          <h2>Projets de référence</h2>
+        </div>
+        <ul class="sitemap-list">
+          <li>
+            <a href="/realisations">
+              <span class="sitemap-arrow">→</span>
+              <strong>Toutes les réalisations</strong>
+            </a>
+          </li>
+          {projets.map(projet => (
+            <li>
+              <a href={`/realisations/${projet.slug}`}>
+                <span class="sitemap-arrow">→</span>
+                {projet.titre}
+                <span class="sitemap-meta">— {projet.lieu}</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </article>
+
+      <!-- INFORMATIONS LÉGALES -->
+      <article class="sitemap-block reveal">
+        <div class="sitemap-block-head">
+          <span class="sitemap-num">04</span>
+          <h2>Informations légales</h2>
+        </div>
+        <ul class="sitemap-list">
+          <li><a href="/mentions-legales"><span class="sitemap-arrow">→</span> Mentions légales</a></li>
+          <li><a href="/confidentialite"><span class="sitemap-arrow">→</span> Politique de confidentialité</a></li>
+          <li><a href="/plan-du-site"><span class="sitemap-arrow">→</span> Plan du site</a></li>
+        </ul>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ████ CTA FINALE ████ -->
+  <section class="cta-band-v2" aria-labelledby="sitemap-cta-h2">
+    <div class="cta-band-v2-inner reveal">
+      <h2 id="sitemap-cta-h2">VOUS NE TROUVEZ<br/><em>PAS UNE PAGE ?</em></h2>
+      <div>
+        <p>Contactez-nous, notre équipe vous accompagne dans votre navigation.</p>
+        <br>
+        <a href="/contact" class="btn btn-dark">Nous contacter</a>
+      </div>
+    </div>
+  </section>
+
+</Layout>
