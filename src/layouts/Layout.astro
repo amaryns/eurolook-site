@@ -60,8 +60,8 @@ const {
     "@context": "https://schema.org",
     "@type": "Organization",
     "name": "Eurolook Construction",
-    "url": "https://eurolookgroup.com",
-    "logo": "https://eurolookgroup.com/logos/logo.svg",
+    "url": "https://eurolookgroupe.com",
+    "logo": "https://eurolookgroupe.com/logos/logo.svg",
     "description": "Entreprise Générale du Bâtiment certifiée MASE depuis 2019. Renforcement structurel, réhabilitation technique et aménagement commercial.",
     "address": {
       "@type": "PostalAddress",
@@ -71,7 +71,7 @@ const {
       "addressCountry": "FR"
     },
     "telephone": "+33983039959",
-    "email": "secretariat@construction-eurolook.com",
+    "email": "contact@eurolookgroupe.com",
     "sameAs": []
   }
   </script>
@@ -247,11 +247,6 @@ const {
     </div>
   </div>
 
-  <!-- ════ STICKY CTA MOBILE ════ -->
-  <a id="sticky-cta" class="sticky-cta" href="/contact" aria-label="Demander un devis gratuit">
-    Devis gratuit →
-  </a>
-
   <!-- ════ JAVASCRIPT ════ -->
   <script>
   (function(){
@@ -326,12 +321,6 @@ const {
         mbt.setAttribute('aria-expanded', String(!o));
       });
     }
-
-    /* ── STICKY CTA ── */
-    var sc = document.getElementById('sticky-cta');
-    if(sc) window.addEventListener('scroll', function(){
-      sc.classList.toggle('is-visible', window.scrollY > 500);
-    }, {passive: true});
 
     /* ── COOKIE ── */
     var banner = document.getElementById('cookie-banner');
