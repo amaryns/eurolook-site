@@ -54,6 +54,20 @@ export const projets: Projet[] = [
     ordre: 2,
     enAvant: true,
   },
+  {
+    slug: 'happesmoke-westfield-velizy',
+    titre: 'Happesmoke Westfield Vélizy 2',
+    categorie: 'commercial',
+    categorieLabel: 'Commercial',
+    lieu: 'Vélizy-Villacoublay',
+    date: 'Février 2022',
+    client: 'SARL LEL',
+    resume: "Aménagement clé en main d'un kiosque commercial à l'enseigne Happesmoke au centre commercial Westfield Vélizy 2 : parquet, habillage métallique et bois, électricité, éclairage et enseigne.",
+    image: '/images/realisations/happesmoke-westfield-velizy/01-kiosque-livre.webp',
+    alt: 'Happesmoke Westfield Vélizy 2 — Eurolook Construction',
+    ordre: 0,
+    enAvant: true,
+  },
 ];
 
 // ═══════════════════════════════════════════════════════════════════════════
