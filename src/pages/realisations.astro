@@ -1,7 +1,8 @@
 ---
 // src/pages/realisations.astro
-// Page Réalisations — utilise src/data/projets.ts comme source unique
-// Pour ajouter/modifier un projet : éditer projets.ts, c'est tout.
+// PAGE RÉALISATIONS — VERSION 2.0
+// Refonte esthétique DA premium
+// Source unique de données : src/data/projets.ts
 
 import Layout from '../layouts/Layout.astro';
 import { getTousLesProjets } from '../data/projets';
@@ -10,87 +11,246 @@ const projets = getTousLesProjets();
 ---
 
 <Layout
-  title="Nos Réalisations — Eurolook Construction | 200+ projets depuis 2015"
-  description="Découvrez les réalisations d'Eurolook Construction : renforcement structurel, réhabilitation technique, aménagement commercial. 200+ projets livrés depuis 2015."
-  canonical="https://eurolookgroup.com/realisations"
+  title="Nos réalisations — Eurolook Construction"
+  description="Découvrez les projets de référence d'Eurolook Construction : chantiers en site occupé, gros-œuvre en sous-traitance, déploiements multi-sites pour enseignes nationales."
+  canonical="https://eurolookgroupe.com/realisations"
 >
 
-  <!-- ████ EN-TÊTE ████ -->
-  <div class="real-header">
-    <nav aria-label="Fil d'Ariane">
-      <p class="breadcrumb">
-        <a href="/" style="color:inherit;text-decoration:none;">Accueil</a>
-        &nbsp;→&nbsp; Réalisations
+  <!-- ████ HERO ████ -->
+  <section class="page-hero" aria-labelledby="real-hero-h1">
+    <img
+      class="hero-bg-img"
+      src="/images/realisations/four-poche/05-pompe-beton.webp"
+      alt=""
+      role="presentation"
+      loading="eager"
+      fetchpriority="high"
+      width="1600"
+      height="900"
+    />
+    <div class="hero-bg-overlay" aria-hidden="true"></div>
+
+    <div class="page-hero-body">
+      <nav aria-label="Fil d'Ariane">
+        <p class="page-breadcrumb">
+          <a href="/">Accueil</a>
+          <span aria-hidden="true">→</span>
+          <span>Réalisations</span>
+        </p>
+      </nav>
+
+      <span class="hero-eyebrow">
+        <span class="dot" aria-hidden="true"></span>
+        Projets de référence
+      </span>
+
+      <h1 id="real-hero-h1" class="page-hero-title">
+        <span class="line"><span>NOS</span></span>
+        <span class="line"><span><em>RÉALISATIONS.</em></span></span>
+      </h1>
+
+      <p class="page-hero-lead">
+        Découvrez une sélection de nos chantiers menés en site occupé, en sous-traitance gros-œuvre ou pour des enseignes nationales — depuis 2015.
       </p>
-    </nav>
-    <h1 id="real-h1" class="real-h1">NOS<br>RÉALISATIONS</h1>
-    <p class="real-intro">200+ projets depuis 2015 — renforcement structurel, réhabilitation technique et aménagement commercial.</p>
-  </div>
+    </div>
+  </section>
 
-  <!-- ████ FILTRES ████ -->
-  <div class="filters" role="group" aria-label="Filtrer par catégorie">
-    <button class="filter-btn is-active" data-cat="" aria-pressed="true">Tous</button>
-    <button class="filter-btn" data-cat="commercial" aria-pressed="false">Commercial</button>
-    <button class="filter-btn" data-cat="structure" aria-pressed="false">Structure</button>
-    <button class="filter-btn" data-cat="residentiel" aria-pressed="false">Résidentiel</button>
-    <button class="filter-btn" data-cat="industriel" aria-pressed="false">Industriel</button>
-    <button class="filter-btn" data-cat="aluminium" aria-pressed="false">Aluminium</button>
-  </div>
+  <!-- ████ STATS BAND VERTICALE ████ -->
+  <section class="stats-band-v2" aria-label="Repères">
+    <div class="stats-v2-inner">
 
-  <!-- CTA rapide -->
-  <div style="padding:1.5rem var(--gap) 0;background:var(--pfull-bg);display:flex;justify-content:flex-end;">
-    <a class="btn btn-gold btn-sm" href="/contact">Demander un devis</a>
-  </div>
+      <div class="stats-v2-head reveal">
+        <span class="s-tag">Repères</span>
+        <h2 class="stats-v2-title">EN <em>BREF.</em></h2>
+      </div>
 
-  <!-- ████ GRILLE PROJETS (générée automatiquement) ████ -->
-  <div class="proj-full-grid" role="list">
-    {projets.map(p => (
-      <a
-        href={`/realisations/${p.slug}`}
-        class="proj-card-link"
-        role="listitem"
-        aria-label={`Voir la fiche projet : ${p.titre}`}
-      >
-        <article class="proj-full-card" data-cat={p.categorie}>
-          <img
-            src={p.image}
-            alt={p.alt}
-            loading="lazy"
-            width="700"
-            height="280"
-          />
-          <div class="proj-card-info">
-            <span class="proj-cat">{p.categorieLabel}</span>
-            <h3 class="proj-name">{p.titre}</h3>
-            <span class="proj-meta">{p.lieu} · {p.date}</span>
-            <p class="proj-snippet">{p.resume}</p>
+      <ul class="stats-v2-list stagger" role="list">
+
+        <li class="stat-line" role="listitem">
+          <span class="stat-line-num stat-num-gradient" data-count="2015">2015</span>
+          <div class="stat-line-body">
+            <span class="stat-line-label">Création d'Euro Look</span>
+            <span class="stat-line-desc">SARL fondée par la Holding MG — Entreprise Générale du Bâtiment</span>
           </div>
-        </article>
-      </a>
-    ))}
-  </div>
+        </li>
 
-  <!-- ████ CTA BAS DE PAGE ████ -->
-  <div class="real-cta">
-    <p>Votre chantier pourrait être le suivant</p>
-    <a class="btn btn-gold" href="/contact" aria-label="Demander un devis gratuit">Demander un devis</a>
-  </div>
+        <li class="stat-line" role="listitem">
+          <span class="stat-line-num stat-num-gradient" data-count="5">5</span>
+          <div class="stat-line-body">
+            <span class="stat-line-label">Domaines d'intervention</span>
+            <span class="stat-line-desc">Commercial, structure, résidentiel, industriel et aluminium</span>
+          </div>
+        </li>
+
+        <li class="stat-line" role="listitem">
+          <span class="stat-line-num stat-num-gradient">ISER</span>
+          <div class="stat-line-body">
+            <span class="stat-line-label">Partenaire ingénierie structure</span>
+            <span class="stat-line-desc">50% du chiffre d'affaires en renforcement structurel</span>
+          </div>
+        </li>
+
+      </ul>
+    </div>
+  </section>
+
+  <!-- ████ PRÉSENTATION — Light break crème ████ -->
+  <section class="real-intro-section" aria-labelledby="real-intro-h2">
+    <div class="real-intro-inner reveal">
+      <span class="s-tag">Notre approche</span>
+      <h2 id="real-intro-h2" class="real-intro-title">
+        DES PROJETS<br/><em>MAÎTRISÉS.</em>
+      </h2>
+      <p class="real-intro-text">
+        Chaque chantier est mené avec la même exigence : respect des délais contractuels, sécurité des équipes et des sites en exploitation, qualité d'exécution conforme aux cahiers des charges techniques.
+      </p>
+      <p class="real-intro-text">
+        Filtrez ci-dessous par catégorie pour explorer nos projets selon votre domaine d'intérêt.
+      </p>
+    </div>
+  </section>
+
+  <!-- ████ FILTRES PREMIUM ████ -->
+  <section class="real-filters-section" aria-label="Filtres par catégorie">
+    <div class="real-filters-inner reveal">
+      <div class="filters-v2" role="group" aria-label="Filtrer par catégorie">
+        <button class="filter-btn-v2 is-active" data-cat="" aria-pressed="true">
+          <span class="filter-dot" aria-hidden="true"></span>
+          Tous
+        </button>
+        <button class="filter-btn-v2" data-cat="commercial" aria-pressed="false">
+          <span class="filter-dot" aria-hidden="true"></span>
+          Commercial
+        </button>
+        <button class="filter-btn-v2" data-cat="structure" aria-pressed="false">
+          <span class="filter-dot" aria-hidden="true"></span>
+          Structure
+        </button>
+        <button class="filter-btn-v2" data-cat="residentiel" aria-pressed="false">
+          <span class="filter-dot" aria-hidden="true"></span>
+          Résidentiel
+        </button>
+        <button class="filter-btn-v2" data-cat="industriel" aria-pressed="false">
+          <span class="filter-dot" aria-hidden="true"></span>
+          Industriel
+        </button>
+        <button class="filter-btn-v2" data-cat="aluminium" aria-pressed="false">
+          <span class="filter-dot" aria-hidden="true"></span>
+          Aluminium
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ████ GRILLE PROJETS ████ -->
+  <section class="real-projects-section" aria-labelledby="real-projects-h2">
+    <div class="real-projects-inner">
+      <h2 id="real-projects-h2" class="sr-only">Liste des projets</h2>
+      <div class="real-grid-v2 stagger" role="list">
+        {projets.map(p => (
+          <a
+            href={`/realisations/${p.slug}`}
+            class="real-card-v2"
+            role="listitem"
+            data-cat={p.categorie}
+            aria-label={`Voir la fiche projet : ${p.titre}`}
+          >
+            <div class="real-card-img">
+              <img
+                src={p.image}
+                alt={p.alt}
+                loading="lazy"
+                decoding="async"
+                width="800"
+                height="500"
+              />
+              <span class="real-card-cat">{p.categorieLabel}</span>
+            </div>
+            <div class="real-card-body">
+              <h3 class="real-card-title">{p.titre}</h3>
+              <div class="real-card-meta">
+                <span class="real-card-lieu">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path d="M12 2C8 2 5 5 5 9c0 5 7 13 7 13s7-8 7-13c0-4-3-7-7-7z" stroke="currentColor" stroke-width="1.5"/>
+                    <circle cx="12" cy="9" r="2.5" stroke="currentColor" stroke-width="1.5"/>
+                  </svg>
+                  {p.lieu}
+                </span>
+                <span class="real-card-date">{p.date}</span>
+              </div>
+              <p class="real-card-resume">{p.resume}</p>
+              <div class="real-card-footer">
+                <span class="real-card-client">{p.client}</span>
+                <span class="real-card-link">
+                  Voir le projet
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path d="M5 12h14M13 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </span>
+              </div>
+            </div>
+          </a>
+        ))}
+      </div>
+
+      <div class="real-no-results" id="real-no-results" hidden role="alert" aria-live="polite">
+        <span class="real-no-results-icon" aria-hidden="true">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none">
+            <circle cx="11" cy="11" r="8" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M21 21l-4.35-4.35" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </span>
+        <p>Aucun projet dans cette catégorie pour le moment.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ████ CTA FINALE ████ -->
+  <section class="cta-band-v2" aria-labelledby="real-cta-h2">
+    <div class="cta-band-v2-inner reveal">
+      <h2 id="real-cta-h2">VOTRE CHANTIER<br/><em>POURRAIT ÊTRE LE SUIVANT.</em></h2>
+      <div>
+        <p>Confiez-nous votre projet : nos équipes vous accompagnent du devis à la réception.</p>
+        <br>
+        <a href="/contact" class="btn btn-dark">Demander un devis</a>
+      </div>
+    </div>
+  </section>
 
 </Layout>
 
-<style>
-  .proj-card-link {
-    text-decoration: none;
-    color: inherit;
-    display: block;
-    transition: transform .3s ease;
-  }
-  .proj-card-link:hover {
-    transform: translateY(-4px);
-  }
-  .proj-card-link:focus-visible {
-    outline: 3px solid #B8934A;
-    outline-offset: 4px;
-    border-radius: 2px;
-  }
-</style>
+<script>
+  /* ── FILTRES PROJETS ── */
+  (function(){
+    var buttons = document.querySelectorAll('.filter-btn-v2');
+    var cards = document.querySelectorAll('.real-card-v2');
+    var noResults = document.getElementById('real-no-results');
+
+    buttons.forEach(function(btn){
+      btn.addEventListener('click', function(){
+        var cat = btn.getAttribute('data-cat');
+
+        buttons.forEach(function(b){
+          b.classList.remove('is-active');
+          b.setAttribute('aria-pressed', 'false');
+        });
+        btn.classList.add('is-active');
+        btn.setAttribute('aria-pressed', 'true');
+
+        var visibleCount = 0;
+        cards.forEach(function(card){
+          if(!cat || card.getAttribute('data-cat') === cat){
+            card.style.display = '';
+            visibleCount++;
+          } else {
+            card.style.display = 'none';
+          }
+        });
+
+        if(noResults){
+          noResults.hidden = visibleCount > 0;
+        }
+      });
+    });
+  })();
+</script>
