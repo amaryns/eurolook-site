@@ -1,0 +1,18 @@
+# robots.txt — Eurolook Construction
+# https://eurolookgroupe.com
+# Mise à jour : juin 2026
+
+# Tous les robots des moteurs de recherche sont autorisés
+User-agent: *
+Allow: /
+
+# Pages qu'on ne veut PAS indexer
+Disallow: /engagements
+Disallow: /404
+
+# Bloquer l'accès aux fichiers techniques
+Disallow: /_astro/
+Disallow: /assets/
+
+# Localisation du sitemap (TRÈS IMPORTANT pour Google)
+Sitemap: https://eurolookgroupe.com/sitemap-index.xml
