@@ -77,7 +77,7 @@ export const expertises: Expertise[] = [
       { label: "Part du CA", value: "50 %" },
       { label: "Partenariat", value: "ISER" },
       { label: "Référencement", value: "Klépierre" },
-      { label: "Certification", value: "MASE" },
+      { label: "Spécialité", value: "Site occupé" },
     ],
     projetsExemples: [
       { titre: "Klépierre — Centre commercial Mayol (Toulon)", details: "Reprise de gros-œuvre suite audit Bureau Veritas — corsets métalliques, pontage de fissurations, reprise d'éclats sur agglomérés.", montant: "105 000 € HT", client: "Klépierre" },
@@ -100,14 +100,14 @@ export const expertises: Expertise[] = [
     tagline: "Intervention en site occupé, sans interruption d'activité",
     meta: {
       title: 'Réhabilitation technique en site occupé — Eurolook Construction',
-      description: "Réhabilitation technique de centres commerciaux, agences bancaires et sites industriels en exploitation. Travaux de nuit, démolition ciblée, curage, reprises maçonnerie. Certifié MASE.",
+      description: "Réhabilitation technique de centres commerciaux, agences bancaires et sites industriels en exploitation. Travaux de nuit, démolition ciblée, curage, reprises maçonnerie. Intervention en site occupé.",
     },
     introduction: [
       "La réhabilitation technique sur site en exploitation est l'une des expertises historiques d'Eurolook Construction. Centres commerciaux ouverts au public, agences bancaires en activité, sites industriels en production : nous intervenons là où d'autres ne peuvent pas, sans jamais interrompre l'activité de nos clients.",
       "Travaux de nuit, plans de prévention rigoureux, coordination quotidienne avec les équipes d'exploitation : chaque intervention en site occupé se prépare en amont avec un protocole sécurité et coactivité dédié.",
     ],
     methodologie: [
-      "La certification MASE obtenue en 2019 encadre l'ensemble de nos interventions. Elle garantit à nos clients un système de management basé sur la qualité, la santé, la sécurité et l'environnement — objectif prioritaire : zéro accident.",
+      "Chaque intervention en site occupé est encadrée par un système de management rigoureux fondé sur la qualité, la santé, la sécurité et l'environnement — avec un objectif prioritaire : zéro accident.",
       "Sur chaque chantier, un conducteur de travaux dédié assure l'interface avec le maître d'ouvrage, le maître d'œuvre et les équipes d'exploitation du site.",
     ],
     interventions: [
@@ -118,11 +118,11 @@ export const expertises: Expertise[] = [
       "Reprise de chape, ragréages de mise à niveau",
       "Reprise de maçonnerie agglomérée",
       "Travaux de nuit en zones bruyantes",
-      "Coordination en environnement classifié (ATEX, pétrochimie)",
+      "Coordination en environnement à fortes contraintes (sites en exploitation)",
     ],
     valeurAjoutee: [
       { label: "Sites occupés", value: "Spécialité" },
-      { label: "Certification", value: "MASE 2019" },
+      { label: "Sécurité", value: "Prioritaire" },
       { label: "Travaux", value: "Nuit & WE" },
       { label: "Objectif", value: "Zéro accident" },
     ],
