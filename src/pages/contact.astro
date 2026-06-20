@@ -4,7 +4,7 @@
 // Refonte esthétique + corrections factuelles (pas de "48h", pas de "interlocuteur unique")
 
 import Layout from '../layouts/Layout.astro';
-const FORMSPREE_URL = "https://formspree.io/f/xbdbljey";
+const FORMSPREE_URL = "https://formspree.io/f/xvznevne";
 ---
 
 <Layout
@@ -533,7 +533,7 @@ const FORMSPREE_URL = "https://formspree.io/f/xbdbljey";
     if(errorBox) errorBox.hidden = true;
 
     try {
-      var res = await fetch('https://formspree.io/f/xbdbljey', {
+      var res = await fetch('https://formspree.io/f/xvznevne', {
         method: 'POST',
         headers: { 'Accept': 'application/json' },
         body: new FormData(form)
